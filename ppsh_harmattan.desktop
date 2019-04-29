@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Type=Application
+Terminal=false
+Name=PPSH
+Name[zh]=波波莎
+Exec=/usr/bin/invoker --splash /opt/ppsh/res/ppsh_splash_natasha.jpg --type=d -s /opt/ppsh/bin/ppsh
+Icon=/usr/share/icons/hicolor/80x80/apps/ppsh80.png
+X-Window-Icon=
+X-HildonDesk-ShowInToolbar=true
+X-Osso-Type=application/x-executable

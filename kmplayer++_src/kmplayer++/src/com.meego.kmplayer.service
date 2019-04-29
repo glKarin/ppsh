@@ -1,0 +1,3 @@
+[D-BUS Service]
+Name=com.meego.kmplayer
+Exec=/opt/kmplayer/bin/kmplayer

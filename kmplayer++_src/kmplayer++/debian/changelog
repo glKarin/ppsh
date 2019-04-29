@@ -1,0 +1,817 @@
+kmplayer++ (0.10.9.910-1harmattan1) unstable; urgency=low
+
+  * Add set external audio and request headers.
+
+ -- karin <beyondk2000@gmail.com>  Fri, 26 Apr 2019 11:23:03 +0800
+
+kmplayer (0.10.9.910-1) unstable; urgency=low
+
+  * Fix changing gst volume when first in unlocked and then in locked mode
+  * Add zh_CN translations from Yulang.Zhao
+  * Display name and icon added to control file from Yulang.Zhao
+  * Show a context menu hint instead of <empty> after startup
+  * Fix starting kmplayer with a file having non-ascii characters
+  * Fix changing title not immediately update text on screen
+  * Show start with hole when recent item is marked as auto-remove
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Sat, 17 Mar 2012 15:46:12 +0100
+
+kmplayer (0.10.9.909-1) unstable; urgency=low
+
+  * Make hw volume keys adjust volume too when device is locked
+  * Request for internet connection when playing a network link
+  * Fix playing files with non-ascii characters in its name
+  * Add a Qt i18n translations file and translations for dutch
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Sat, 03 Mar 2012 12:47:57 +0100
+
+kmplayer (0.10.9.908-1) unstable; urgency=low
+
+  * Fall back to MyDocs when stored directory doesn't exists anymore
+  * Install kmplayer in /opt/kmplayer
+  * Context menu entry for (un)setting auto-remove flag
+  * Add option to remove downloaded file when falling off from the recents list
+  * Add 20s forward and backward seek buttons in landscape mode
+  * Improve seek interaction
+  * Support SMIL fit  inheritance of regions
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Wed, 15 Feb 2012 23:13:58 +0100
+
+kmplayer (0.10.9.907-1) unstable; urgency=low
+
+  * Update icon to harmattan style
+  * Use transferUI for displaying the downloads
+  * Support Outline Processor Markup Language as playlist file
+  * SMIL audio/video synchronisation fix and a few minor issues found on
+    http://www.multimedia4everyone.com/
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Sun, 15 Jan 2012 19:08:42 +0100
+
+kmplayer (0.10.9.906-1) unstable; urgency=low
+
+  * Add toolbar and on-screen buttons to switch between playlist and video
+  * Blend video in playlist background
+  * Blend video with overlapping SMIL regions
+  * Update two playlist icons for latest harmattan upgrade
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Sat, 05 Nov 2011 15:19:59 +0100
+
+kmplayer (0.10.9.905-1) unstable; urgency=low
+
+  * Use colorkey used in mafw-gst-subtitles-render
+  * Use XShapeCombineRegion to allow SMIL regions in front of video
+  * Many fixes for smilText and support for tev elements
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Sun, 30 Oct 2011 23:31:16 +0100
+
+kmplayer (0.10.9.904-1) unstable; urgency=low
+
+  * Show selected text in the input dialogs
+  * Update dialog's close buttons for Harmattan beta2
+  * Fix SMIL text size calculation regression
+  * Add menu entry to select a preferred player when MPlayer is installed
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Sun, 02 Oct 2011 21:44:49 +0200
+
+kmplayer (0.10.9.903-1) unstable; urgency=low
+
+  * Fix canceling download, double slash in download file
+  * Don't paste inside a group when group is closed
+  * Add initial black splash screen only using 'QtQuick 1.0' for load speedup
+  * Remove pango dependency
+  * Add icons to directory and file dialogs
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Tue, 27 Sep 2011 19:28:39 +0200
+
+kmplayer (0.10.9.902-1) unstable; urgency=low
+
+  * Management favorites by cut/copy/paste and editable title
+  * Menu button opens file open dialog
+  * Download destination directory can be selected via the UI
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Sat, 10 Sep 2011 20:08:57 +0200
+
+kmplayer (0.10.9.901-1) unstable; urgency=low
+
+  * Add simple copy/paste context menu
+  * Hopefully fixed issue with half corrupted active list
+  * Scroll up when expanding
+  * Don't update progress bar when video is at the foreground
+  * Draw small borders around the items
+  * Fix item width not updating in orientation change
+  * Volume keys now work when screen is not dimmed
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Sun, 21 Aug 2011 17:42:28 +0200
+
+kmplayer (0.10.9.900-1) unstable; urgency=low
+
+  * Harmattan porting version
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Mon, 01 Aug 2011 20:54:53 +0200
+
+kmplayer (0.10.5.901-1) unstable; urgency=low
+
+  * Fix playing files in directories containing utf8 characters
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Sat, 04 Dec 2010 11:57:40 +0100
+
+kmplayer (0.10.5.900-1) unstable; urgency=low
+
+  * -max option for knpplayer that uses the full screen area
+  * Add pseudo process that first tries gstreamer and then mplayer
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Mon, 04 Oct 2010 21:10:55 +0200
+
+kmplayer (0.10.5-3) unstable; urgency=low
+
+  * Zoom button now zooms to height of 480 in case aspects wider than 15:9
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Wed, 04 Aug 2010 19:29:57 +0200
+
+kmplayer (0.10.5-2) unstable; urgency=low
+
+  * Compile fix
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Sat, 31 Jul 2010 16:13:30 +0200
+
+kmplayer (0.10.5-1) unstable; urgency=low
+
+  * Add button to scale up the video image to 800px wide
+  * Add button to ignore video aspects
+  * Add a clear history menu item
+  * Add child link if flv stream is detected by npp in a swf link
+  * Crash fix in youtube summary page with an empty description
+  * Keep hardware keys active while playing audio
+  * Fix opening a local ram file
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Sat, 31 Jul 2010 15:55:51 +0200
+
+kmplayer (0.10.4-2) unstable; urgency=low
+
+  * Fix problem with detecting mimetype on small files
+  * Apply the 'FMRadio' trick to get gstplayer work in silent mode
+  * Try harder to strip non-playable links and duplicates in Atom feeds
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Tue, 01 Jun 2010 21:30:20 +0200
+
+kmplayer (0.10.4-1) unstable; urgency=low
+
+  * Fix toolbar icon for download
+  * Support the meta tag in WorldTV99-0.5 (categorizing the items)
+  * Fix continuing video play after task switch (using Ctrl+Esc)
+  * Set pulse as audio driver for MPlayer
+  * Fix leaving mplayer process hanging when it didn't respond to quit
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Sat, 29 May 2010 14:34:09 +0200
+
+kmplayer (0.10.3-1) unstable; urgency=low
+
+  * Change playlist/video layout to a stacked one; works around BR 8079
+  * Replace flashlastfm with a sleep timer generator
+  * Make for flash a separate player too
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Sun, 31 Jan 2010 13:24:57 +0100
+
+kmplayer (0.10.2-5) unstable; urgency=low
+
+  * Add changes to debian/control
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Fri, 08 Jan 2010 17:46:56 +0100
+
+kmplayer (0.10.2-4) unstable; urgency=low
+
+  * Fix pausing media player not working for items in a list
+  * Help gstreamer backend to fill up its buffers (pause), it may end otherwise
+  * Fix backwards seek for mp3
+  * Allow list folders to be copied to favorites
+  * Fix crash in SMIL when activating a href link that replaces the current page
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Thu, 07 Jan 2010 17:35:23 +0100
+
+kmplayer (0.10.2-3) unstable; urgency=low
+
+  * Put info view in a pannable area
+  * Fix selecting Google Videos trailers in the USA-VCURLs72 list in worldtv99
+  * Fix selected item moving to recents when a recent item is added
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Sun, 20 Dec 2009 21:18:32 +0100
+
+kmplayer (0.10.2-2) unstable; urgency=low
+
+  * Remove -framedrop from mplayer commandline
+  * Make arrow and enter keys work for playlist
+  * Fix possible buffer overflow in parsing mplayer/gstreamer output
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Sun, 20 Dec 2009 03:50:50 +0100
+
+kmplayer (0.10.2-1) unstable; urgency=low
+
+  * Fix initial network connection
+  * Revert mapping video/x-flv to npp
+  * Add menu option to download page to add one from a link
+  * Fix the location bar combo stretched vertically
+  * Allow playing during downloads, allow multiple downloads
+  * Save changed recents/downloads/playlist every 5min
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Wed, 09 Dec 2009 21:03:45 +0100
+
+kmplayer (0.10.1-1) unstable; urgency=low
+
+  * Install binaries in /opt/kmplayer/bin
+  * Better text for menu entries
+  * Add bugtracker and display name to debian/control
+  * Use the Hildon pannable area for the playlist, enables kinetic scrolling
+  * Map video/x-flv to npp if mplayer not install
+  * SMIL 'accesskey' support (fullscreen only)
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Mon, 02 Nov 2009 20:42:00 +0100
+
+kmplayer (0.10.0-2) unstable; urgency=low
+
+  * Show a banner when 'save' is selected by no item selected
+  * Fix paint of dark blue rectangle on background in fullscreen
+  * Hide 'mplayer' player option when not found in /usr/bin
+  * Fix aspect settings on video played with gstreamer
+  * Make background color of top level items a bit darker
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Sat, 03 Oct 2009 15:49:59 +0200
+
+kmplayer (0.10.0-1) unstable; urgency=low
+
+  * Apply Hilden look&feel for the menu's
+  * Double click as fullscreen toggle for all the players for now
+  * SMIL3 state support
+  * Port to Maemo5
+  * Add gstreamer backend as replacement for osso-media-server
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Tue, 29 Sep 2009 22:54:37 +0200
+
+kmplayer (0.9.5-2) unstable; urgency=low
+
+  * Use less temporary memory when reading playlist files
+  * Start generator process on first arrived data for speedup
+  * Fix <text> font size calc to match that of pango markup (used by <smilText>)
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Tue, 26 May 2009 21:44:49 +0200
+
+kmplayer (0.9.5-1) unstable; urgency=low
+
+  * Swap 'Save' and 'Save As' for 'Export XML', 'Export m3u' resp.
+  * Make blip.tv generator information page look nicer
+  * Support more text attributes for smilText
+  * Fix rating stars on youtube generator information page
+  * Fix generators information pages text area getting smaller on every resize
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Sun, 17 May 2009 18:08:54 +0200
+
+kmplayer (0.9.4-2) unstable; urgency=low
+
+  * Make finger scroll of playlist one pixel move, one pixel scroll
+  * Also add summary page for RSS feeds with media tags
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Wed, 06 May 2009 22:01:25 +0200
+
+kmplayer (0.9.4-1) unstable; urgency=low
+
+  * Fix hang when input data of a generator has invalid utf8 characters
+  * Add generator for blip.tv
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Sun, 03 May 2009 17:08:25 +0200
+
+kmplayer (0.9.3-2) unstable; urgency=low
+
+  * Support SMIL region backgroundOpacity and media type mediaBackgroundOpacity
+  * Regressing fix in starting SMIL media type children
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Wed, 18 Mar 2009 19:55:07 +0100
+
+kmplayer (0.9.3-1) unstable; urgency=low
+
+  * More speed-ups in XML tokenizer
+  * Start of some simple internal tests
+  * Call NpStream finish on user stop
+  * Fix crash when activating a container only link in the active list
+  * Support 'fill="transition"` inside 'seq' tags, used in YouTube presentation
+  * Downloader now gives a message when file could not be written
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Sat, 14 Mar 2009 17:37:11 +0100
+
+kmplayer (0.9.2-5) unstable; urgency=low
+
+  * Fix regression in List::remove that could lead to a crash
+  * Fix copy to not copy dynamic retrieved child items
+  * Fix regression in XML tokenizer missing last token if no trailing whitespace
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Wed, 04 Feb 2009 19:28:08 +0100
+
+kmplayer (0.9.2-4) unstable; urgency=low
+
+  * Fix connecting wifi when playing a local swf file
+  * Copy form Playlist menu now copies url to clipboard
+  * Fix add-to-favorites and copy/paste of HTML object items
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Sun, 01 Feb 2009 00:24:25 +0100
+
+kmplayer (0.9.2-3) unstable; urgency=low
+
+  * Don't call osso_display_blanking_pause when not top-most window
+  * More speed-ups in XML tokenizer
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Thu, 29 Jan 2009 15:24:07 +0100
+
+kmplayer (0.9.2-2) unstable; urgency=low
+
+  * Add libconic0-dev to build-depends
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Tue, 27 Jan 2009 22:05:37 +0100
+
+kmplayer (0.9.2-1) unstable; urgency=low
+
+  * Simple LastFM generator that shows their flashplayer
+  * Support attribute 'encoding' for generator tags, only 'percent' works now
+  * Implement NPNPostURL properly, makes more flash working
+  * Speed up in XML tokenizer
+  * Speed up in String += operator
+  * Fix 'Recents' losing the titles
+  * Fix a crash code path when a connection was directly closed
+  * Fix Curl IO watches
+  * Use libconic to establish a connect when not connected and need for network
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Tue, 27 Jan 2009 21:45:39 +0100
+
+kmplayer (0.9.1-3) unstable; urgency=low
+
+  * Fix for long delays before playing with pls links, eg from Shoutcast.com
+  * Allow scrolling the playlist by dragging
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Sun, 04 Jan 2009 16:29:13 +0100
+
+kmplayer (0.9.1-2) unstable; urgency=low
+
+  * Add support for 'default' attribute in generator ask tag
+  * Add simple Shoutcast.com genre generator
+  * Quote path in find-media.sh
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Mon, 15 Dec 2008 21:28:21 +0100
+
+kmplayer (0.9.1-1) unstable; urgency=low
+
+  * Suggest filename of feed enclosure instead of the item's title
+  * Add media finder generator
+  * Fix a crash in flash support, found with SuperMarioWorldFlash.swf
+  * Suggest filename of enclosure link when saving a podcast, saving it w/o
+    the mp3 extension confuses MPlayer
+  * Add support for playlist generators, start with a youtube query generator
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Sat, 13 Dec 2008 17:01:17 +0100
+
+kmplayer (0.9.0-2) unstable; urgency=low
+
+  * Add -fs option for when started with an url, toggles fullscreen
+  * Add rating stars and web link to Youtube feed summary
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Sun, 16 Nov 2008 17:28:03 +0100
+
+kmplayer (0.9.0-1) unstable; urgency=low
+
+  * Fix in playlist aspect attribute not taken into account for playlists
+  * Support for SVG images in SMIL documents
+  * Implement 'fit="scroll"' for SMIL
+  * Extend ATOM support for media:xx tags for Youtube feeds
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Sun, 09 Nov 2008 20:28:23 +0100
+
+kmplayer (0.8.7-6) unstable; urgency=low
+
+  * Fix event filtering not setup when playing local video's
+  * Fix scrolling in playlist trees
+  * Support 'panZoom' attribute for playlists, passes '-vf crop=w:h:x:y' to
+    mplayer
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Tue, 14 Oct 2008 19:46:28 +0200
+
+kmplayer (0.8.7-5) unstable; urgency=low
+
+  * Limit the InputOnly overlay only for MPlayer+xvideo
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Thu, 09 Oct 2008 20:59:12 +0200
+
+kmplayer (0.8.7-4) unstable; urgency=low
+
+  * Don't handle up/down/enter keys when mplayer+xvideo is playing, collides
+    with mplayer OSD keys
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Wed, 08 Oct 2008 22:47:24 +0200
+
+kmplayer (0.8.7-3) unstable; urgency=low
+
+  * Remove the 'mplayeropts' attribue support again, instead support
+    'aspectRatio'. This is a more general.
+  * Store position of local files opened from file dialog or from the
+    'Recents' list when the user stops playback prematurely. Replay will
+    start at this position when restarted or started from 'Recents'
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Tue, 07 Oct 2008 23:02:10 +0200
+
+kmplayer (0.8.7-2) unstable; urgency=low
+
+  * Add support for 'mplayeropts' attribue in playlist
+  * Workaround mplayer+xvideo not working with double click fullscreen toggle
+  * Workaround mplayer_omapfb not restoring properly from fullscreen
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Sun, 05 Oct 2008 23:43:11 +0200
+
+kmplayer (0.8.7-1) unstable; urgency=low
+
+  * Workaround fullscreen controls with MPlayer and omapfb, resizes video so
+    that they don't overlap
+  * Double click on video now toggles fullscreen mode
+  * Added 'Change title' player menu item for changing title for favorites items
+  * Fix hard to trigger top-right click for fullscreen controls with wide video
+  * Don't exit fullscreen mode if a node from a different playlist is selected
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Fri, 03 Oct 2008 17:06:25 +0200
+
+kmplayer (0.8.6-2) unstable; urgency=low
+
+  * Fix the favorites not being loaded if first an add to favorites occurred
+  * Don't automatically expand groups traversing the list from fullscreen
+    control buttons. Instead, one has to click on the text area
+  * Don't collapse a playlist tree if an item is moved to the active area
+  * Fix regression in 0.8.6-1 for local playlist loading
+  * Change icon for favorites to match favorites button
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Wed, 13 Aug 2008 22:34:22 +0200
+
+kmplayer (0.8.6-1) unstable; urgency=low
+
+  * Add option for using omapfb for MPlayer
+  * Change fullscreen controls, reuse select and hide for the text area, add
+    favorites button
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Tue, 05 Aug 2008 22:59:40 +0200
+
+kmplayer (0.8.5-3) unstable; urgency=low
+
+  * Redo fix of executing a group from a playlist
+  * Fix smil files not replayable in the active playlist
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Mon, 14 Jul 2008 22:50:46 +0200
+
+kmplayer (0.8.5-2) unstable; urgency=low
+
+  * Fix a bug that made clicking on groups while playing kmplayer non stoppable
+  * Suggest a proper name if saving an enclosed url from a feed
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Mon, 14 Jul 2008 16:33:51 +0200
+
+kmplayer (0.8.5-1) unstable; urgency=low
+
+  * Support foreign installable playlists
+  * Don't resend F4, the menu hardware button, in fullscreen
+  * Rebuild the playlist less often
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Sat, 12 Jul 2008 23:04:36 +0200
+
+kmplayer (0.8.4-3) unstable; urgency=low
+
+  * Retry, now with chinook auto builder
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Fri, 11 Jul 2008 22:41:26 +0200
+
+kmplayer (0.8.4-2) unstable; urgency=low
+
+  * Remove shdepends for chinook builds, only keep libcairo2 for bora
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Fri, 11 Jul 2008 19:27:33 +0200
+
+kmplayer (0.8.4-1) unstable; urgency=low
+
+  * Fix playing a map, eg. an already played ASX, to always play first entry
+  * Fix changing player for not stopping the previous player
+  * Fullscreen controls to move through the playlist
+  * Fix some Gtk warnings
+  * Support for m3uext tags, only # lines for setting the title on next entry
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Sun, 06 Jul 2008 14:48:22 +0200
+
+kmplayer (0.8.3-3) unstable; urgency=low
+
+  * Add osso-af-settings in build depend
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Sat, 28 Jun 2008 22:10:54 +0200
+
+kmplayer (0.8.3-2) unstable; urgency=low
+
+  * Make sure the saving banner popups, even if we failed to get a percentage
+  * Case insensitive http header match
+  * Reclaim memory in SMIL earlier for seq children
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Sat, 28 Jun 2008 17:39:30 +0200
+
+kmplayer (0.8.3-1) unstable; urgency=low
+
+  * Add a save button to download a link, that would normally be played
+  * Fix a XPixmap leak in the SMIL painting code
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Thu, 26 Jun 2008 22:09:02 +0200
+
+kmplayer (0.8.2-1) unstable; urgency=low
+
+  * fix fullscreen hardware key not working with flash
+  * fix screen blanking with play items without a playlist
+  * move default playlist.xml from /usr/share/doc to /usr/share/applications
+  * recognize priorityClass and support 'peers="pause"'
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Fri, 07 Mar 2008 21:22:13 +0100
+
+kmplayer (0.8.1-1) unstable; urgency=low
+
+  * +/- volume control now also for osso-media-server
+  * Add default region to smil layout, fixes some audio only cases
+  * Better detection of audio only streams for skipping the screen blanker
+  * Add default playlist.xml to get started
+  * Fixed navigation in current playlist
+  * Use platform icons and increase font +1, looks better
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Sun, 27 Jan 2008 16:15:36 +0100
+
+kmplayer (0.8.0-1) unstable; urgency=low
+
+  * Chinook ported
+  * SMIL synchronization improvement by init all first level children of groups
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Sat, 19 Jan 2008 18:45:51 +0100
+
+kmplayer (0.7.4-1) unstable; urgency=low
+
+  * Version 0.7.4
+  * fix resizing the libflash plugin causing too much screen updates
+  * per mimetype player config in gconf, hardcode shockwave to flash
+  * SMIL improvements, more transitions added, animateMotion among others
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Fri, 21 Sep 2007 22:13:15 +0200
+
+kmplayer (0.7.3-1) unstable; urgency=low
+
+  * Version 0.7.3 with support for the libflash plugin
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Sun, 22 Jul 2007 21:27:31 +0200
+
+kmplayer (0.7.2-3) unstable; urgency=low
+
+  * libcairo -> libcairo2
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Wed, 25 Apr 2007 18:57:08 +0200
+
+kmplayer (0.7.2-2) unstable; urgency=low
+
+  * Use shared libcairo
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Wed, 25 Apr 2007 18:57:08 +0200
+
+kmplayer (0.7.2-1) unstable; urgency=low
+
+  * Fix MPlayer in fullscreen didn't respond to key events
+  * Fix crash in gnome_vfs_get_mime_type, don't used anymore
+  * Fix unnecessary resizing of video widget at start with Xv
+  * Fix osso-media-player got paused in fullscreen on 770
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Sat, 31 Mar 2007 22:53:12 +0200
+
+kmplayer (0.7.1-2) unstable; urgency=low
+
+  * MPlayer defaults to xv again
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Sun, 25 Mar 2007 18:05:04 +0200
+
+kmplayer (0.7.1-1) unstable; urgency=low
+
+  * Progresbar added
+  * Seek implemented for osso-media-player
+  * End fullscreen when playing stops
+  * Global unique string for attribute names, reducing memory pressure
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Sun, 25 Mar 2007 01:52:19 +0100
+
+kmplayer (0.7.0-1) unstable; urgency=low
+
+  * Full fullscreen and locationbar overhaul
+  * MPlayer defaults to framebuffer again
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Wed, 28 Feb 2007 21:19:38 +0100
+
+kmplayer (0.6.6-2) unstable; urgency=low
+
+  * Text lost and repaint fixes
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Sun, 18 Feb 2007 20:54:14 +0100
+
+kmplayer (0.6.6-1) unstable; urgency=low
+
+  * Lots of SMIL fixes
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Sun, 18 Feb 2007 20:54:14 +0100
+
+kmplayer (0.6.5-1) unstable; urgency=low
+
+  * Bora support, adding a video widget for Xv. Mistral still works
+  * Link nodes in SMIL support
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Sat, 03 Feb 2007 00:42:22 +0100
+
+kmplayer (0.6.4-1) unstable; urgency=low
+
+  * Move painting for SMIL from GDK to Cairo
+  * Better support the MPlayer for N770, buffer notification, seek, volume
+    resizing of output window (MPlayer from SVN at this date)
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Wed, 03 Jan 2007 01:03:04 +0100
+
+kmplayer (0.6.3-1) unstable; urgency=low
+
+  * Fix a few crash cases, one that made kmplayer crash quite often
+  * Support the MPlayer for N770, task switching is likely broken w/ video
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Wed, 03 Jan 2007 01:03:04 +0100
+
+kmplayer (0.6.2-1) unstable; urgency=low
+
+  * Fix calling wrong interface with osso-media audio fallback
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Sun, 19 Nov 2006 22:00:40 +0100
+
+kmplayer (0.6.1-1) unstable; urgency=low
+
+  * Add copy/cut/paste for playlist items via the menu
+  * Fall back on audio only if osso-media video server gives an unsupported
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Sun, 19 Nov 2006 20:45:49 +0100
+
+kmplayer (0.6.0-2) unstable; urgency=low
+
+  * Fix regression that made audio only link unplayable
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Mon, 13 Nov 2006 00:29:24 +0100
+
+kmplayer (0.6.0-1) unstable; urgency=low
+
+  * Merged in the XSPF playlist format from the KDE 0.9.3 version
+  * Black border for root nodes
+  * Info view now uses GtkHtml
+  * Fix saving location bar entries
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Sun, 12 Nov 2006 22:56:35 +0100
+
+kmplayer (0.5.9-1) unstable; urgency=low
+
+  * From the KDE 0.9.3 version:
+  *  Recents, fully functional
+  *  Playlists, functional though no easy way to create entries
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Fri, 27 Oct 2006 23:07:07 +0200
+
+kmplayer (0.5.2-1) unstable; urgency=low
+
+  * Support for the fullscreen button, toolbar still usable currently
+  * Better feedback to the user about playing by showing the pause button
+  * Crash fixes for changing documents while old one still playing
+  * Smaller binary size
+  * Memory leak fixed, old documents weren't cleaned
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Sun, 09 Jul 2006 12:55:29 +0200
+
+kmplayer (0.5.1-1) unstable; urgency=low
+
+  * Better feedback to the user about buffering and failures
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Sun, 02 Jul 2006 22:58:08 +0200
+
+kmplayer (0.5.0-1) unstable; urgency=low
+
+  * Maemo-2.0 osso-media-server fix
+  * Jump in playlist support
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Fri, 30 Jun 2006 20:44:19 +0200
+
+kmplayer (0.4.3-1) unstable; urgency=low
+
+  * Updates for Maemo-2.0
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Sun, 11 Jun 2006 01:58:41 +0200
+
+kmplayer (0.4.2-1) unstable; urgency=low
+
+  * Sync playlist engine w/ KDE 0.9.2a, better nested document support
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Tue, 06 Jun 2006 23:28:29 +0200
+
+kmplayer (0.4.1-1) unstable; urgency=low
+
+  * Bug fix backports from KDE's kmplayer and RP::Wipe implementation
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Sat, 25 Mar 2006 17:40:02 +0100
+
+kmplayer (0.4.0-1) unstable; urgency=low
+
+  * Starting audio support w/ media server
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Sat, 25 Mar 2006 17:40:02 +0100
+
+kmplayer (0.3.5-1) unstable; urgency=low
+
+  * Behave better ..
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Thu, 23 Mar 2006 21:55:02 +0100
+
+kmplayer (0.3.4-1) unstable; urgency=low
+
+  * Merge nested SMIL support
+  * Adding application icon
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Mon, 20 Mar 2006 00:10:20 +0100
+
+kmplayer (0.3.3-1) unstable; urgency=low
+
+  * Fix broken gif animation and multible resolve job fix (backport).
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Sun, 05 Mar 2006 19:23:11 +0100
+
+kmplayer (0.3.2-1) unstable; urgency=low
+
+  * Support for RealPix ported from upstream.
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Sat, 04 Mar 2006 15:17:50 +0100
+
+kmplayer (0.3.1-1) unstable; urgency=low
+
+  * Sync w/ Document::timers from KMPlayer's KDE SVN r493424.
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Mon, 02 Jan 2006 15:05:34 +0100
+
+kmplayer (0.3.0-1) unstable; urgency=low
+
+  * First semi-working video backend, osso-media-server
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Sat, 17 Dec 2005 00:39:29 +0100
+
+kmplayer (0.2.4-1) unstable; urgency=low
+
+  * Simple location bar for entering remote url's
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Mon, 05 Dec 2005 19:40:08 +0100
+
+kmplayer (0.2.3-1) unstable; urgency=low
+
+  * Fix a crash w/ timers, remote playlist/image/text support
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Tue, 29 Nov 2005 21:11:31 +0100
+
+kmplayer (0.2.2-1) unstable; urgency=low
+
+  * Fix cdata handling, added a CData node specializing a TextNode
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Sun, 27 Nov 2005 21:35:57 +0100
+
+kmplayer (0.2.1-1) unstable; urgency=low
+
+  * Fix pango text render with multible items and keep whitespace inside
+    text blocks and indenting of first line
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Sun, 27 Nov 2005 02:04:16 +0100
+
+kmplayer (0.2-1) unstable; urgency=low
+
+  * Smil files working for text too, begin of playlist traversal
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Tue, 22 Nov 2005 23:10:45 +0100
+
+kmplayer (0.1.4-1) unstable; urgency=low
+
+  * Made images in smil files working, local only but with animation support
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Tue, 22 Nov 2005 23:10:45 +0100
+
+kmplayer (0.1.3-1) unstable; urgency=low
+
+  * Made smil files play, still w/o video/image/text loading for now
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Mon, 21 Nov 2005 20:02:53 +0100
+
+kmplayer (0.1.2-1) unstable; urgency=low
+
+  * Added smil files w/o image/text loading for now
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Sun, 20 Nov 2005 00:10:13 +0100
+
+kmplayer (0.1.1-1) unstable; urgency=low
+
+  * Minor usability fixes
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Fri, 18 Nov 2005 00:18:49 +0100
+
+kmplayer (0.1) unstable; urgency=low
+
+  * Initial release
+
+ -- Koos Vriezen <koos.vriezen@gmail.com>  Sun, 20 Mar 2005 14:30:34 +0200

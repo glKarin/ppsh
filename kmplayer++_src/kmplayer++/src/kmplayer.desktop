@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=0.10.9
+Name=kmplayer
+GenericName=kmplayer
+Comment=kmplayer
+Exec=/opt/kmplayer/bin/kmplayer %U
+Terminal=false
+Type=Application
+Icon=/opt/kmplayer/share/kmplayer.svg
+MimeType=application/news_reader;application/smil;application/vnd.ms-asf;application/vnd.rn-realmedia;application/xspf+xml;audio/x-pn-realaudio;audio/basic;audio/m3u;audio/mp4;audio/mpeg;audio/mpegurl;audio/vnd.rn-realaudio;audio/x-m3u;audio/x-mp2;audio/x-mp3;audio/x-mpegurl;audio/x-ms-wma;audio/x-scpls;text/xml;audio/x-wav;video/3gpp;video/avi;video/mediaplayer;video/mp4;video/mpeg;video/vnd.rn-realvideo;video/x-avi;video/x-msvideo;video/x-ms-asf;video/x-ms-wmp;video/x-ms-wmv;video/x-real;

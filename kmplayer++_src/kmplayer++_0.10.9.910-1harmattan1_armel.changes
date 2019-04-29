@@ -1,0 +1,24 @@
+Format: 1.8
+Date: Fri, 26 Apr 2019 11:23:03 +0800
+Source: kmplayer++
+Binary: kmplayer++
+Architecture: source armel
+Version: 0.10.9.910-1harmattan1
+Distribution: unstable
+Urgency: low
+Maintainer: karin <beyondk2000@gmail.com>
+Changed-By: karin <beyondk2000@gmail.com>
+Description: 
+ kmplayer++ - <insert up to 60 chars description>
+Changes: 
+ kmplayer++ (0.10.9.910-1harmattan1) unstable; urgency=low
+ .
+   * Add set external audio and request headers.
+Checksums-Sha1: 
+ e2e60303973e9ebfe0e7f9aeba9a9ae4810de32e 625 kmplayer++_0.10.9.910-1harmattan1.dsc
+ 33b27e178f93bf7791f2a39461f620922de2c629 9139111 kmplayer++_0.10.9.910-1harmattan1.tar.gz
+ dba0345361e30e24e5db9c0e3e03d4d2eb4d7713 7011140 kmplayer++_0.10.9.910-1harmattan1_armel.deb
+Files: 
+ bb34f3243a87bf1d5b984b83d2519abb 625 user/Other extra kmplayer++_0.10.9.910-1harmattan1.dsc
+ 9ebf4400cf8279bf753df0b6b1be2191 9139111 user/Other extra kmplayer++_0.10.9.910-1harmattan1.tar.gz
+ 523670167429155f0d8fd88c1e42348f 7011140 user/Other extra kmplayer++_0.10.9.910-1harmattan1_armel.deb

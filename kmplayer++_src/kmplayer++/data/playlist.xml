@@ -1,0 +1,37 @@
+<playlist>
+ <group title="iradio">
+  <item url="http://www.radioparadise.com/musiclinks/rp_64.m3u"/>
+  <item url="http://www.swissgroove.ch/listen.m3u"/>
+  <item url="http://www.sky.fm/mp3/rootsreggae.pls" title="Roots Reggae"/>
+  <item url="http://stream.radionigel.com:8010/listen.pls"/>
+  <item url="http://lsd.newmedia.nacamar.net/bb/redirect.lsc?content=live&amp;media=mp3&amp;stream=ndr/ndrkultur.mp3"/>
+ </group>
+ <group title="flash">
+  <item url="http://gdata.youtube.com/feeds/api/videos?vq=maemo"/>
+  <object width="425" height="355">
+    <param name="movie" value="http://www.youtube.com/v/4XpnKHJAok8&amp;rel=1"/>
+    <embed src="http://www.youtube.com/v/4XpnKHJAok8&amp;rel=1" type="application/x-shockwave-flash" width="425" height="355"/>
+  </object>
+ </group>
+ <group title="itv">
+   <item title="Classic Animation" url="http://feeds.feedburner.com/classicanimation"/>
+   <item title="Dutch Journaal" url="http://cgi.omroep.nl/cgi-bin/streams?/nos/journaal/laatstejournaalSB.wmv"/>
+   <item title="NDR Live" url="http://www.ndr.de/resources/metadaten/ndr_fs_nds_hi_wmv.asx"/>
+ </group>
+ <group title="smil">
+  <item url="http://homepages.cwi.nl/~media/SMIL/fiets/fiets.smil"/>
+  <item url="http://www.oratrix.com/DemoSet/Demonstration/KingOfKings/RealOne.smil"/>
+  <item url="http://homepages.cwi.nl/~media/SMIL/EUROshow/EUROshowB.ram"/>
+ </group>
+ <group title="feeds">
+  <item url="http://leoville.tv/podcasts/floss.xml" title="FLOSS"/>
+  <item url="http://feeds.feedburner.com/linuxoutlaws"/>
+  <item url="http://goinglinux.com/mp3podcast.xml"/>
+  <item url="http://science.nasa.gov/podcast.xml"/>
+  <item url="http://www.theworld.org/rss/tech.xml"/>
+  <item url="http://www.thelinuxlink.net/tllts/tllts.rss"/>
+  <item url="http://radio.linuxquestions.org/syndicate/lqpodcast.php"/>
+  <item url="http://internetradio.vrt.be/podcast/StuBru/rss-41_dafr.xml"/>
+  <item url="http://www.3sat.de/mediathek/rss/mediathek_neues.xml" title="3Sat Neues"/>
+ </group>
+</playlist>
