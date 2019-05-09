@@ -1,5 +1,6 @@
 import QtQuick 1.1
 import com.nokia.meego 1.1
+import "itemlist.js" as L
 
 Item{
 	id: root;
@@ -8,6 +9,7 @@ Item{
 	property alias sTitle: title.sText;
 	property variant aTexts: [];
 	property int iPixelSize: constants._iFontLarge;
+	property color cColor: "#000000";
 	property int iMargins: 0;
 	property int iSpacing: col.spacing;
 	signal linkClicked(string link);
@@ -46,7 +48,7 @@ Item{
 		Text{
 			font.pixelSize: root.iPixelSize;
 			width: parent.width;
-			color: constants._cDarkestColor;
+			color: root.cColor;
 			wrapMode: Text.WordWrap;
 			horizontalAlignment: root.eHorizontalAlignment;
 			onLinkActivated: {
@@ -65,18 +67,16 @@ Item{
 
 	function __FillTextList(ts, n)
 	{
-		var items = col.children;
-		for(var k in items)
-		items[k].destroy();
+		L.Clear();
 		col.children = [];
 
-		if(!ts)
-		return;
+		if(!ts) return;
 
 		for(var i = 0; i < ts.length; i++)
 		{
 			var s = ts[i];
 			var item = textitem.createObject(col);
+			L.Push(item);
 			item.text = __MakeText(s.text, n, i);
 			if(s.pixelSize) item.font.pixelSize = s.pixelSize;
 			if(s.color) item.color = s.color;

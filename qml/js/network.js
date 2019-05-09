@@ -108,13 +108,18 @@ var idNetwork = function(u, m, p, t)
              var p = this.MakeParams(this.params);
              var u = this.method === "POST" ? this.url : this.url + (p ? "?" + p : "");
              if(this._DBG & DBG_REQ)
-                 console.log("[" + this.method + "]: " + this.url + (p ? "?" + p : ""));
+                 console.log("[" + this.method + "]: " + this.type + " ->\n" + this.url + (p ? "?" + p : ""));
              xhr.open(this.method, u);
-             if(this.method === "POST" && p)
+             if(this.method === "POST")
              {
-                 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                 xhr.setRequestHeader("Content-Length", p.length);
-                 xhr.send(p);
+							 if(p)
+							 {
+								 xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+								 xhr.setRequestHeader("Content-Length", p.length);
+								 xhr.send(p);
+							 }
+							 else
+                 xhr.send();
              }
              else
                 xhr.send();

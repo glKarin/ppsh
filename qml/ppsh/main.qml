@@ -24,6 +24,29 @@ PageStackWindow {
 		id: mainpage
 	}
 
+	Connections{
+		target: _UT;
+		onHasUpdate: {
+			var texts = [];
+			var updates = _UT.Changelog().CHANGES;
+			for(var i in updates)
+			{
+				texts.push({
+					text: updates[i],
+				});
+			}
+			controller._Info(
+				qsTr("Info"),
+				qsTr("Version") + ": " + version,
+				texts,
+				undefined,
+				function(link){
+					eval(link);
+				}
+			);
+		}
+	}
+
 	Binding{
 		target: theme;
 		property: "inverted";
@@ -85,7 +108,7 @@ PageStackWindow {
 		width: constants._iSizeXL;
 		height: width;
 		z: 998;
-		color: constants._cThemeColor;
+		color: constants._cGlobalColor;
 		opacity: 0.6;
 		radius: width / 2;
 		visible: !menu.visible && (pageStack.currentPage && !pageStack.currentPage.bFull);
@@ -95,7 +118,7 @@ PageStackWindow {
 			anchors.centerIn: parent;
 			width: parent.width * 0.6;
 			height: width;
-			color: constants._cThemeColor;
+			color: constants._cGlobalColor;
 			//opacity: 0.8;
 			smooth: true;
 			radius: width / 2;
@@ -133,7 +156,7 @@ PageStackWindow {
 		anchors.right: parent.right;
 		height: iStatusBarHeight;
 		z: Number.MAX_VALUE;
-		color: constants._cThemeColor;
+		color: constants._cGlobalColor;
 		opacity: 0.4;
 		visible: app.showStatusBar && (_UT.dev !== 0 || settings.bFullscreen);
 	}
@@ -187,6 +210,8 @@ PageStackWindow {
 		});
 
 		__Dev();
+
+		_UT.CheckUpdate();
 
 		Script.Init(_UT);
 	}

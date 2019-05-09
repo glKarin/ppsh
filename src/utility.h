@@ -38,6 +38,7 @@ public:
 		Q_INVOKABLE QVariant GetDefaultSetting(const QString &name = QString());
 		Q_INVOKABLE QString FormatUrl(const QString &u);
 		Q_INVOKABLE qint64 System(const QString &path, const QVariant &args = QVariant(), bool async = false);
+		Q_INVOKABLE void CheckUpdate();
     
 Q_SIGNALS:
 		void devChanged(int dev);
@@ -46,7 +47,6 @@ Q_SIGNALS:
 private:
     explicit idUtility(QObject *parent = 0);
     void Init();
-		void CheckUpdate();
 
 private:
     QSettings *oSettings;

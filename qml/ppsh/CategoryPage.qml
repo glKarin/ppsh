@@ -7,7 +7,7 @@ import "../js/util.js" as Util
 BasePage {
 	id: root;
 
-	sTitle: flip.side === Flipable.Front ? qsTr("Category") : obj.categoryName;
+	sTitle: flip.bOpen ? qsTr("Category") : obj.categoryName;
 	objectName: "idCategoryPage";
 
 	Header{
@@ -25,9 +25,9 @@ BasePage {
 				id: flipicon;
 				anchors.verticalCenter: parent.verticalCenter;
 				visible: false;
-				iconId: flip.side === Flipable.Front ? "toolbar-list" : "toolbar-grid";
+				iconId: flip.bOpen ? "toolbar-list" : "toolbar-grid";
 				onClicked: {
-					flip.state = flip.state === "" ? constants._sShowState : "";
+					flip._Toggle();
 				}
 			}
 		}
@@ -55,10 +55,12 @@ BasePage {
 
 			var d = {
 				model: channelsview.model,
+				// local: 1,
 			};
 
 			var s = function(data){
-				channelsview.model = data.children;
+				if(Array.isArray(data)) channelsview.model = data;
+				else channelsview.model = data.children;
 				root.bBusy = false;
 			};
 			var f = function(err){
@@ -81,7 +83,7 @@ BasePage {
 			flipicon.visible = true;
 			if(name !== undefined) categoryName = name;
 
-			if(flip.state !== constants._sShowState) flip.state = constants._sShowState;
+			if(!flip.bOpen) flip._Toggle(true);
 
 			root.bBusy = true;
 
@@ -126,7 +128,7 @@ BasePage {
 		}
 	}
 
-	Flipable{
+	FlipableWidget{
 		id: flip;
 		anchors.top: header.bottom;
 		anchors.left: parent.left;
@@ -178,46 +180,19 @@ BasePage {
 				}
 			}
 
-			ToolBarLayout{
+			PagedWidget{
 				anchors.bottom: parent.bottom;
 				anchors.horizontalCenter: parent.horizontalCenter;
-				z: 1;
-				height: constants._iSizeXL;
-				width: constants._iSizeBig;
-				opacity: 0.6;
-				IconWidget{
-					iconId: "toolbar-previous";
-					enabled: obj.pageNo > 1;
-					onClicked: {
-						obj._GetCategory(undefined, undefined, constants._sPrevPage);
-					}
+				pageNo: obj.pageNo;
+				pageSize: obj.pageSize;
+				pageCount: obj.pageCount;
+				totalCount: obj.totalCount;
+				onPrev: {
+					obj._GetCategory(undefined, undefined, constants._sPrevPage);
 				}
-				IconWidget{
-					iconId: "toolbar-next";
-					enabled: obj.pageNo < obj.pageCount;
-					onClicked: {
-						obj._GetCategory(undefined, undefined, constants._sNextPage);
-					}
+				onNext: {
+					obj._GetCategory(undefined, undefined, constants._sNextPage);
 				}
-			}
-		}
-
-		transform: Rotation{
-			id: rotation;
-			origin: Qt.vector3d(flip.width / 2, flip.height / 2, 0);
-			axis: Qt.vector3d(0, 1, 0);
-			angle: 0;
-		}
-		states: State{
-			name: constants._sShowState;
-			PropertyChanges{
-				target: rotation;
-				angle: 180;
-			}
-		}
-		transitions: Transition{
-			RotationAnimation{
-				direction: RotationAnimation.Clockwise;
 			}
 		}
 	}

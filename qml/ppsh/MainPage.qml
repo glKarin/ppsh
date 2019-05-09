@@ -56,6 +56,14 @@ BasePage {
 				ToolIcon{
 					anchors.verticalCenter: parent.verticalCenter;
 					width: height;
+					iconId: "toolbar-gallery";
+					onClicked: {
+						controller._OpenBangumiPage();
+					}
+				}
+				ToolIcon{
+					anchors.verticalCenter: parent.verticalCenter;
+					width: height;
 					iconId: "toolbar-favorite-mark";
 					onClicked: {
 						controller._OpenRankingPage();

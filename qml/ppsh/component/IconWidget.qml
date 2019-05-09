@@ -21,7 +21,7 @@ Rectangle{
 	signal clicked;
 
 	radius: Math.min(width, height) / 2;
-	color: constants._cThemeColor;
+	color: constants._cGlobalColor;
 	width: constants._iSizeXL;
 	height: width;
 	clip: true;

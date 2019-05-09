@@ -84,7 +84,7 @@ Item{
 					id: viewdelegateroot;
 					width: ListView.view.width;
 					height: constants._iSizeXXL;
-					color: controller._IsCurrentPage(model.name) ? constants._cDarkColor : constants._cLighterColor;
+					color: controller._IsCurrentPage(model.name) ? constants._cLightColor : constants._cLighterColor;
 					MouseArea{
 						anchors.fill: parent;
 						onClicked: {

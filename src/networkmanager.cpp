@@ -10,6 +10,7 @@ static const QStringList _BilibiliSpecialUrl(QStringList() << "bilibili" << "acg
 idNetworkAccessManager::idNetworkAccessManager(QObject *parent) :
     QNetworkAccessManager(parent)
 {
+	setObjectName("idNetworkAccessManager");
     Init();
 }
 
@@ -107,7 +108,6 @@ void idNetworkAccessManager::SetRequestHeaders(const QVariantList &headers)
 
 idDeclarativeNetworkAccessManagerFactory::~idDeclarativeNetworkAccessManagerFactory ()
 {
-
 }
 
 QNetworkAccessManager *	idDeclarativeNetworkAccessManagerFactory::create ( QObject * parent )
@@ -265,6 +265,7 @@ QString idRequestHeaders::Method() const
 idNetworkCookieJar::idNetworkCookieJar(QObject *parent)
     : QNetworkCookieJar(parent)
 {
+	setObjectName("idNetworkCookieJar");
     Dump();
 }
 

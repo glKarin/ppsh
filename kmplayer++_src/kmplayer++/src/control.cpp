@@ -329,7 +329,11 @@ def __ARMEL__
     ((NpPlayer *)npp)->setPlayer ("/opt/kmplayer/bin/knpplayer");
 #endif
     downloader = new Downloader (this);
+#ifdef _HARMATTAN
+    QString p = m_config->readEntry (GCONF_KEY_PLAYER, "mplayer");
+#else
     QString p = m_config->readEntry (GCONF_KEY_PLAYER, "osso-media-server");
+#endif
     setProcess (p);
     selected_player = p;
 
@@ -758,8 +762,12 @@ def __ARMEL__
     if (pname.isEmpty () && !mrl->mimetype.isEmpty ())
         pname = processForMimetype (this, mrl->mimetype);
     if (pname.isEmpty ())
+#ifdef _HARMATTAN
+        pname = m_config->readEntry (GCONF_KEY_PLAYER, "mplayer");
+#else
         pname = m_config->readEntry (GCONF_KEY_PLAYER,
                 gstreamer_mplayer ? "gstreamer or mplayer":"osso-media-server");
+#endif
     if (!m_process || pname != m_process->name ()) {
         setProcess (pname);
         changed = true;

@@ -12,6 +12,7 @@
 	idNetworkConnector::idNetworkConnector(QObject *parent)
 : QObject(parent)
 {
+	setObjectName("idNetworkConnector");
 }
 
 idNetworkConnector::~idNetworkConnector()

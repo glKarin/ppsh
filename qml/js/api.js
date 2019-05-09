@@ -1,485 +1,7 @@
 .pragma library
 
+Qt.include("b.js");
 Qt.include("util.js");
-
-var BCategorys = [
-{
-	name: "动画",
-	rid: "1",
-	pid: "0",
-	children: [
-	{
-		name: "MAD·AMV",
-		rid: "24",
-	},
-	{
-		name: "MMD·3D",
-		rid: "25",
-	},
-	{
-		name: "短片·手书·配音",
-		rid: "47",
-	},
-	{
-		name: "综合",
-		rid: "27",
-	},
-	],
-},
-{
-	name: "番剧",
-	rid: "13",
-	pid: "0",
-	children: [
-	{
-		name: "连载动画",
-		rid: "33",
-	},
-	{
-		name: "完结动画",
-		rid: "32",
-	},
-	{
-		name: "资讯",
-		rid: "51",
-	},
-	{
-		name: "官方延伸",
-		rid: "152",
-	},
-	{
-		name: "新番时间表",
-		rid: "",
-	},
-	{
-		name: "番剧索引",
-		rid: "",
-	},
-	],
-},
-{
-	name: "国创",
-	rid: "167",
-	pid: "0",
-	children: [
-	{
-		name: "国产动画",
-		rid: "153",
-	},
-	{
-		name: "国产原创相关",
-		rid: "168",
-	},
-	{
-		name: "布袋戏",
-		rid: "169",
-	},
-	{
-		name: "动态漫·广播剧",
-		rid: "195",
-	},
-	{
-		name: "资讯",
-		rid: "170",
-	},
-	{
-		name: "新番时间表",
-		rid: "",
-	},
-	{
-		name: "国产动画索引",
-		rid: "",
-	},
-	],
-},
-{
-	name: "音乐",
-	rid: "3",
-	pid: "0",
-	children: [
-	{
-		name: "原创音乐",
-		rid: "28",
-	},
-	{
-		name: "翻唱",
-		rid: "31",
-	},
-	{
-		name: "VOCALOID·UTAU",
-		rid: "30",
-	},
-	{
-		name: "电音",
-		rid: "194",
-	},
-	{
-		name: "演奏",
-		rid: "59",
-	},
-	{
-		name: "MV",
-		rid: "193",
-	},
-	{
-		name: "音乐现场",
-		rid: "29",
-	},
-	{
-		name: "音乐综合",
-		rid: "130",
-	},
-	{
-		name: "音频",
-		rid: "",
-	},
-	],
-},
-{
-	name: "舞蹈",
-	rid: "129",
-	pid: "0",
-	children: [
-	{
-		name: "宅舞",
-		rid: "20",
-	},
-	{
-		name: "三次元舞蹈",
-		rid: "154",
-	},
-	{
-		name: "舞蹈教程",
-		rid: "156",
-	},
-	],
-},
-{
-	name: "游戏",
-	rid: "4",
-	pid: "0",
-	children: [
-	{
-		name: "单机游戏",
-		rid: "17",
-	},
-	{
-		name: "电子竞技",
-		rid: "171",
-	},
-	{
-		name: "手机游戏",
-		rid: "172",
-	},
-	{
-		name: "网络游戏",
-		rid: "65",
-	},
-	{
-		name: "桌游棋牌",
-		rid: "173",
-	},
-	{
-		name: "GMV",
-		rid: "121",
-	},
-	{
-		name: "音游",
-		rid: "136",
-	},
-	{
-		name: "Mugen",
-		rid: "19",
-	},
-	{
-		name: "游戏赛事",
-		rid: "",
-	},
-	],
-},
-{
-	name: "科技",
-	rid: "36",
-	pid: "0",
-	children: [
-	{
-		name: "趣味科普人文",
-		rid: "124",
-	},
-	{
-		name: "野生技术协会",
-		rid: "122",
-	},
-	{
-		name: "演讲公开课",
-		rid: "39",
-	},
-	{
-		name: "星海",
-		rid: "96",
-	},
-	{
-		name: "机械",
-		rid: "98",
-	},
-	{
-		name: "汽车",
-		rid: "176",
-	},
-	],
-},
-{
-	name: "数码",
-	rid: "188",
-	pid: "0",
-	children: [
-	{
-		name: "手机平板",
-		rid: "95",
-	},
-	{
-		name: "电脑装机",
-		rid: "189",
-	},
-	{
-		name: "摄影摄像",
-		rid: "190",
-	},
-	{
-		name: "影音智能",
-		rid: "191",
-	},
-	],
-},
-{
-	name: "生活",
-	rid: "160",
-	pid: "0",
-	children: [
-	{
-		name: "搞笑",
-		rid: "138",
-	},
-	{
-		name: "日常",
-		rid: "21",
-	},
-	{
-		name: "美食圈",
-		rid: "76",
-	},
-	{
-		name: "动物圈",
-		rid: "75",
-	},
-	{
-		name: "手工",
-		rid: "161",
-	},
-	{
-		name: "绘画",
-		rid: "162",
-	},
-	{
-		name: "运动",
-		rid: "163",
-	},
-	{
-		name: "其他",
-		rid: "174",
-	},
-	],
-},
-{
-	name: "鬼畜",
-	rid: "119",
-	pid: "0",
-	children: [
-	{
-		name: "鬼畜调教",
-		rid: "22",
-	},
-	{
-		name: "音MAD",
-		rid: "26",
-	},
-	{
-		name: "人力VOCALOID",
-		rid: "126",
-	},
-	{
-		name: "教程演示",
-		rid: "127",
-	},
-	],
-},
-{
-	name: "时尚",
-	rid: "155",
-	pid: "0",
-	children: [
-	{
-		name: "美妆",
-		rid: "157",
-	},
-	{
-		name: "服饰",
-		rid: "158",
-	},
-	{
-		name: "健身",
-		rid: "164",
-	},
-	{
-		name: "T台",
-		rid: "159",
-	},
-	{
-		name: "风尚标",
-		rid: "192",
-	},
-	],
-},
-{
-	name: "广告",
-	rid: "165",
-	pid: "0",
-	children: [
-	],
-},
-{
-	name: "娱乐",
-	rid: "5",
-	pid: "0",
-	children: [
-	{
-		name: "综艺",
-		rid: "71",
-	},
-	{
-		name: "明星",
-		rid: "137",
-	},
-	{
-		name: "Korea相关",
-		rid: "131",
-	},
-	],
-},
-{
-	name: "影视",
-	rid: "181",
-	pid: "0",
-	children: [
-	{
-		name: "影视杂谈",
-		rid: "182",
-	},
-	{
-		name: "影视剪辑",
-		rid: "183",
-	},
-	{
-		name: "短片",
-		rid: "85",
-	},
-	{
-		name: "预告·资讯",
-		rid: "184",
-	},
-	{
-		name: "特摄",
-		rid: "86",
-	},
-	],
-},
-{
-	name: "放映厅",
-	rid: "",
-	pid: "0",
-	children: [
-		],
-},
-{
-	name: "放映厅·纪录片",
-	rid: "177",
-	pid: "0",
-	children: [
-	{
-		name: "人文·历史",
-		rid: "37",
-	},
-	{
-		name: "科学·探索·自然",
-		rid: "178",
-	},
-	{
-		name: "军事",
-		rid: "179",
-	},
-	{
-		name: "社会·美食·旅行",
-		rid: "180",
-	},
-	{
-		name: "纪录片索引",
-		rid: "",
-	},
-	],
-},
-{
-	name: "放映厅·电影",
-	rid: "23",
-	pid: "0",
-	children: [
-	{
-		name: "华语电影",
-		rid: "147",
-	},
-	{
-		name: "欧美电影",
-		rid: "145",
-	},
-	{
-		name: "日本电影",
-		rid: "146",
-	},
-	{
-		name: "其他国家",
-		rid: "83",
-	},
-	{
-		name: "电影索引",
-		rid: "",
-	},
-	],
-},
-{
-	name: "放映厅·电视剧",
-	rid: "11",
-	pid: "0",
-	children: [
-	{
-		name: "国产剧",
-		rid: "185",
-	},
-	{
-		name: "海外剧",
-		rid: "187",
-	},
-	{
-		name: "电视剧索引",
-		rid: "",
-	},
-	],
-},
-	];
-
-var idCategory = {
-	name: "Home",
-	rid: "0",
-	children: BCategorys,
-};
 
 function GetChannelNameById(id)
 {
@@ -512,7 +34,8 @@ var idWebAPI = {
 	COMMENT: "http://api.bilibili.com/x/v2/reply", //?type=1&sort=2&oid=49156714&pn=1&nohot=1
 	VIDEO_DETAIL: "http://api.bilibili.com/x/web-interface/view", //?aid=37606630
 	RANKING: "http://api.bilibili.com/x/web-interface/ranking", //?rid=0&day=3&jsonp=jsonp
-	PLAYURL: "http://api.bilibili.com/x/player/playurl?avid=%1&cid=%2&qn=%3&type=&otype=json&fnver=0&fnval=16",
+	PLAYURL: "http://api.bilibili.com/x/player/playurl?avid=%1&cid=%2&qn=%3&type=&otype=json&fnver=0&fnval=16&ep_id=%4",
+	BANGUMI_PLAYURL: "http://api.bilibili.com/pgc/player/web/playurl?avid=%1&cid=%2&qn=%3&type=&otype=json&fnver=0&fnval=16",
 	DANMAKU_XML: "http://comment.bilibili.com/%1.xml", // http://api.bilibili.com/x/v1/dm/list.so?oid={cid}
 	DEFAULT_KEYWORD: "http://api.bilibili.com/x/web-interface/search/default",
 	CHANNELS_IDS: "http://api.bilibili.com/x/web-interface/online", //?jsonp=jsonp
@@ -522,7 +45,17 @@ var idWebAPI = {
 	CATEGORY: "http://api.bilibili.com/archive_rank/getarchiverankbypartion", //?jsonp=jsonp&tid=27&pn=2 &ps=?
 	USER_DETAIL: "http://api.bilibili.com/x/web-interface/card", //?mid=2989565&jsonp=jsonp,
 	USER_VIDEOS: "http://space.bilibili.com/ajax/member/getSubmitVideos", //?mid=3487048&pagesize=30&tid=0&page=2&keyword=&order=update|click|stow
+	USER_ARTICLES: "http://api.bilibili.com/x/space/article", //?mid=12345667&pn=1&ps=12&sort=publish_time|view|fav&jsonp=jsonp
+	LIVE_ROOM_DETAIL: "http://api.live.bilibili.com/room/v1/Room/get_info", //?room_id=%1",
+	LIVE_URL: "http://api.live.bilibili.com/room/v1/Room/playUrl?cid=%1&quality=0&platform=web",
+	CHANNELS: "http://app.bilibili.com/x/region/list/old?build=2310&platform=ios&device=phone",
+	BANGUMI_DETAIL: "http://bangumi.bilibili.com/view/web_api/season", //?season_id=425",
+	BANGUMI_RECOMMEND: "http://api.bilibili.com/pgc/web/recommend/related/recommend", //?season_id=425
+	BANGUMI: "http://bangumi.bilibili.com/media/web_api/search/result", //?season_version=类型-1|1正片|2剧场版|3其他&area=地区-1|2日本|3美国|1,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52其他&is_finish=状态-1|1完结|0连载&copyright=-1&season_status=付费-1|2,6付费|4大会员|1免费&season_month=季度-1|1|4|7|10月&pub_date=时间-1|2019|2018|2017|2016|2015|2014-2010|2009-2005|2004-2000|90年代|80年代|更早&style_id=风格-1&order=3(追番人数)|0更新时间|4最高评分|2播放数量|5开播时间&st=1&sort=0降|1升&page=1&season_type=1&pagesize=20"
 
+
+
+		M_ARTICLE_URL: "http://www.bilibili.com/read/mobile/%1",
 
 
 	__MakePreviewPath: function(pic){
@@ -558,7 +91,7 @@ var idWebAPI = {
 		return 0;
 	},
 
-	MakeSearchResult: function(json, container, limit){
+	MakeSearchResult: function(json, container, type, limit){
 		if(!json.data)
 			return -1;
 		if(!Array.isArray(json.data.result))
@@ -571,15 +104,88 @@ var idWebAPI = {
 				break;
 
 			var e = list[i];
-			var item = {
-				aid: e.id.toString(),
-				title: e.title,
-				up: e.author,
-				view_count: e.play,
-				danmu_count: e.video_review,
-				duration: e.duration,
-				preview: this.__MakePreviewPath(e.pic),
-			};
+			var item = type === "bili_user" ? 
+			{
+				mid: e.mid.toString(),
+				title: e.uname,
+				subtitle: e.usign,
+				sign: e.level,
+				preview: this.__MakePreviewPath(e.upic),
+				type: 5,
+				extras: [
+				{
+					value: e.fans,
+					unit: qsTr("fans"),
+				},
+				{
+					value: e.videos,
+					unit: qsTr("archives"),
+				},
+				],
+			}
+			:
+				(type === "media_bangumi" ? 
+				 {
+					 mid: (e.media_id || e.season_id).toString(),
+					 title: e.title,
+					 subtitle: e.areas + (e.styles ? " | " + e.styles : ""),
+					 sign: e.angle_title || "",
+					 preview: this.__MakePreviewPath(e.cover),
+					 type: 3,
+					 extras: [
+					 {
+						 value: FormatDateTime(e.pubtime, "DATE"),
+					 },
+					 {
+						 value: e.media_score ? e.media_score.score : "",
+						 unit: qsTr("score"),
+					 },
+					 ],
+				 }
+				 :
+				 (type === "article" ? 
+					{
+						mid: e.id.toString(),
+						title: e.title,
+						subtitle: FormatDateTime(e.pub_time, "DATE"), //e.desc,
+						sign: "",
+						preview: e.image_urls.length ? this.__MakePreviewPath(e.image_urls[0]) : "",
+						type: 2,
+						extras: [
+						{
+							name: qsTr("View"),
+							value: e.view,
+						},
+						{
+							name: qsTr("Like"),
+							value: e.like,
+						},
+						{
+							name: qsTr("Reply"),
+							value: e.reply,
+						},
+						],
+					}
+					:
+					{
+						mid: e.id.toString(),
+						title: e.title,
+						subtitle: e.author,
+						sign: e.duration,
+						preview: this.__MakePreviewPath(e.pic),
+						type: 1,
+						extras: [
+						{
+							name: qsTr("Play"),
+							value: e.play,
+						},
+						{
+							name: qsTr("Danmaku"),
+							value: e.video_review,
+						},
+						],
+					}
+			));
 			container[push](item);
 		}
 		return 0;
@@ -642,10 +248,12 @@ var idWebAPI = {
 	},
 
 	MakeContent: function(json, container, limit){
-		if(!Array.isArray(json.pages))
+		if(!json.data)
+			return -1;
+		if(!Array.isArray(json.data.pages))
 			return -1;
 		var push = Array.isArray(container) ? "push" : "append";
-		var list = json.pages;
+		var list = json.data.pages;
 		for(var i in list)
 		{
 			if(limit && i >= limit)
@@ -705,6 +313,45 @@ var idWebAPI = {
 				count: e,
 				name: i,
 			};
+			container[push](item);
+		}
+		return 0;
+	},
+
+	MakeFullChannels: function(json, container){
+		if(!json.result)
+			return -1;
+		if(!Array.isArray(json.result.root))
+			return -1;
+		if(!json.result.child)
+			return -1;
+		var push = Array.isArray(container) ? "push" : "append";
+		var list = json.result.root;
+		var child = json.result.child;
+		var covers = json.result.covers;
+		for(var i in list)
+		{
+			var e = list[i];
+			var item = {
+				name: e.typename || e.captionname || e.searchname,
+				rid: e.tid.toString(),
+				children: [],
+				pid: "0",
+			};
+			var c = child[e.tid.toString()];
+			if(c)
+			{
+				for(var j in c)
+				{
+					var se = c[j];
+					var subitem = {
+						name: se.typename,
+						rid: se.tid.toString(),
+						pid: e.tid.toString,
+					};
+					item.children.push(subitem);
+				}
+			}
 			container[push](item);
 		}
 		return 0;
@@ -842,13 +489,22 @@ var idWebAPI = {
 
 				var e = list[i];
 				var item = {
-					aid: e.aid.toString(),
+					mid: e.aid.toString(),
 					title: e.title,
-					up: e.author,
-					view_count: e.play,
-					danmu_count: e.video_review,
-					duration: e.length,
+					subtitle: e.author,
+					sign: e.length,
 					preview: this.__MakePreviewPath(e.pic),
+					type: 1,
+					extras: [
+					{
+						name: qsTr("Play"),
+						value: e.play,
+					},
+					{
+						name: qsTr("Danmaku"),
+						value: e.video_review,
+					},
+					],
 				};
 				container[push](item);
 			}
@@ -879,10 +535,195 @@ var idWebAPI = {
 		return 0;
 	},
 
+	MakeUserArticles: function(json, container, limit){
+		if(!json.data)
+			return -1;
+		if(!Array.isArray(json.data.articles))
+			return -1;
+		{
+			var push = Array.isArray(container) ? "push" : "append";
+			var list = json.data.articles;
+			for(var i in list)
+			{
+				if(limit && i >= limit)
+					break;
+
+				var e = list[i];
+				var item = {
+					mid: e.id.toString(),
+					title: e.title,
+					subtitle: e.author ? e.author.name : "",
+					preview: e.image_urls.length ? e.image_urls[0] : "",
+					type: 2,
+					extras: [
+					{
+						name: qsTr("View"),
+						value: e.stats ? e.stats.view : 0,
+					},
+					{
+						name: qsTr("Reply"),
+						value: e.stats ? e.stats.reply : 0,
+					},
+					],
+				};
+				container[push](item);
+			}
+		}
+
+		return 0;
+	},
+
+	MakeBangumiUrl: function(json, container, quality){
+		if(!json.result)
+			return -1;
+
+		return this.MakePlayUrl(json.result, container, quality);
+	},
+
+	MakeBangumi: function(json, container, limit){
+		if(!json.result)
+			return -1;
+		if(!Array.isArray(json.result.data))
+			return -1;
+		var push = Array.isArray(container) ? "push" : "append";
+		var list = json.result.data;
+		for(var i in list)
+		{
+			if(limit && i >= limit)
+				break;
+
+			var e = list[i];
+			var item = {
+				sid: e.season_id.toString(),
+				title: e.title,
+				follow: e.order ? e.order.follow : 0,
+				view_count: e.order ? e.order.play : 0,
+				score: e.order ? e.order.score : 0,
+				index_show: e.index_show || "",
+				preview: e.cover,
+				badge: e.badge || "",
+			};
+			container[push](item);
+		}
+		return 0;
+	},
+
+	MakeBangumiInfo: function(json, ret){
+		if(!json.result)
+			return -1;
+
+		var r = ret ? ret : {};
+		var d = json.result;
+
+		r.mid = d.media_id.toString();
+		r.preview = d.cover;
+		r.title = d.title;
+		r.desc = d.evaluate;
+		r.newest_ep = d.newest_ep ? d.newest_ep.desc : "";
+
+		r.rating_count = d.rating ? d.rating.count : 0;
+		r.rating_score = d.rating ? d.rating.score : 0;
+
+		r.danmu_count = d.stat ? d.stat.danmakus : 0;
+		r.reply = d.stat ? d.stat.reply : 0;
+		r.view_count = d.stat ? d.stat.views : 0;
+		r.coin = d.stat ? d.stat.coins : 0;
+		r.share = d.stat ? d.stat.share : 0;
+		r.favorite = d.stat ? d.stat.favorites : 0;
+
+		r.up = d.up_info ? d.up_info.uname : "";
+		r.uid = d.up_info ? d.up_info.mid.toString() : "";
+		r.avatar = d.up_info ? d.up_info.avatar : "";
+
+		r.seasons = Array.isArray(d.seasons) ? d.seasons.length : 0;
+		r.episodes = Array.isArray(d.episodes) ? d.episodes.length : 0;
+		r.first_aid = r.episodes > 0 ? d.episodes[0].aid.toString() : "";
+
+		return ret ? 0 : r;
+	},
+
+	MakeBangumiEpisode: function(json, container, limit){
+		if(!json.result)
+			return -1;
+		if(!Array.isArray(json.result.episodes))
+			return -1;
+		var push = Array.isArray(container) ? "push" : "append";
+		var list = json.result.episodes;
+		for(var i in list)
+		{
+			if(limit && i >= limit)
+				break;
+
+			var e = list[i];
+			var item = {
+				aid: e.aid.toString(),
+				cid: e.cid.toString(),
+				page: e.index,
+				duration: e.duration,
+				badge: e.badge || "",
+				name: e.index_title,
+				epid: e.ep_id.toString(),
+			};
+			container[push](item);
+		}
+		return 0;
+	},
+
+	MakeBangumiSeasons: function(json, container){
+		if(!json.result)
+			return -1;
+		if(!Array.isArray(json.result.seasons))
+			return -1;
+		var push = Array.isArray(container) ? "push" : "append";
+		var list = json.result.seasons;
+		for(var i in list)
+		{
+			var e = list[i];
+			var item = {
+				name: e.season_title,
+				value: (e.season_id || e.media_id).toString(),
+			};
+			container[push](item);
+		}
+		return 0;
+	},
+
+	MakeBangumiRecommend: function(json, container, limit){
+		if(!Array.isArray(json.result))
+			return -1;
+		var push = Array.isArray(container) ? "push" : "append";
+		var list = json.result;
+		for(var i in list)
+		{
+			if(limit && i >= limit)
+				break;
+
+			var e = list[i];
+			var item = {
+				sid: e.season_id.toString(),
+				title: e.title,
+				follow: e.stat ? e.stat.follow : 0,
+				view_count: e.stat ? e.stat.view : 0,
+				danmu_count: e.stat ? e.stat.danmaku : 0,
+				index_show: e.new_ep ? e.new_ep.index_show : "",
+				preview: e.cover,
+				badge: e.badge || "",
+				rating_score: e.rating ? e.rating.score : 0,
+				rating_count: e.rating ? e.rating.count : 0,
+			};
+			container[push](item);
+		}
+		return 0;
+	},
+
 	MakeVideoUrl: function(json, container, quality){
 		if(!json.data)
 			return -1;
 
+		return this.MakePlayUrl(json.data, container, quality);
+	},
+
+	MakePlayUrl: function(data, container, quality){
 		var sort_dash_video = function(video){
 			var arr = [];
 			for(var i in video)
@@ -948,7 +789,6 @@ var idWebAPI = {
 		}
 
 		var push = Array.isArray(container) ? "push" : "append";
-		var data = json.data;
 		var total_size = 0;
 		var arr = [];
 		var title = "part";
@@ -1061,6 +901,51 @@ var idWebAPI = {
 		}
 		return 0;
 	},
+
+	MakeLiveRoomInfo: function(json, ret){
+		if(!json.data)
+			return -1;
+
+		var r = ret ? ret : {};
+		var d = json.data;
+
+		r.room_id = d.room_id.toString();
+		r.view_count = d.online;
+		r.is_portrait = d.is_portrait;
+		r.live_status = d.live_status;
+		r.bg = d.background;
+		r.preview = d.keyframe;
+		r.title = d.title;
+		r.desc = d.description;
+		r.live_time = d.live_time;
+
+		r.uid = d.uid.toString();
+		r.avatar = d.user_cover;
+		r.up = "";
+		r.official = d.new_pendants ? (d.new_pendants.badge ? d.new_pendants.badge.desc : "") : "";
+
+		return ret ? 0 : r;
+	},
+
+	MakeLiveUrl: function(json, container, quality){
+		if(!json.data)
+			return -1;
+
+		var push = Array.isArray(container) ? "push" : "append";
+		var data = json.data;
+		var list = json.data.durl;
+
+		for(var i in list)
+		{
+			var e = list[i];
+			var item = {
+				url: e.url,
+			};
+			container[push](item);
+		}
+		return 0;
+	},
+
 };
 
 var idAPI = idWebAPI;

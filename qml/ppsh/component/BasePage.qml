@@ -6,9 +6,10 @@ Page {
 
 	property bool bBusy: false;
 	property bool bFull: false;
+	property bool bLock: false;
 	property string sTitle;
 
-	orientationLock: settings.iOrientation === 1 ? PageOrientation.LockPortrait : (settings.iOrientation === 2 ? PageOrientation.LockLandscape : PageOrientation.Automatic);
+	orientationLock: bLock ? (app.inPortrait ? PageOrientation.LockPortrait : PageOrientation.LockLandscape) : (settings.iOrientation === 1 ? PageOrientation.LockPortrait : (settings.iOrientation === 2 ? PageOrientation.LockLandscape : PageOrientation.Automatic));
 	objectName: "idBasePage";
 
 	BusyIndicator{

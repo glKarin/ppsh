@@ -20,14 +20,21 @@ Item{
 		color: constants._cLightColor;
 		text: qsTr("No content");
 		visible: view.count === 0;
+		MouseArea{
+			anchors.centerIn: parent;
+			width: parent.paintedWidth;
+			height: parent.paintedHeight;
+			onClicked: root.refresh();
+		}
 	}
 
 	GridView{
 		id: view;
 		anchors.fill: parent;
 		clip: true;
+		z: 1;
 		visible: count > 0;
-		cellWidth: width / 2;
+		cellWidth: Math.floor(width / 2);
 		cellHeight: cellWidth; //Util.GetSize(cellWidth, 0, "4/3");
 		model: ListModel{}
 		header: Component{

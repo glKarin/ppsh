@@ -27,6 +27,7 @@ Item{
 		id: view;
 		anchors.fill: parent;
 		clip: true;
+		z: 1;
 		visible: count > 0;
 		model: [];
 		cellWidth: parent.width / 2;
@@ -50,7 +51,7 @@ Item{
 					radius: 10;
 					smooth: true;
 					border.width: 4;
-					border.color: parent.GridView.isCurrentItem ? constants._cThemeColor : constants._cTransparent;
+					border.color: parent.GridView.isCurrentItem ? constants._cGlobalColor : constants._cTransparent;
 					clip: true;
 
 					Text{

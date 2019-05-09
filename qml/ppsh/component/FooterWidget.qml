@@ -3,7 +3,7 @@ import com.nokia.meego 1.1
 
 Item{
 	id: root;
-	objectName: "idListFooterWidget";
+	objectName: "idFooterWidget";
 	property alias bEnabled: more.enabled;
 	property string sText: qsTr("More");
 	property string sTextNoMore: qsTr("No more");

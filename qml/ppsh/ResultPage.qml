@@ -51,11 +51,29 @@ BasePage {
 	QtObject{
 		id: obj;
 		property string keyword;
+		property string type;
 		property int pageNo: 1;
 		property int pageSize: 20;
 		property int pageCount: 0;
 		property int totalCount: 0;
-		property string order: typerow.vCurrentValue;
+		property string order: "";
+
+		function _SetType(t, i)
+		{
+			if(type == t) return;
+
+			type = t;
+			var orders = [];
+			Util.ModelCopy(orders, Util.ModelGetValue(typeview.model, i, "order"));
+			typerow.aOptions = orders;
+			typerow.vCurrentValue = Util.ModelGetValue(typerow.aOptions, 0, "value");
+			order = typerow.vCurrentValue;
+
+			pageNo = 1;
+			pageSize = 20;
+			pageCount = 0;
+			totalCount = 0;
+		}
 
 		function _SearchResult(kw, p)
 		{
@@ -82,6 +100,7 @@ BasePage {
 				model: view.model,
 				pageNo: pn,
 			};
+			if(type !== "") d.type = type;
 			if(order !== "") d.order = order;
 
 			if(p === undefined)
@@ -109,42 +128,32 @@ BasePage {
 		}
 	}
 
+	TabListWidget{
+		id: typeview;
+		anchors.left: parent.left;
+		anchors.right: parent.right;
+		anchors.top: header.bottom;
+		anchors.topMargin: constants._iSpacingMicro;
+		height: constants._iSizeXL;
+		bTabMode: true;
+		onClicked: {
+			obj._SetType(value, index);
+			obj._SearchResult(obj.keyword);
+		}
+	}
 	TypeRowWidget{
 		id: typerow;
 		anchors.left: parent.left;
 		anchors.right: parent.right;
-		anchors.top: header.bottom;
+		anchors.top: typeview.bottom;
 		sText: "order";
-		aOptions: [
-			{
-				name: qsTr("Relation"),
-				value: "",
-			},
-			{
-				name: qsTr("Click"),
-				value: "click",
-			},
-			{
-				name: qsTr("Date"),
-				value: "pubdate",
-			},
-			{
-				name: qsTr("Danmaku"),
-				value: "dm",
-			},
-			{
-				name: qsTr("Stow"),
-				value: "stow",
-			},
-		]
-		vCurrentValue: "";
 		onSelected: {
 			obj.order = value;
 			obj._SearchResult(obj.keyword);
 		}
 	}
 
-	VideoListWidget{
+	ResultListWidget{
 		id: view;
 		anchors.left: parent.left;
 		anchors.right: parent.right;
@@ -155,26 +164,25 @@ BasePage {
 		}
 	}
 
-	ToolBarLayout{
+	PagedWidget{
 		anchors.bottom: parent.bottom;
 		anchors.horizontalCenter: parent.horizontalCenter;
-		z: 1;
-		height: constants._iSizeXL;
-		width: constants._iSizeBig;
-		opacity: 0.6;
-		IconWidget{
-			iconId: "toolbar-previous";
-			enabled: obj.pageNo > 1;
-			onClicked: {
-				obj._SearchResult(obj.keyword, constants._sPrevPage);
-			}
+		pageNo: obj.pageNo;
+		pageSize: obj.pageSize;
+		pageCount: obj.pageCount;
+		totalCount: obj.totalCount;
+		onPrev: {
+			obj._SearchResult(obj.keyword, constants._sPrevPage);
 		}
-		IconWidget{
-			iconId: "toolbar-next";
-			enabled: obj.pageNo < obj.pageCount;
-			onClicked: {
-				obj._SearchResult(obj.keyword, constants._sNextPage);
-			}
+		onNext: {
+			obj._SearchResult(obj.keyword, constants._sNextPage);
 		}
+	}
+
+	Component.onCompleted: {
+		var limit = 4;
+		typeview.bTabMode = (limit <= 4);
+		typeview._LoadModel(Script.idSearch, limit);
+		obj._SetType(Util.ModelGetValue(typeview.model, 0, "value"), 0);
 	}
 }

@@ -6,13 +6,28 @@ Item{
 	id: root;
 	property alias model: view.model;
 	property alias count: view.count;
-	property color cLineColor: constants._cDarkerColor;
+	property color cLineColor: constants._cDarkColor;
+	property color cTextColor: constants._cDarkestColor;
 	property bool bInteractive: true;
 	property bool bTabMode: false;
+	property bool bInvertedMode: !constants._bInverted;
+	property bool bFixedWidth: true;
 	property int iTopMargin: 0;
 	property int iBottomMargin: 0;
-	signal clicked(string name, string value);
+	property alias currentIndex: view.currentIndex;
+	signal clicked(string name, string value, int index);
 	objectName: "idTabListWidget";
+
+	function _LoadModel(jsarr, limit)
+	{
+		view.model.clear();
+		for(var i in jsarr)
+		{
+			if(limit && i >= limit) break;
+			var e = jsarr[i];
+			Util.ModelPush(view.model, e);
+		}
+	}
 
 	ListView{
 		id: view;
@@ -37,7 +52,7 @@ Item{
 						if(root.bInteractive)
 						{
 							view.currentIndex = index;
-							root.clicked(model.name, model.value);
+							root.clicked(model.name, model.value, index);
 						}
 					}
 				}
@@ -50,7 +65,7 @@ Item{
 					anchors.rightMargin: border.width / 2;
 					height: parent.height + border.width;
 					border.width: iLineWidth;
-					visible: delegateroot.ListView.isCurrentItem;
+					visible: !root.bInvertedMode && delegateroot.ListView.isCurrentItem;
 					border.color: root.cLineColor;
 					radius: border.width;
 					smooth: true;
@@ -62,18 +77,19 @@ Item{
 					horizontalAlignment: Text.AlignHCenter;
 					verticalAlignment: Text.AlignVCenter;
 					elide: Text.ElideLeft;
-					color: delegateroot.ListView.isCurrentItem ? constants._cDarkestColor : constants._cDarkerColor;
+					color: root.bInvertedMode ? constants._cThemeColor : root.cTextColor;
 					font.pixelSize: constants._iFontXL;
 					font.bold: delegateroot.ListView.isCurrentItem;
 					text: model.name;
 				}
 				Rectangle{
+					id: line;
 					anchors.bottom: parent.bottom;
 					anchors.left: parent.left;
 					anchors.right: parent.right;
 					height: iLineWidth;
-					color: root.cLineColor;
-					visible: !delegateroot.ListView.isCurrentItem;
+					color: root.bInvertedMode ? constants._cThemeColor : root.cLineColor;
+					visible: (!root.bInvertedMode && !delegateroot.ListView.isCurrentItem) || (root.bInvertedMode && delegateroot.ListView.isCurrentItem);
 				}
 			}
 		}

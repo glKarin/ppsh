@@ -5,7 +5,7 @@
 #include "id_std.h"
 
 #ifdef _DBG
-#define ID_KMPLAYER_PATH "./kmplayer++/kmplayer++/src/kmplayer++"
+#define ID_KMPLAYER_PATH "./kmplayer++_src/kmplayer++/src/kmplayer++"
 #else
 #define ID_KMPLAYER_PATH "/opt/ppsh/kmplayer++/bin/kmplayer++"
 #endif
@@ -17,6 +17,7 @@ idPlayer::idPlayer(QObject *parent)
 	bAsync(true),
 	eMode(idPlayer::MPlayer_Player)
 {
+	setObjectName("idPlayer");
 }
 
 idPlayer::~idPlayer()
@@ -139,6 +140,8 @@ void idPlayer::Play(const QString &url, const QString &audio, const QVariant &he
 
 void idPlayer::Play()
 {
+	int code;
+
 	if(sSource.isEmpty())
 		return;
 	if(!oProcess)
@@ -151,8 +154,22 @@ void idPlayer::Play()
 	}
 	if(oProcess->state() != QProcess::NotRunning)
 		return;
-	//oProcess->start(GenerateCmd());
-	oProcess->start(ID_KMPLAYER_PATH, GenerateCmdArgs());
+	QString cmd = ID_KMPLAYER_PATH;
+	QStringList args = GenerateCmdArgs();
+	PrintCmd(cmd, args);
+	if(bAsync)
+	{
+		//oProcess->start(GenerateCmd());
+		oProcess->start(cmd, args);
+	}
+	else
+	{
+		SetRunningState(true);
+		emit started("-1");
+		code = QProcess::execute(cmd, args);
+		SetRunningState(false);
+		emit finished("-1", code);
+	}
 }
 
 void idPlayer::Stop()
@@ -176,7 +193,7 @@ QString idPlayer::GenerateCmd() const
 		cmd += " -H '" + tRequestHeaders.join(",") + "'";
 	cmd += " -u '" + sSource + "'";
 
-	qDebug() << cmd;
+	//qDebug() << cmd;
 
 	return cmd;
 }
@@ -191,7 +208,7 @@ QStringList idPlayer::GenerateCmdArgs() const
 		r << "-H" << tRequestHeaders.join(",");
 	r << "-u" << sSource;
 
-	qDebug() << r;
+	//qDebug() << r;
 	return r;
 }
 
@@ -260,7 +277,7 @@ void idPlayer::SetRunningState(bool b)
 void idPlayer::Restart()
 {
 	Stop();
-	oProcess->waitForFinished(0);
+	oProcess->waitForFinished(-1);
 	Play();
 }
 
@@ -276,4 +293,17 @@ void idPlayer::SetAsync(bool b)
 		bAsync = b;
 		emit asyncChanged(bAsync);
 	}
+}
+
+void idPlayer::PrintCmd(const QString &cmd, const QStringList &args) const
+{
+	const QString Arg_Fmt("\"%1\"");
+	QStringList arg;
+	ID_CONST_FOREACH(QStringList, args)
+		arg.push_back(Arg_Fmt.arg(*itor));
+	qDebug() << "********** Run KMPlayer **********";
+	if(arg.isEmpty())
+		qDebug() << cmd.toStdString().c_str();
+	else
+		qDebug() << (cmd + " " + arg.join(" ")).toStdString().c_str();
 }

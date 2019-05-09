@@ -407,15 +407,15 @@ Rectangle {
 			}
 			else
 			{
-				v._Load(url, pos);
 				d._Seek();
+				v._Load(url, pos);
 				//c._Load();
 			}
 		}
 
 		function _PlayExternally(url)
 		{
-			controller._ShowMessage(qsTr("Waiting KMPlayer for playing video..."));
+			controller._ShowMessage(qsTr("Waiting KMPlayer for playing video(If can not play, please set MPlayer for decoding)..."));
 			var headers = [
 				"Referer: https://www.bilibili.com",
 				"User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36",
@@ -430,8 +430,8 @@ Rectangle {
 			if(v.seekable)
 			{
 				var pos = v.duration * value;
+				d._Seek(pos);
 				v._SetPosition(pos);
-				d._Seek(v.position);
 			}
 			else controller._ShowMessage(qsTr("Can not support seek for this video"));
 		}
@@ -447,8 +447,8 @@ Rectangle {
 					if(r.part !== st.playPart) _LoadPart(r.part, undefined, r.millisecond);
 					else
 					{
+						d._Seek(r.millisecond);
 						v._SetPosition(r.millisecond);
-						d._Seek(v.position);
 					}
 				}
 			}
@@ -490,12 +490,12 @@ Rectangle {
 		}
 	}
 
-	function _Init(id, cids, index)
+	function _Init(id, cids, index, type)
 	{
-		if(st.aid !== id)
+		if(st.mid !== id)
 		{
 			st._Reset();
-			st._Load(id, cids);
+			st._Load(id, cids, type);
 			_Load(index);
 		}
 		else

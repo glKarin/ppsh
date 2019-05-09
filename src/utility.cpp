@@ -16,7 +16,7 @@
 #include "networkmanager.h"
 #include "id_std.h"
 
-#define ID_SETTING_VERSION 1
+#define ID_SETTING_VERSION 2
 
 namespace id
 {
@@ -65,8 +65,8 @@ idUtility::idUtility(QObject *parent) :
 #endif
 			)
 {
+	setObjectName("idUtility");
 	Init();
-	CheckUpdate();
 }
 
 idUtility::~idUtility()
@@ -264,6 +264,7 @@ QVariant idUtility::Get(const QString &name) const
 		ID_M_I(DEV);
 		ID_M_I(VER);
 		ID_M_I(CODE);
+		ID_M_I(STATE);
 		ID_M_I(EMAIL);
 		ID_M_I(GITHUB);
 		ID_M_I(PAN);
@@ -290,6 +291,7 @@ QVariant idUtility::Get(const QString &name) const
 			else ID_I(DEV)
 			else ID_I(VER)
 			else ID_I(CODE)
+			else ID_I(STATE)
 			else ID_I(EMAIL)
 			else ID_I(GITHUB)
 			else ID_I(PAN)
@@ -320,11 +322,18 @@ QVariant idUtility::Changelog(const QString &version) const
 
 	if(version.isEmpty())
 	{
-		list << QObject::tr("Initital version")
-			<< QObject::tr("Support to search, view channels.")
-			<< QObject::tr("Play videos(play videos of new m4s format by KMPlayer internally(include audio))");
+		list 
+			<< QObject::tr("Add bangumi page.")
+			<< QObject::tr("Add article page.")
+			<< QObject::tr("Add more search.")
+			<< QObject::tr("Add user article.")
+			<< QObject::tr("Add some zh translates.")
+			<< QObject::tr("Some fixed.")
+			<< QObject::tr("Videos of dash format will decode by MPlayer, others using internal player.")
+			<< QObject::tr("If playing with KMPlayer and not work, set player to MPlayer.");
 	}
 
+	// read from changelog?
 	m.insert("CHANGES", list);
 	m.insert("PKG_NAME", QVariant());
 	m.insert("RELEASE", QVariant());

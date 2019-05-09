@@ -26,7 +26,7 @@ Item{
 		visible: loader.item === null;
 	}
 
-	function _Load(aid, cids, index)
+	function _Load(aid, cids, index, type)
 	{
 		if(loader.item === null)
 		{
@@ -37,7 +37,7 @@ Item{
 				item.exit.connect(__Exit);
 				item.stop.connect(__Stop);
 				item.trigger.connect(root.menu);
-				controller._OpenPlayer(aid, cids, index, item);
+				controller._OpenPlayer(aid, cids, index, item, type);
 				console.log(qsTr("Load video player successful"));
 				return 0;
 			}

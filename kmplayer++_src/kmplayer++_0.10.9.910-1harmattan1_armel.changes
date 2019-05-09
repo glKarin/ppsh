@@ -15,10 +15,14 @@ Changes:
  .
    * Add set external audio and request headers.
 Checksums-Sha1: 
- e2e60303973e9ebfe0e7f9aeba9a9ae4810de32e 625 kmplayer++_0.10.9.910-1harmattan1.dsc
- 33b27e178f93bf7791f2a39461f620922de2c629 9139111 kmplayer++_0.10.9.910-1harmattan1.tar.gz
- dba0345361e30e24e5db9c0e3e03d4d2eb4d7713 7011140 kmplayer++_0.10.9.910-1harmattan1_armel.deb
+ e48467e3fe09d28901f8b1776d29345927224d82 759 kmplayer++_0.10.9.910-1harmattan1.dsc
+ 99b84642cc525ae754722fcfaf97a69e6ef7a8af 9258939 kmplayer++_0.10.9.910-1harmattan1.tar.gz
+ 95edb2bcd582cbf52449ef60da290b5df01608ac 7000880 kmplayer++_0.10.9.910-1harmattan1_armel.deb
+Checksums-Sha256: 
+ 6d7ed51b4194109479f7cb5fb7f450d58646a6d6fcf22a6b6d60d94ea45a6c7b 759 kmplayer++_0.10.9.910-1harmattan1.dsc
+ 63cfc9f27130c5b162093170dc8a297961a4bb6532538732d4ead04e6b9b4474 9258939 kmplayer++_0.10.9.910-1harmattan1.tar.gz
+ 312b929a9488bcc7e3e4cc93af55177fc98646a25a02befa5862a2fb034ca5f1 7000880 kmplayer++_0.10.9.910-1harmattan1_armel.deb
 Files: 
- bb34f3243a87bf1d5b984b83d2519abb 625 user/Other extra kmplayer++_0.10.9.910-1harmattan1.dsc
- 9ebf4400cf8279bf753df0b6b1be2191 9139111 user/Other extra kmplayer++_0.10.9.910-1harmattan1.tar.gz
- 523670167429155f0d8fd88c1e42348f 7011140 user/Other extra kmplayer++_0.10.9.910-1harmattan1_armel.deb
+ 9654c1a3ac78eb7b8cd5e59906ff260a 759 user/Other extra kmplayer++_0.10.9.910-1harmattan1.dsc
+ 30402ad7561819dbb6d819e08b21afe8 9258939 user/Other extra kmplayer++_0.10.9.910-1harmattan1.tar.gz
+ 2c97dc7e7efd96652dc774244767aeab 7000880 user/Other extra kmplayer++_0.10.9.910-1harmattan1_armel.deb

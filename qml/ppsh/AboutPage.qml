@@ -70,7 +70,7 @@ BasePage {
 			}
 			TextListWidget{
 				width: parent.width;
-				sTitle: qsTr("System");
+				sTitle: "%1(%2)".arg(qsTr("Application")).arg(_UT.Get("STATE"));
 				iPixelSize: constants._iFontXL;
 				eHorizontalAlignment: Text.AlignHCenter;
 				aTexts: [

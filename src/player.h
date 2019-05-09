@@ -68,6 +68,7 @@ private:
 
 	private:
 		idPlayer(QObject *parent = 0);
+		void PrintCmd(const QString &cmd, const QStringList &args = QStringList()) const;
 
 	private:
 		QProcess *oProcess;

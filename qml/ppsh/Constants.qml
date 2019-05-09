@@ -59,14 +59,15 @@ QtObject {
 		property color _cDarkerColor: !_bInverted ? "#333333" : "#cccccc";
 		property color _cDarkestColor: !_bInverted ? "#000000" : "#ffffff";
 
-		property color _cThemeColor: _bInverted ? _cNightColor : _aThemeColors[settings.iThemeColor].value;
+		property color _cGlobalColor: _bInverted ? _cNightColor : _cThemeColor;
+		property color _cThemeColor: _aThemeColors[settings.iThemeColor].value;
 		property bool _bInverted: settings.bNightMode;
 		property color _cTransparent: "#00000000";
 		property color _cNightColor: "#2d2d2d";
 
 		property variant _aThemeColors: [
 			{
-				name: "<font color=%1>%2</font>".arg("#fb7299").arg(qsTr("Grid pink(default)")),
+				name: "<font color=%1>%2</font>".arg("#fb7299").arg(qsTr("Girl pink(default)")),
 				value: "#fb7299",
 			},
 			{
@@ -163,17 +164,17 @@ QtObject {
 		property int _eArticleType: 2;
 		property int _eBangumiType: 3;
 		property int _eUserType: 5;
+		property int _eAdType: 6;
+		property int _eKeywordType: 7;
+		property int _eChannelType: 8;
+		property int _eLiveType: 9;
 
 
 		function _GetLevelColor(lvl)
 		{
-			var i = lvl;
-			if(typeof(lvl) !== "number") i = parseInt(lvl);
-			else
-			{
-				if(lvl > 6) i = 6;
-				else if(lvl < 0) i = 0;
-			}
+			var i = typeof(lvl) !== "number" ? parseInt(lvl) : lvl;
+			if(i > 6) i = 6;
+			else if(i < 0) i = 0;
 			return constants._aRankColors[i];
 		}
 

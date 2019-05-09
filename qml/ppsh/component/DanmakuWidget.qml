@@ -3,6 +3,7 @@ import com.nokia.meego 1.1
 import "../../js/main.js" as Script
 import "../../js/util.js" as Util
 import "danmaku.js" as D
+import "itemlist.js" as L
 
 Item{
 	id: root;
@@ -73,11 +74,11 @@ Item{
 			}
 
 			Component.onDestruction: {
-				if(mode === 5) D.__current_top--;
-				else if(mode === 4) D.__current_bottom--;
-				else D.__current_slide--;
+				if(mode === 5 && D.__current_top > 0) D.__current_top--;
+				else if(mode === 4 && D.__current_bottom > 0) D.__current_bottom--;
+				else if(D.__current_slide > 0) D.__current_slide--;
 
-				D.__current--;
+				if(D.__current > 0) D.__current--;
 				//console.log(D.__current, D.__current_top, D.__current_bottom, D.__current_slide, textroot.text, "destroy", mode);
 			}
 		}
@@ -89,6 +90,13 @@ Item{
 
 		var time = iBaseTime + (pos !== undefined ? pos : iPlayTime);
 		var h = 0;
+		// maybe less than 0 when call _Stop function and danmaku text destroy
+		/*
+		if(D.__current_slide < 0) D.__current_slide = 0;
+		if(D.__current_top < 0) D.__current_top = 0;
+		if(D.__current_bottom < 0) D.__current_bottom = 0;
+		*/
+
 		if(D.__current_slide <= 0) D.__currentY_slide = 0;
 		if(D.__current_top <= 0) D.__currentY_top = 0;
 		if(D.__current_bottom <= 0) D.__currentY_bottom = 0;
@@ -103,6 +111,7 @@ Item{
 				if(D.__current >= iMax) break; // out limit
 				//if(iDiscardDuration > 0 && time - e.time > iDiscardDuration) continue; // delta time greater, discard
 			}
+
 			if(iDiscardDuration > 0 && time - e.time > iDiscardDuration) continue; // delta time greater, discard
 			if(D.Modes.indexOf(e.mode) === -1) continue; // mode not support
 
@@ -135,7 +144,8 @@ Item{
 			else if(e.mode === 4) D.__currentY_bottom += h;
 			else D.__currentY_slide += h;
 
-			var obj = danmakucomp.createObject(root, prop);
+			var item = danmakucomp.createObject(root, prop);
+			L.Push(item);
 		}
 		D.iIndex = i;
 		iPlayTime = pos;
@@ -145,12 +155,13 @@ Item{
 	function _Seek(pos)
 	{
 		var time = iBaseTime + (pos ? pos : 0);
-		var i = time >= D.__lastTimestamp ? D.iIndex : 0;
+		var i = time > D.__lastTimestamp ? D.iIndex : 0;
+		//console.log(time, D.__lastTimestamp, i);
 		for(; i < D.st_danmaku.length; i++)
 		{
 			if(D.st_danmaku[i].time >= time) break;
 		}
-		D.iIndex = 0;
+		D.iIndex = i;
 	}
 
 	function _Toggle(on)
@@ -167,10 +178,11 @@ Item{
 
 	function _Reset()
 	{
+		L.Clear();
+		root.children = [];
 		_Stop();
 		iPlayTime = 0;
 		D.st_danmaku = [];
-		root.children = [];
 	}
 
 	function _Load(str)
@@ -183,7 +195,7 @@ Item{
 	function _Stop()
 	{
 		//_Toggle(false);
-		D.iIndex = D.st_danmaku.length > 0 ? D.st_danmaku - 1 : 0;
+		//D.iIndex = D.st_danmaku.length > 0 ? D.st_danmaku - 1 : 0;
 		D.__current = 0;
 		D.__currentY_slide = 0;
 		D.__currentY_top = 0;

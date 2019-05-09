@@ -16,8 +16,8 @@
     </message>
     <message>
         <location filename="../qml/ppsh/AboutPage.qml" line="73"/>
-        <source>System</source>
-        <translation type="unfinished">系统</translation>
+        <source>Application</source>
+        <translation type="unfinished">程序</translation>
     </message>
     <message>
         <location filename="../qml/ppsh/AboutPage.qml" line="78"/>
@@ -63,6 +63,159 @@
         <location filename="../qml/ppsh/AboutPage.qml" line="126"/>
         <source>Source</source>
         <translation type="unfinished">源码</translation>
+    </message>
+</context>
+<context>
+    <name>ArticlePage</name>
+    <message>
+        <location filename="../qml/ppsh/ArticlePage.qml" line="10"/>
+        <source>Article</source>
+        <translation type="unfinished">文章</translation>
+    </message>
+    <message>
+        <location filename="../qml/ppsh/ArticlePage.qml" line="150"/>
+        <source>New</source>
+        <translation type="unfinished">最新</translation>
+    </message>
+    <message>
+        <location filename="../qml/ppsh/ArticlePage.qml" line="154"/>
+        <source>Hot</source>
+        <translation type="unfinished">热评</translation>
+    </message>
+    <message>
+        <location filename="../qml/ppsh/ArticlePage.qml" line="185"/>
+        <source>Helper</source>
+        <translation type="unfinished">帮助工具</translation>
+    </message>
+    <message>
+        <location filename="../qml/ppsh/ArticlePage.qml" line="197"/>
+        <source>Load image</source>
+        <translation type="unfinished">加载图像</translation>
+    </message>
+    <message>
+        <location filename="../qml/ppsh/ArticlePage.qml" line="209"/>
+        <source>Refresh</source>
+        <translation type="unfinished">刷新</translation>
+    </message>
+</context>
+<context>
+    <name>BangumiDetailPage</name>
+    <message>
+        <location filename="../qml/ppsh/BangumiDetailPage.qml" line="10"/>
+        <source>Bangumi detail</source>
+        <translation type="unfinished">番剧详情</translation>
+    </message>
+    <message>
+        <location filename="../qml/ppsh/BangumiDetailPage.qml" line="73"/>
+        <source>Loading video player...</source>
+        <translation type="unfinished">正在加载播放器......</translation>
+    </message>
+    <message>
+        <location filename="../qml/ppsh/BangumiDetailPage.qml" line="75"/>
+        <source>Load video player fail</source>
+        <translation type="unfinished">加载播放器失败</translation>
+    </message>
+    <message>
+        <location filename="../qml/ppsh/BangumiDetailPage.qml" line="78"/>
+        <source>Hold player to switch fullscreen or normal</source>
+        <translation type="unfinished">长按播放器切换全屏</translation>
+    </message>
+    <message>
+        <location filename="../qml/ppsh/BangumiDetailPage.qml" line="141"/>
+        <source>score</source>
+        <translation type="unfinished">分</translation>
+    </message>
+    <message>
+        <location filename="../qml/ppsh/BangumiDetailPage.qml" line="146"/>
+        <source>Play</source>
+        <translation type="unfinished">播放</translation>
+    </message>
+    <message>
+        <location filename="../qml/ppsh/BangumiDetailPage.qml" line="147"/>
+        <source>Like</source>
+        <translation type="unfinished">顶</translation>
+    </message>
+    <message>
+        <location filename="../qml/ppsh/BangumiDetailPage.qml" line="150"/>
+        <source>Coin</source>
+        <translation type="unfinished">投币</translation>
+    </message>
+    <message>
+        <location filename="../qml/ppsh/BangumiDetailPage.qml" line="151"/>
+        <source>Share</source>
+        <translation type="unfinished">分享</translation>
+    </message>
+    <message>
+        <location filename="../qml/ppsh/BangumiDetailPage.qml" line="152"/>
+        <source>Danmaku</source>
+        <translation type="unfinished">弹幕</translation>
+    </message>
+    <message>
+        <location filename="../qml/ppsh/BangumiDetailPage.qml" line="269"/>
+        <source>avId is empty</source>
+        <translation type="unfinished">avId为空</translation>
+    </message>
+    <message>
+        <location filename="../qml/ppsh/BangumiDetailPage.qml" line="282"/>
+        <source>Description</source>
+        <translation type="unfinished">简介</translation>
+    </message>
+    <message>
+        <location filename="../qml/ppsh/BangumiDetailPage.qml" line="289"/>
+        <source>Episodes</source>
+        <translation type="unfinished">选集</translation>
+    </message>
+    <message>
+        <location filename="../qml/ppsh/BangumiDetailPage.qml" line="295"/>
+        <source>Recommend</source>
+        <translation type="unfinished">相关</translation>
+    </message>
+    <message>
+        <location filename="../qml/ppsh/BangumiDetailPage.qml" line="305"/>
+        <source>Comment</source>
+        <translation type="unfinished">评论</translation>
+    </message>
+    <message>
+        <location filename="../qml/ppsh/BangumiDetailPage.qml" line="544"/>
+        <source>New</source>
+        <translation type="unfinished">最新</translation>
+    </message>
+    <message>
+        <location filename="../qml/ppsh/BangumiDetailPage.qml" line="548"/>
+        <source>Hot</source>
+        <translation type="unfinished">热评</translation>
+    </message>
+</context>
+<context>
+    <name>BangumiGridWidget</name>
+    <message>
+        <location filename="../qml/ppsh/component/BangumiGridWidget.qml" line="21"/>
+        <source>No content</source>
+        <translation type="unfinished">无内容</translation>
+    </message>
+</context>
+<context>
+    <name>BangumiListDelegate</name>
+    <message>
+        <location filename="../qml/ppsh/component/BangumiListDelegate.qml" line="96"/>
+        <source>score</source>
+        <translation type="unfinished">分</translation>
+    </message>
+</context>
+<context>
+    <name>BangumiListWidget</name>
+    <message>
+        <location filename="../qml/ppsh/component/BangumiListWidget.qml" line="24"/>
+        <source>No content</source>
+        <translation type="unfinished">无内容</translation>
+    </message>
+</context>
+<context>
+    <name>BangumiPage</name>
+    <message>
+        <location filename="../qml/ppsh/BangumiPage.qml" line="10"/>
+        <source>Bangumi</source>
+        <translation type="unfinished">番剧</translation>
     </message>
 </context>
 <context>
@@ -121,12 +274,12 @@
         <translation type="unfinished">频道</translation>
     </message>
     <message>
-        <location filename="../qml/ppsh/CategoryPage.qml" line="155"/>
+        <location filename="../qml/ppsh/CategoryPage.qml" line="157"/>
         <source>Ranking</source>
         <translation type="unfinished">排行</translation>
     </message>
     <message>
-        <location filename="../qml/ppsh/CategoryPage.qml" line="159"/>
+        <location filename="../qml/ppsh/CategoryPage.qml" line="161"/>
         <source>New</source>
         <translation type="unfinished">最新</translation>
     </message>
@@ -146,79 +299,84 @@
         <source>No content</source>
         <translation type="unfinished">无内容</translation>
     </message>
+    <message>
+        <location filename="../qml/ppsh/component/CommentListWidget.qml" line="158"/>
+        <source>Like</source>
+        <translation type="unfinished">顶</translation>
+    </message>
 </context>
 <context>
     <name>Constants</name>
     <message>
-        <location filename="../qml/ppsh/Constants.qml" line="69"/>
-        <source>Grid pink(default)</source>
-        <translation type="unfinished">少女粉(默认)</translation>
-    </message>
-    <message>
-        <location filename="../qml/ppsh/Constants.qml" line="73"/>
+        <location filename="../qml/ppsh/Constants.qml" line="74"/>
         <source>Soviet red</source>
         <translation type="unfinished">苏维埃红</translation>
     </message>
     <message>
-        <location filename="../qml/ppsh/Constants.qml" line="77"/>
+        <location filename="../qml/ppsh/Constants.qml" line="78"/>
         <source>Orange yellow</source>
         <translation type="unfinished">橙酸黄</translation>
     </message>
     <message>
-        <location filename="../qml/ppsh/Constants.qml" line="81"/>
+        <location filename="../qml/ppsh/Constants.qml" line="82"/>
         <source>Sea green</source>
         <translation type="unfinished">浅海绿</translation>
     </message>
     <message>
-        <location filename="../qml/ppsh/Constants.qml" line="85"/>
+        <location filename="../qml/ppsh/Constants.qml" line="86"/>
         <source>Sky blue</source>
         <translation type="unfinished">天空蓝</translation>
     </message>
     <message>
-        <location filename="../qml/ppsh/Constants.qml" line="89"/>
+        <location filename="../qml/ppsh/Constants.qml" line="90"/>
         <source>Gay purple</source>
         <translation type="unfinished">基紫</translation>
     </message>
     <message>
-        <location filename="../qml/ppsh/Constants.qml" line="182"/>
+        <location filename="../qml/ppsh/Constants.qml" line="183"/>
         <source>Super VIP</source>
         <translation type="unfinished">年度大会员</translation>
     </message>
     <message>
-        <location filename="../qml/ppsh/Constants.qml" line="102"/>
+        <location filename="../qml/ppsh/Constants.qml" line="103"/>
         <source>360P</source>
         <translation type="unfinished">标清(360P)</translation>
     </message>
     <message>
-        <location filename="../qml/ppsh/Constants.qml" line="106"/>
+        <location filename="../qml/ppsh/Constants.qml" line="70"/>
+        <source>Girl pink(default)</source>
+        <translation type="unfinished">少女粉(默认)</translation>
+    </message>
+    <message>
+        <location filename="../qml/ppsh/Constants.qml" line="107"/>
         <source>480P</source>
         <translation type="unfinished">高清(480P)</translation>
     </message>
     <message>
-        <location filename="../qml/ppsh/Constants.qml" line="111"/>
+        <location filename="../qml/ppsh/Constants.qml" line="112"/>
         <source>720P</source>
         <translation type="unfinished">超清(720P)</translation>
     </message>
     <message>
-        <location filename="../qml/ppsh/Constants.qml" line="125"/>
+        <location filename="../qml/ppsh/Constants.qml" line="126"/>
         <source>1080P</source>
         <translation type="unfinished">原画(1080P)</translation>
     </message>
     <message>
-        <location filename="../qml/ppsh/Constants.qml" line="182"/>
+        <location filename="../qml/ppsh/Constants.qml" line="183"/>
         <source>VIP</source>
-        <translation type="unfinished">会员</translation>
+        <translation type="unfinished">大会员</translation>
     </message>
 </context>
 <context>
     <name>Controller</name>
     <message>
-        <location filename="../qml/ppsh/Controller.qml" line="142"/>
+        <location filename="../qml/ppsh/Controller.qml" line="170"/>
         <source>Copy %1 to clipboard successful</source>
         <translation type="unfinished">已复制%1到粘贴板</translation>
     </message>
     <message>
-        <location filename="../qml/ppsh/Controller.qml" line="142"/>
+        <location filename="../qml/ppsh/Controller.qml" line="170"/>
         <source>data</source>
         <translation type="unfinished">数据</translation>
     </message>
@@ -231,69 +389,89 @@
         <translation type="unfinished">详情</translation>
     </message>
     <message>
-        <location filename="../qml/ppsh/DetailPage.qml" line="72"/>
+        <location filename="../qml/ppsh/DetailPage.qml" line="73"/>
         <source>Loading video player...</source>
         <translation type="unfinished">正在加载播放器......</translation>
     </message>
     <message>
-        <location filename="../qml/ppsh/DetailPage.qml" line="74"/>
+        <location filename="../qml/ppsh/DetailPage.qml" line="75"/>
         <source>Load video player fail</source>
         <translation type="unfinished">加载播放器失败</translation>
     </message>
     <message>
-        <location filename="../qml/ppsh/DetailPage.qml" line="77"/>
+        <location filename="../qml/ppsh/DetailPage.qml" line="78"/>
         <source>Hold player to switch fullscreen or normal</source>
         <translation type="unfinished">长按播放器切换全屏</translation>
     </message>
     <message>
-        <location filename="../qml/ppsh/DetailPage.qml" line="141"/>
+        <location filename="../qml/ppsh/DetailPage.qml" line="139"/>
+        <source>Play</source>
+        <translation type="unfinished">播放</translation>
+    </message>
+    <message>
+        <location filename="../qml/ppsh/DetailPage.qml" line="140"/>
+        <source>Danmaku</source>
+        <translation type="unfinished">弹幕</translation>
+    </message>
+    <message>
+        <location filename="../qml/ppsh/DetailPage.qml" line="145"/>
         <source>Like</source>
         <translation type="unfinished">顶</translation>
     </message>
     <message>
-        <location filename="../qml/ppsh/DetailPage.qml" line="142"/>
+        <location filename="../qml/ppsh/DetailPage.qml" line="146"/>
         <source>Dislike</source>
         <translation type="unfinished">踩</translation>
     </message>
     <message>
-        <location filename="../qml/ppsh/DetailPage.qml" line="143"/>
+        <location filename="../qml/ppsh/DetailPage.qml" line="147"/>
         <source>Coin</source>
         <translation type="unfinished">投币</translation>
     </message>
     <message>
-        <location filename="../qml/ppsh/DetailPage.qml" line="144"/>
+        <location filename="../qml/ppsh/DetailPage.qml" line="148"/>
         <source>Favorite</source>
         <translation type="unfinished">收藏</translation>
     </message>
     <message>
-        <location filename="../qml/ppsh/DetailPage.qml" line="145"/>
+        <location filename="../qml/ppsh/DetailPage.qml" line="149"/>
         <source>Share</source>
         <translation type="unfinished">分享</translation>
     </message>
     <message>
-        <location filename="../qml/ppsh/DetailPage.qml" line="260"/>
+        <location filename="../qml/ppsh/DetailPage.qml" line="265"/>
         <source>avId is empty</source>
         <translation type="unfinished">avId为空</translation>
     </message>
     <message>
-        <location filename="../qml/ppsh/DetailPage.qml" line="273"/>
+        <location filename="../qml/ppsh/DetailPage.qml" line="278"/>
         <source>Description</source>
         <translation type="unfinished">简介</translation>
     </message>
     <message>
-        <location filename="../qml/ppsh/DetailPage.qml" line="280"/>
+        <location filename="../qml/ppsh/DetailPage.qml" line="285"/>
         <source>Videos</source>
         <translation type="unfinished">视频</translation>
     </message>
     <message>
-        <location filename="../qml/ppsh/DetailPage.qml" line="286"/>
+        <location filename="../qml/ppsh/DetailPage.qml" line="291"/>
         <source>Recommend</source>
         <translation type="unfinished">相关</translation>
     </message>
     <message>
-        <location filename="../qml/ppsh/DetailPage.qml" line="296"/>
+        <location filename="../qml/ppsh/DetailPage.qml" line="301"/>
         <source>Comment</source>
         <translation type="unfinished">评论</translation>
+    </message>
+    <message>
+        <location filename="../qml/ppsh/DetailPage.qml" line="522"/>
+        <source>New</source>
+        <translation type="unfinished">最新</translation>
+    </message>
+    <message>
+        <location filename="../qml/ppsh/DetailPage.qml" line="526"/>
+        <source>Hot</source>
+        <translation type="unfinished">热评</translation>
     </message>
 </context>
 <context>
@@ -336,6 +514,14 @@
     </message>
 </context>
 <context>
+    <name>MixedListWidget</name>
+    <message>
+        <location filename="../qml/ppsh/component/MixedListWidget.qml" line="25"/>
+        <source>No content</source>
+        <translation type="unfinished">无内容</translation>
+    </message>
+</context>
+<context>
     <name>PartListWidget</name>
     <message>
         <location filename="../qml/ppsh/component/PartListWidget.qml" line="22"/>
@@ -343,7 +529,7 @@
         <translation type="unfinished">无内容</translation>
     </message>
     <message>
-        <location filename="../qml/ppsh/component/PartListWidget.qml" line="114"/>
+        <location filename="../qml/ppsh/component/PartListWidget.qml" line="121"/>
         <source>Duration</source>
         <translation type="unfinished">时长</translation>
     </message>
@@ -369,7 +555,8 @@
         <translation type="unfinished">播放器</translation>
     </message>
     <message>
-        <location filename="../qml/ppsh/PlayerPage.qml" line="76"/>
+        <location filename="../qml/ppsh/PlayerPage.qml" line="84"/>
+        <location filename="../qml/ppsh/PlayerPage.qml" line="110"/>
         <source>Load video player fail</source>
         <translation type="unfinished">加载播放器失败</translation>
     </message>
@@ -390,7 +577,7 @@
         <translation type="unfinished">波波莎</translation>
     </message>
     <message>
-        <location filename="../src/id_std.h" line="19"/>
+        <location filename="../src/id_std.h" line="20"/>
         <source>PPSH is a simple web-video player for Bilibili, based on Web-API.</source>
         <translation type="unfinished">波波莎是一个简易的网络视频播放器, 视频源来自Bilibili.</translation>
     </message>
@@ -410,36 +597,61 @@
         <translation type="unfinished">诺基亚MeeGo的同志们, 让我们把代表小众系统的胜利旗帜, 插在Bilibili的二次元高地!</translation>
     </message>
     <message>
-        <location filename="../src/utility.cpp" line="323"/>
-        <source>Initital version</source>
-        <translation type="unfinished">初始版本</translation>
+        <location filename="../src/utility.cpp" line="326"/>
+        <source>Add bangumi page.</source>
+        <translation type="unfinished">新增番剧页面</translation>
     </message>
     <message>
-        <location filename="../src/utility.cpp" line="324"/>
-        <source>Support to search, view channels.</source>
-        <translation type="unfinished">现支持搜索，查看分类频道，用户信息.</translation>
+        <location filename="../src/utility.cpp" line="327"/>
+        <source>Add article page.</source>
+        <translation type="unfinished">新增文章页面</translation>
     </message>
     <message>
-        <location filename="../src/utility.cpp" line="325"/>
-        <source>Play videos(play videos of new m4s format by KMPlayer internally(include audio))</source>
-        <translation type="unfinished">视频播放(新的m4s格式视频使用内置的KMPlayer进行播放, 包括音频)</translation>
+        <location filename="../src/utility.cpp" line="328"/>
+        <source>Add more search.</source>
+        <translation type="unfinished">新增更多搜索</translation>
+    </message>
+    <message>
+        <location filename="../src/utility.cpp" line="329"/>
+        <source>Add user article.</source>
+        <translation type="unfinished">新增用户文章</translation>
+    </message>
+    <message>
+        <location filename="../src/utility.cpp" line="330"/>
+        <source>Add some zh translates.</source>
+        <translation type="unfinished">增加一些中文翻译</translation>
+    </message>
+    <message>
+        <location filename="../src/utility.cpp" line="331"/>
+        <source>Some fixed.</source>
+        <translation type="unfinished">一些修复</translation>
+    </message>
+    <message>
+        <location filename="../src/utility.cpp" line="332"/>
+        <source>Videos of dash format will decode by MPlayer, others using internal player.</source>
+        <translation type="unfinished">Dash格式视频会自动调用MPlayer播放, 其他视频使用自带播放器</translation>
+    </message>
+    <message>
+        <location filename="../src/utility.cpp" line="333"/>
+        <source>If playing with KMPlayer and not work, set player to MPlayer.</source>
+        <translation type="unfinished">如果KMPlayer无法播放, 请设置KMPlayer播放器为MPlayer</translation>
     </message>
 </context>
 <context>
     <name>RankingPage</name>
     <message>
         <location filename="../qml/ppsh/RankingPage.qml" line="10"/>
-        <location filename="../qml/ppsh/RankingPage.qml" line="174"/>
+        <location filename="../qml/ppsh/RankingPage.qml" line="175"/>
         <source>Ranking</source>
         <translation type="unfinished">排行</translation>
     </message>
     <message>
-        <location filename="../qml/ppsh/RankingPage.qml" line="153"/>
+        <location filename="../qml/ppsh/RankingPage.qml" line="154"/>
         <source>Dynamic(Click to refresh)</source>
         <translation type="unfinished">动态(点击刷新)</translation>
     </message>
     <message>
-        <location filename="../qml/ppsh/RankingPage.qml" line="178"/>
+        <location filename="../qml/ppsh/RankingPage.qml" line="179"/>
         <source>New</source>
         <translation type="unfinished">最新</translation>
     </message>
@@ -468,6 +680,29 @@
     </message>
 </context>
 <context>
+    <name>ResultListWidget</name>
+    <message>
+        <location filename="../qml/ppsh/component/ResultListWidget.qml" line="23"/>
+        <source>No content</source>
+        <translation type="unfinished">无内容</translation>
+    </message>
+    <message>
+        <location filename="../qml/ppsh/component/ResultListWidget.qml" line="68"/>
+        <source>avId</source>
+        <translation type="unfinished">avId</translation>
+    </message>
+    <message>
+        <location filename="../qml/ppsh/component/ResultListWidget.qml" line="68"/>
+        <source>Bangumi Id</source>
+        <translation type="unfinished">番剧ID</translation>
+    </message>
+    <message>
+        <location filename="../qml/ppsh/component/ResultListWidget.qml" line="68"/>
+        <source>UID</source>
+        <translation type="unfinished">UID</translation>
+    </message>
+</context>
+<context>
     <name>ResultPage</name>
     <message>
         <location filename="../qml/ppsh/ResultPage.qml" line="10"/>
@@ -483,31 +718,6 @@
         <location filename="../qml/ppsh/ResultPage.qml" line="36"/>
         <source>Search</source>
         <translation type="unfinished">搜索</translation>
-    </message>
-    <message>
-        <location filename="../qml/ppsh/ResultPage.qml" line="120"/>
-        <source>Relation</source>
-        <translation type="unfinished">相关度</translation>
-    </message>
-    <message>
-        <location filename="../qml/ppsh/ResultPage.qml" line="124"/>
-        <source>Click</source>
-        <translation type="unfinished">点击量</translation>
-    </message>
-    <message>
-        <location filename="../qml/ppsh/ResultPage.qml" line="128"/>
-        <source>Date</source>
-        <translation type="unfinished">日期</translation>
-    </message>
-    <message>
-        <location filename="../qml/ppsh/ResultPage.qml" line="132"/>
-        <source>Danmaku</source>
-        <translation type="unfinished">弹幕量</translation>
-    </message>
-    <message>
-        <location filename="../qml/ppsh/ResultPage.qml" line="136"/>
-        <source>Stow</source>
-        <translation type="unfinished">收藏量</translation>
     </message>
 </context>
 <context>
@@ -532,6 +742,19 @@
         <location filename="../qml/ppsh/SearchPage.qml" line="146"/>
         <source>History</source>
         <translation type="unfinished">记录</translation>
+    </message>
+</context>
+<context>
+    <name>SeasonEpisodeWidget</name>
+    <message>
+        <location filename="../qml/ppsh/component/SeasonEpisodeWidget.qml" line="76"/>
+        <source>No content</source>
+        <translation type="unfinished">无内容</translation>
+    </message>
+    <message>
+        <location filename="../qml/ppsh/component/SeasonEpisodeWidget.qml" line="184"/>
+        <source>Duration</source>
+        <translation type="unfinished">时长</translation>
     </message>
 </context>
 <context>
@@ -604,7 +827,7 @@
     <message>
         <location filename="../qml/ppsh/SettingPage.qml" line="138"/>
         <source>Orientation</source>
-        <translation type="unfinished">播放器方向</translation>
+        <translation type="unfinished">屏幕方向</translation>
     </message>
     <message>
         <location filename="../qml/ppsh/SettingPage.qml" line="141"/>
@@ -757,17 +980,17 @@
 <context>
     <name>Streamtype</name>
     <message>
-        <location filename="../qml/ppsh/component/Streamtype.qml" line="49"/>
+        <location filename="../qml/ppsh/component/Streamtype.qml" line="52"/>
         <source>ERROR</source>
         <translation type="unfinished">错误</translation>
     </message>
     <message>
-        <location filename="../qml/ppsh/component/Streamtype.qml" line="81"/>
+        <location filename="../qml/ppsh/component/Streamtype.qml" line="84"/>
         <source>No video danmaku data</source>
         <translation type="unfinished">没有弹幕数据</translation>
     </message>
     <message>
-        <location filename="../qml/ppsh/component/Streamtype.qml" line="147"/>
+        <location filename="../qml/ppsh/component/Streamtype.qml" line="155"/>
         <source>No video url data</source>
         <translation type="unfinished">缺失视频播放链接</translation>
     </message>
@@ -780,44 +1003,29 @@
         <translation type="unfinished">用户</translation>
     </message>
     <message>
-        <location filename="../qml/ppsh/UserPage.qml" line="149"/>
+        <location filename="../qml/ppsh/UserPage.qml" line="209"/>
         <source>following</source>
         <translation type="unfinished">关注</translation>
     </message>
     <message>
-        <location filename="../qml/ppsh/UserPage.qml" line="150"/>
+        <location filename="../qml/ppsh/UserPage.qml" line="210"/>
         <source>follower</source>
         <translation type="unfinished">粉丝</translation>
     </message>
     <message>
-        <location filename="../qml/ppsh/UserPage.qml" line="153"/>
+        <location filename="../qml/ppsh/UserPage.qml" line="213"/>
         <source>Archive</source>
         <translation type="unfinished">投稿</translation>
     </message>
     <message>
-        <location filename="../qml/ppsh/UserPage.qml" line="157"/>
+        <location filename="../qml/ppsh/UserPage.qml" line="217"/>
         <source>Article</source>
         <translation type="unfinished">文章</translation>
     </message>
     <message>
-        <location filename="../qml/ppsh/UserPage.qml" line="435"/>
+        <location filename="../qml/ppsh/UserPage.qml" line="482"/>
         <source>Bilibili verify</source>
         <translation type="unfinished">Bilibili个人认证</translation>
-    </message>
-    <message>
-        <location filename="../qml/ppsh/UserPage.qml" line="491"/>
-        <source>Update</source>
-        <translation type="unfinished">更新</translation>
-    </message>
-    <message>
-        <location filename="../qml/ppsh/UserPage.qml" line="495"/>
-        <source>Click</source>
-        <translation type="unfinished">点击量</translation>
-    </message>
-    <message>
-        <location filename="../qml/ppsh/UserPage.qml" line="499"/>
-        <source>Stow</source>
-        <translation type="unfinished">收藏量</translation>
     </message>
 </context>
 <context>
@@ -892,12 +1100,12 @@
 <context>
     <name>VideoListDelegate</name>
     <message>
-        <location filename="../qml/ppsh/component/VideoListDelegate.qml" line="105"/>
+        <location filename="../qml/ppsh/component/VideoListDelegate.qml" line="101"/>
         <source>Play</source>
         <translation type="unfinished">播放</translation>
     </message>
     <message>
-        <location filename="../qml/ppsh/component/VideoListDelegate.qml" line="114"/>
+        <location filename="../qml/ppsh/component/VideoListDelegate.qml" line="109"/>
         <source>Danmaku</source>
         <translation type="unfinished">弹幕</translation>
     </message>
@@ -905,7 +1113,7 @@
 <context>
     <name>VideoListWidget</name>
     <message>
-        <location filename="../qml/ppsh/component/VideoListWidget.qml" line="26"/>
+        <location filename="../qml/ppsh/component/VideoListWidget.qml" line="24"/>
         <source>No content</source>
         <translation type="unfinished">无内容</translation>
     </message>
@@ -930,8 +1138,8 @@
     </message>
     <message>
         <location filename="../qml/ppsh/component/VideoPlayer.qml" line="418"/>
-        <source>Waiting KMPlayer for playing video...</source>
-        <translation type="unfinished">正在打开KMPlayer播放器</translation>
+        <source>Waiting KMPlayer for playing video(If can not play, please set MPlayer for decoding)...</source>
+        <translation type="unfinished">等待启动KMPlayer播放器(如果KMPlayer无法播放, 请设置KMPlayer播放器为MPlayer)</translation>
     </message>
     <message>
         <location filename="../qml/ppsh/component/VideoPlayer.qml" line="436"/>
@@ -951,37 +1159,37 @@
 <context>
     <name>idNetworkConnector</name>
     <message>
-        <location filename="../src/networkconnector.cpp" line="157"/>
+        <location filename="../src/networkconnector.cpp" line="158"/>
         <source>No error</source>
         <translation type="unfinished">无错误</translation>
     </message>
     <message>
-        <location filename="../src/networkconnector.cpp" line="159"/>
+        <location filename="../src/networkconnector.cpp" line="160"/>
         <source>QNetworkReply Error</source>
         <translation type="unfinished">QNetworkReply错误</translation>
     </message>
     <message>
-        <location filename="../src/networkconnector.cpp" line="165"/>
+        <location filename="../src/networkconnector.cpp" line="166"/>
         <source>Network access manager is not initialized</source>
         <translation type="unfinished">网络管理器未初始化</translation>
     </message>
     <message>
-        <location filename="../src/networkconnector.cpp" line="167"/>
+        <location filename="../src/networkconnector.cpp" line="168"/>
         <source>Uncompress reply data error</source>
         <translation type="unfinished">解压响应数据错误</translation>
     </message>
     <message>
-        <location filename="../src/networkconnector.cpp" line="169"/>
+        <location filename="../src/networkconnector.cpp" line="170"/>
         <source>Reply is null</source>
         <translation type="unfinished">响应为空</translation>
     </message>
     <message>
-        <location filename="../src/networkconnector.cpp" line="171"/>
+        <location filename="../src/networkconnector.cpp" line="172"/>
         <source>Missing request info</source>
         <translation type="unfinished">请求信息丢失</translation>
     </message>
     <message>
-        <location filename="../src/networkconnector.cpp" line="173"/>
+        <location filename="../src/networkconnector.cpp" line="174"/>
         <source>Other connector error</source>
         <translation type="unfinished">其他连接错误</translation>
     </message>
@@ -989,32 +1197,32 @@
 <context>
     <name>idPlayer</name>
     <message>
-        <location filename="../src/player.cpp" line="216"/>
+        <location filename="../src/player.cpp" line="233"/>
         <source>Failed to start</source>
         <translation type="unfinished">启动失败</translation>
     </message>
     <message>
-        <location filename="../src/player.cpp" line="219"/>
+        <location filename="../src/player.cpp" line="236"/>
         <source>Crashed</source>
         <translation type="unfinished">程序崩溃</translation>
     </message>
     <message>
-        <location filename="../src/player.cpp" line="222"/>
+        <location filename="../src/player.cpp" line="239"/>
         <source>Timed out</source>
         <translation type="unfinished">超时</translation>
     </message>
     <message>
-        <location filename="../src/player.cpp" line="225"/>
+        <location filename="../src/player.cpp" line="242"/>
         <source>Read error</source>
         <translation type="unfinished">读取错误</translation>
     </message>
     <message>
-        <location filename="../src/player.cpp" line="228"/>
+        <location filename="../src/player.cpp" line="245"/>
         <source>Write error</source>
         <translation type="unfinished">写入错误</translation>
     </message>
     <message>
-        <location filename="../src/player.cpp" line="232"/>
+        <location filename="../src/player.cpp" line="249"/>
         <source>Unknow error</source>
         <translation type="unfinished">未知错误</translation>
     </message>
@@ -1022,29 +1230,187 @@
 <context>
     <name>main</name>
     <message>
-        <location filename="../qml/ppsh/main.qml" line="49"/>
+        <location filename="../qml/ppsh/main.qml" line="39"/>
+        <source>Info</source>
+        <translation type="unfinished">信息</translation>
+    </message>
+    <message>
+        <location filename="../qml/ppsh/main.qml" line="40"/>
+        <source>Version</source>
+        <translation type="unfinished">版本</translation>
+    </message>
+    <message>
+        <location filename="../qml/ppsh/main.qml" line="72"/>
         <source>Bilibili</source>
         <translation type="unfinished">BiliBili</translation>
     </message>
     <message>
-        <location filename="../qml/ppsh/main.qml" line="165"/>
+        <location filename="../qml/ppsh/main.qml" line="188"/>
         <source>Browser</source>
         <translation type="unfinished">浏览器</translation>
     </message>
     <message>
-        <location filename="../qml/ppsh/main.qml" line="171"/>
+        <location filename="../qml/ppsh/main.qml" line="194"/>
         <source>View history</source>
         <translation type="unfinished">观看记录</translation>
     </message>
     <message>
-        <location filename="../qml/ppsh/main.qml" line="177"/>
+        <location filename="../qml/ppsh/main.qml" line="200"/>
         <source>Setting</source>
         <translation type="unfinished">设置</translation>
     </message>
     <message>
-        <location filename="../qml/ppsh/main.qml" line="183"/>
+        <location filename="../qml/ppsh/main.qml" line="206"/>
         <source>About</source>
         <translation type="unfinished">关于</translation>
     </message>
+</context>
+<context>
+    <name>api</name>
+    <message>
+        <source>All</source>
+        <translation type="unfinished">全部</translation>
+    </message>
+    <message>
+        <source>Play</source>
+        <translation type="unfinished">播放</translation>
+    </message>
+    <message>
+        <source>Danmaku</source>
+        <translation type="unfinished">弹幕</translation>
+    </message>
+    <message>
+        <source>fans</source>
+        <translation type="unfinished">粉丝</translation>
+    </message>
+    <message>
+        <source>archives</source>
+        <translation type="unfinished">投稿</translation>
+    </message>
+</context>
+<context>
+	<name>b</name>
+	<message>
+		<source>Relation</source>
+		<translation type="unfinished">相关度</translation>
+	</message>
+	<message>
+		<source>Click</source>
+		<translation type="unfinished">点击量</translation>
+	</message>
+	<message>
+		<source>Publish</source>
+		<translation type="unfinished">日期</translation>
+	</message>
+	<message>
+		<source>Danmaku</source>
+		<translation type="unfinished">弹幕量</translation>
+	</message>
+	<message>
+		<source>Stow</source>
+		<translation type="unfinished">收藏量</translation>
+	</message>
+	<message>
+		<source>Video</source>
+		<translation type="unfinished">视频</translation>
+	</message>
+	<message>
+		<source>User</source>
+		<translation type="unfinished">用户</translation>
+	</message>
+	<message>
+		<source>Bangumi</source>
+		<translation type="unfinished">番剧</translation>
+	</message>
+	<message>
+		<source>Default</source>
+		<translation type="unfinished">默认</translation>
+	</message>
+	<message>
+		<source>Fans</source>
+		<translation type="unfinished">粉丝量</translation>
+	</message>
+	<message>
+		<source>Level</source>
+		<translation type="unfinished">等级</translation>
+	</message>
+	<message>
+		<source>Article</source>
+		<translation type="unfinished">文章</translation>
+	</message>
+	<message>
+		<source>View</source>
+		<translation type="unfinished">阅读量</translation>
+	</message>
+	<message>
+		<source>Like</source>
+		<translation type="unfinished">喜欢</translation>
+	</message>
+	<message>
+		<source>Comment</source>
+		<translation type="unfinished">评论量</translation>
+	</message>
+	<message>
+		<source>Live</source>
+		<translation type="unfinished">直播</translation>
+	</message>
+	<message>
+		<source>Live user</source>
+		<translation type="unfinished">主播</translation>
+	</message>
+	<message>
+		<source>Movie</source>
+		<translation type="unfinished">影视</translation>
+	</message>
+	<message>
+		<source>Topic</source>
+		<translation type="unfinished">话题</translation>
+	</message>
+	<message>
+		<source>Photo</source>
+		<translation type="unfinished">相册</translation>
+	</message>
+</context>
+<context>
+	<name>main</name>
+	<message>
+		<source>Get danmaku data fail</source>
+		<translation type="unfinished">获取弹幕失败</translation>
+	</message>
+</context>
+<context>
+	<name>util</name>
+	<message>
+		<source> seconds </source>
+		<translation type="unfinished">秒</translation>
+	</message>
+	<message>
+		<source> minutes </source>
+		<translation type="unfinished">分钟</translation>
+	</message>
+	<message>
+		<source> hours </source>
+		<translation type="unfinished">小时</translation>
+	</message>
+	<message>
+		<source> days </source>
+		<translation type="unfinished">天</translation>
+	</message>
+	<message>
+		<source> months </source>
+		<translation type="unfinished">月</translation>
+	</message>
+	<message>
+		<source>ago</source>
+		<translation type="unfinished">前</translation>
+	</message>
+	<message>
+		<source>HM</source>
+		<translation type="unfinished">亿</translation>
+	</message>
+	<message>
+		<source>W</source>
+		<translation type="unfinished">万</translation>
+	</message>
 </context>
 </TS>

@@ -63,13 +63,13 @@ BasePage {
 	}
 
 
-	VideoListWidget{
+	MixedListWidget{
 		id: view;
 		anchors.left: parent.left;
 		anchors.right: parent.right;
 		anchors.top: header.bottom;
 		anchors.bottom: parent.bottom;
-		bHandleMouseEvent: !obj.editMode;
+		bEditMode: obj.editMode;
 		onRefresh: {
 			obj.editMode = false;
 			obj._GetViewHistory();

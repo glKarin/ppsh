@@ -18,7 +18,7 @@ Rectangle {
     height: constants._iHeaderHeight;
     z: constants._iHeaderZ;
 
-    color: constants._cThemeColor;
+    color: constants._cGlobalColor;
     clip: true;
 
     Text{

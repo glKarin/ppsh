@@ -27,6 +27,7 @@ Item{
 		id: view;
 		anchors.fill: parent;
 		clip: true;
+		z: 1;
 		visible: count > 0;
 		model: [];
 		delegate: Component{
@@ -48,13 +49,13 @@ Item{
 					radius: 10;
 					smooth: true;
 					border.width: 4;
-					border.color: parent.ListView.isCurrentItem ? constants._cThemeColor : constants._cTransparent;
+					border.color: parent.ListView.isCurrentItem ? constants._cGlobalColor : constants._cTransparent;
 					clip: true;
 
 					Text{
 						anchors.fill: parent;
 						anchors.margins: constants._iSpacingLarge;
-						horizontalAlignment: Text.AlignHCenter;
+						//horizontalAlignment: Text.AlignHCenter;
 						verticalAlignment: Text.AlignVCenter;
 						text: "" + index + ": " + modelData.name;
 						font.pixelSize: constants._iFontLarge;

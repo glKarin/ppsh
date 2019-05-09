@@ -14,13 +14,13 @@ function ModelClear(model)
 		model.clear();
 }
 
-var ModelCount = ModelSize;
-
 function ModelSize(model)
 {
 	var length = Array.isArray(model) ? "length" : "count";
 	return model[length];
 }
+
+var ModelCount = ModelSize;
 
 function ModelPush(model, element)
 {
@@ -47,9 +47,9 @@ function ModelGetValue(model, i, name)
 function ModelSetValue(model, i, name, value)
 {
 	if(Array.isArray(model))
-		return model[i][name] = value;
+		model[i][name] = value;
 	else
-		return model.get(i)[name] = value;
+		model.get(i)[name] = value;
 }
 
 function ModelForeach(model, func)
@@ -69,6 +69,15 @@ function ModelRemove(model, i)
 		return model.remove(i);
 }
 
+function ModelCopy(dst, src)
+{
+	ModelClear(dst);
+	ModelForeach(src, function(e, i){
+		ModelPush(dst, e);
+	});
+}
+
+
 
 function GetSize(w, h, p)
 {
@@ -82,7 +91,7 @@ function GetSize(w, h, p)
 
 function FormatDuration(seconds)
 {
-	var sec = Math.floor(seconds);
+	var sec = Math.max(0, Math.floor(seconds));
 	var r = "";
 	var s = sec % 60;
 	var m = parseInt(sec % 3600 / 60);
@@ -116,18 +125,18 @@ function FormatTimestamp(sec)
 	var diff = now - sec;
 	var p = 1;
 	var Rules = [
-		{ limit: 60, name: qsTr("seconds"), },
-		{ limit: 3600, name: qsTr("minutes"), },
-		{ limit: 86400, name: qsTr("hours"), },
-		{ limit: 2592000, name: qsTr("days"), },
-		{ limit: 31104000, name: qsTr("months"), },
-		// { limit: 62208000, name: qsTr("years"), },
+	{ limit: 60, name: qsTr(" seconds "), },
+	{ limit: 3600, name: qsTr(" minutes "), },
+	{ limit: 86400, name: qsTr(" hours "), },
+		{ limit: 2592000, name: qsTr(" days "), },
+		{ limit: 31104000, name: qsTr(" months "), },
+			// { limit: 62208000, name: qsTr("years"), },
 	];
 	for(var i in Rules)
 	{
 		if(diff < Rules[i].limit)
 		{
-			return "%1 %2 %3".arg(parseInt(diff / p)).arg(Rules[i].name).arg(qsTr("ago"));
+			return "%1%2%3".arg(parseInt(diff / p)).arg(Rules[i].name).arg(qsTr("ago"));
 		}
 		p = Rules[i].limit;
 	}
@@ -137,8 +146,8 @@ function FormatTimestamp(sec)
 function FormatCount(c)
 {
 	var Rules = [
-		{ limit: 100000000, name: qsTr("HM"), },
-		{ limit: 10000, name: qsTr("W"), },
+	{ limit: 100000000, name: qsTr("HM"), },
+	{ limit: 10000, name: qsTr("W"), },
 	];
 	for(var i in Rules)
 	{
@@ -162,14 +171,16 @@ function HandleIconSource(iconId, inverted)
 
 function Bind(src, pro_src, dst, pro_dst)
 {
-	src[pro_src + "Changed"].connect(function(){
+	var f = function(){
 		dst[pro_dst] = src[pro_src];
-	});
+	};
+	src[pro_src + "Changed"].connect(f);
+	return f;
 }
 
-function Unbind(src, pro_src)
+function Unbind(src, pro_src, func)
 {
-	src[pro_src + "Changed"].disconnect();
+	src[pro_src + "Changed"].disconnect(func);
 }
 
 function IsFunction(v)
@@ -203,7 +214,7 @@ function Print_r(v)
 					console.log(JSON.stringify(v), t);
 			}
 			else
-				console.log(v, t);
+				console.log("NULL");
 			break;
 		case "function":
 			console.log(v, t);

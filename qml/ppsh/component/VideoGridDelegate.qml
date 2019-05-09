@@ -41,7 +41,7 @@ Item{
 				anchors.leftMargin: constants._iSpacingMedium;
 				anchors.rightMargin: constants._iSpacingMedium;
 				anchors.bottom: parent.bottom;
-				height: constants._iSizeMedium;
+				height: constants._iSizeSmall;
 				clip: true;
 				spacing: constants._iSpacingLarge;
 				Text{

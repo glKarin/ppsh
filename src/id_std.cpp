@@ -125,6 +125,7 @@ namespace id
 		errorColumn = 0;
 		if(!doc.setContent(xml, &errorMsg, &errorLine, &errorColumn))
 			qDebug() << QString("[%1]: %2 -> %3[line: %4, column: %5]").arg(QObject::tr("ERROR")).arg(QObject::tr("Parse XML error")).arg(errorMsg).arg(errorLine).arg(errorColumn);
+		else
 		{
 			QVariantMap m;
 			QDomElement root = doc.documentElement();

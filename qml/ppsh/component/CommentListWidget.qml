@@ -22,6 +22,12 @@ Item{
 		color: constants._cLightColor;
 		text: qsTr("No content");
 		visible: view.count === 0;
+		MouseArea{
+			anchors.centerIn: parent;
+			width: parent.paintedWidth;
+			height: parent.paintedHeight;
+			onClicked: root.refresh();
+		}
 	}
 
 	ListView{
@@ -125,9 +131,10 @@ Item{
 								Text{
 									height: parent.height;
 									verticalAlignment: Text.AlignVCenter;
-									text: "#" + model.floor;
+									text: model.floor !== undefined ? "#" + model.floor : "";
 									font.pixelSize: constants._iFontLarge;
 									color: constants._cLightColor;
+									visible: model.floor !== undefined;
 								}
 							}
 						}
@@ -148,7 +155,7 @@ Item{
 							Text{
 								height: parent.height;
 								verticalAlignment: Text.AlignVCenter;
-								text: Util.FormatCount(model.like);
+								text: qsTr("Like") + " " + Util.FormatCount(model.like);
 								font.pixelSize: constants._iFontLarge;
 								color: constants._cLightColor;
 							}

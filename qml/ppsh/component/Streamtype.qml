@@ -5,10 +5,13 @@ import "streamtype.js" as ST
 QtObject{
 	id: root;
 
-	property string aid;
+	property int type: constants._eVideoType; // video bangumi
 	property variant contents: []; // contents list: cid, title, duration
 	// current
+	property string mid; // mark
+	property string aid;
 	property string cid;
+	property string epid;
 	property int playType; // content index
 	property string title; // content title
 	property variant playQueue: []; // part model
@@ -23,8 +26,8 @@ QtObject{
 	property bool bLoading: false;
 	property bool bUsingCache: true;
 
-	signal streamtypeLoaded(string id, bool suc);
-	signal danmakuLoaded(string id, bool suc);
+	signal streamtypeLoaded(string aid, string cid, string epid, bool suc);
+	signal danmakuLoaded(string aid, bool suc);
 	objectName: "idStreamtypeObect";
 
 	function __GetStream()
@@ -84,23 +87,27 @@ QtObject{
 		Script.GetDanmaku(data, s, f);
 	}
 
-	function _Load(_aid, _cids)
+	function _Load(id, _cids, t)
 	{
-		aid = _aid;
+		mid = id;
 		contents = _cids;
+		type = t !== undefined ? t : constants._eVideoType;
 	}
 
 	// it will change current play content
 	function _GetStreamtype(idx)
 	{
-		if(!aid) return -1;
 		if(contents.length === 0) return -1;
 
 		var index = idx === undefined ? 0 : (typeof(idx) === "number" ? idx : _GetIndexByCid(idx));
 
+		aid = contents[index].aid;
 		cid = contents[index].cid;
-		if(!cid) return -1;
+		epid = contents[index].epid;
+		if(!aid || !cid) return -1;
+		var ida = aid;
 		var id = cid;
+		var idep = epid;
 		playType = index;
 		var t = contents[index].name;
 		if(!bUsingCache) ST.streamtypes = [];
@@ -116,14 +123,15 @@ QtObject{
 					__SetPlayQueue();
 					if(settings.bOpenDanmaku) ST.__danmakuRequest = _CONNECTOR.Request(Script.idAPI.DANMAKU_XML.arg(id), "GET_DANMAKU_XML");
 					bLoading = false;
-					root.streamtypeLoaded(id, true);
+					root.streamtypeLoaded(ida, id, idep, true);
 					return;
 				}
 			}
 		}
 		var data = {
-			aid: aid,
+			aid: ida,
 			cid: id,
+			epid: idep,
 			quality: sQuality,
 			model: ST.streamtypes,
 		};
@@ -131,7 +139,7 @@ QtObject{
 		var f = function(err){
 			bLoading = false;
 			controller._ShowMessage(err);
-				root.streamtypeLoaded(id, false);
+			root.streamtypeLoaded(ida, id, idep, false);
 		};
 		var s = function(){
 			if(data.model.length > 0)
@@ -142,12 +150,13 @@ QtObject{
 				root.__SetPlayQueue();
 				if(settings.bOpenDanmaku) ST.__danmakuRequest = _CONNECTOR.Request(Script.idAPI.DANMAKU_XML.arg(id), "GET_DANMAKU_XML");
 				root.bLoading = false;
-				root.streamtypeLoaded(id, true);
+				root.streamtypeLoaded(ida, id, idep, true);
 			}
 			else f(qsTr("No video url data"));
 		};
 
-		Script.GetVideoUrl(data, s, f);
+		if(type === constants._eBangumiType) Script.GetBangumiUrl(data, s, f);
+		else Script.GetVideoUrl(data, s, f);
 		return playType;
 	}
 

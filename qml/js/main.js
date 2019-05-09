@@ -61,7 +61,7 @@ function SearchKeyword(data, success, fail)
 			f(res);
 			return;
 		}
-		if(idAPI.MakeSearchResult(json, data.model) === 0)
+		if(idAPI.MakeSearchResult(json, data.model, data.type) === 0)
 		{
 			var page_data = __GetPageData(json.data, ["page", "pagesize", "numResults", "numPages"]);
 			if(typeof(success) === "function") success(page_data);
@@ -75,10 +75,12 @@ function SearchKeyword(data, success, fail)
 //	highlight: 1,
 		keyword: data.keyword,
 	};
-	if(data.pageNo)
+	if(data.pageNo !== undefined)
 		opt.page = data.pageNo;
-	if(data.order)
+	if(data.order !== undefined)
 		opt.order = data.order;
+	if(data.type !== undefined)
+		opt.search_type = data.type;
 	Request(idAPI.SEARCH, "GET", opt, s, f);
 }
 
@@ -96,13 +98,7 @@ function GetVideoDetail(data, success, fail)
 			f(res);
 			return;
 		}
-		var d = json.data;
-		if(!d)
-		{
-			f(json.message);
-			return;
-		}
-		if(idAPI.MakeContent(d, data.model) !== 0)
+		if(idAPI.MakeContent(json, data.model) !== 0)
 			f(json.message);
 
 		var r = new Object();
@@ -110,6 +106,8 @@ function GetVideoDetail(data, success, fail)
 		{
 			if(typeof(success) === "function") success(r);
 		}
+		else
+			f(json.message);
 	};
 	var opt = {
 		aid: data.aid,
@@ -167,8 +165,12 @@ function GetComment(data, success, fail)
 		oid: data.aid,
 		nohot: 1,
 	};
-	if(data.pageNo)
+	if(data.pageNo !== undefined)
 		opt.pn = data.pageNo;
+	if(data.order !== undefined)
+		opt.sort = data.order;
+	if(data.type !== undefined)
+		opt.type = data.type;
 	Request(idAPI.COMMENT, "GET", opt, s, f);
 }
 
@@ -201,9 +203,9 @@ function GetRanking(data, success, fail)
 		day: 1,
 		jsonp: "jsonp",
 	};
-	if(data.hasOwnProperty("rid"))
+	if(data.rid !== undefined)
 		opt.rid = data.rid;
-	if(data.hasOwnProperty("day"))
+	if(data.day !== undefined)
 		opt.day = data.day;
 	Request(idAPI.RANKING, "GET", opt, s, f);
 }
@@ -267,9 +269,9 @@ function GetCategoryRanking(data, success, fail)
 		original: 0,
 		day: 7,
 	};
-	if(data.original)
+	if(data.original !== undefined)
 		opt.original = data.original;
-	if(data.day)
+	if(data.day !== undefined)
 		opt.day = data.day;
 	Request(idAPI.CATEGORY_RANKING, "GET", opt, s, f);
 }
@@ -301,11 +303,11 @@ function GetCategoryNewlist(data, success, fail)
 		rid: data.rid,
 		type: 0,
 	};
-	if(data.pageNo)
+	if(data.pageNo !== undefined)
 		opt.pn = data.pageNo;
-	if(data.pageSize)
+	if(data.pageSize !== undefined)
 		opt.ps = data.pageSize;
-	if(data.type)
+	if(data.type !== undefined)
 		opt.type = data.type;
 	Request(idAPI.CATEGORY_NEWLIST, "GET", opt, s, f);
 }
@@ -337,9 +339,9 @@ function GetCategoryDynamic(data, success, fail)
 		jsonp: "jsonp",
 		rid: data.rid,
 	};
-	if(data.pageNo)
+	if(data.pageNo !== undefined)
 		opt.pn = data.pageNo;
-	if(data.pageSize)
+	if(data.pageSize !== undefined)
 		opt.ps = data.pageSize;
 	Request(idAPI.CATEGORY_DYNAMIC, "GET", opt, s, f);
 }
@@ -373,16 +375,42 @@ function GetCategory(data, success, fail)
 		tid: data.rid,
 		ps: 20,
 	};
-	if(data.pageNo)
+	if(data.pageNo !== undefined)
 		opt.pn = data.pageNo;
-	if(data.pageSize)
+	if(data.pageSize !== undefined)
 		opt.ps = data.pageSize;
 	Request(idAPI.CATEGORY, "GET", opt, s, f);
 }
 
 function GetFullChannels(data, success, fail)
 {
-	if(typeof(success) === "function") success(idCategory);
+	if(data.local)
+	{
+		if(typeof(success) === "function") success(idCategory);
+		return;
+	}
+
+	var f = function(message){
+		if(typeof(fail) === "function")
+			fail(message);
+	};
+	var s = function(json){
+		var res = idAPI.CheckResponse(json);
+		if(res !== 0)
+		{
+			f(res);
+			return;
+		}
+		if(idAPI.MakeFullChannels(json, data.model) === 0)
+		{
+			if(typeof(success) === "function") success(data.model);
+		}
+		else
+		{
+			if(typeof(success) === "function") success(idCategory);
+		}
+	};
+	Request(idAPI.CHANNELS, "GET", undefined, s, f);
 }
 
 // UserPage
@@ -399,18 +427,13 @@ function GetUserDetail(data, success, fail)
 			f(res);
 			return;
 		}
-		var d = json.data;
-		if(!d)
-		{
-			f(json.message);
-			return;
-		}
-
 		var r = new Object();
 		if(idAPI.MakeUserInfo(json, r) === 0)
 		{
 			if(typeof(success) === "function") success(r);
 		}
+		else
+			f(json.message);
 	};
 	var opt = {
 		mid: data.uid,
@@ -468,15 +491,214 @@ function GetUserVideos(data, success, fail)
 		order: data.order,
 		keyword: "",
 	};
-	if(data.pageNo)
+	if(data.pageNo !== undefined)
 		opt.page = data.pageNo;
-	if(data.pageSize)
+	if(data.pageSize !== undefined)
 		opt.pagesize = data.pageSize;
-	if(data.keyword)
+	if(data.keyword !== undefined)
 		opt.keyword = data.keyword;
 	Request(idAPI.USER_VIDEOS, "GET", opt, s, f);
 }
 
+function GetUserArticles(data, success, fail)
+{
+	var f = function(message){
+		if(typeof(fail) === "function")
+			fail(message);
+	};
+	var s = function(json){
+		var res = idAPI.CheckResponse(json);
+		if(res !== 0)
+		{
+			f(res);
+			return;
+		}
+		if(idAPI.MakeUserArticles(json, data.model) === 0)
+		{
+			var page_data = __GetPageData(json.data, ["pn", "ps", "count", null]);
+			if(typeof(success) === "function") success(page_data);
+		}
+		else
+			f(json.message);
+	};
+	var opt = {
+		mid: data.uid,
+		sort: data.order,
+		jsonp: "jsonp",
+	};
+	if(data.pageNo !== undefined)
+		opt.pn = data.pageNo;
+	if(data.pageSize !== undefined)
+		opt.ps = data.pageSize;
+	Request(idAPI.USER_ARTICLES, "GET", opt, s, f);
+}
+
+// BangumiPage
+function GetBangumi(data, success, fail)
+{
+	var f = function(message){
+		if(typeof(fail) === "function")
+			fail(message);
+	};
+	var s = function(json){
+		var res = idAPI.CheckResponse(json);
+		if(res !== 0)
+		{
+			f(res);
+			return;
+		}
+		if(idAPI.MakeBangumi(json, data.model) === 0)
+		{
+			var page_data = __GetPageData(json.result.page, ["num", "size", "total", null]);
+			if(typeof(success) === "function") success(page_data);
+		}
+		else
+			f(json.message);
+	};
+	var opt = {
+		season_version: -1,
+		area: -1,
+		is_finish: -1,
+		season_status: -1,
+		season_month: -1,
+		pub_date: -1,
+		style_id: -1,
+
+		copyright: -1,
+		st: 1,
+		season_type: 1,
+
+		sort: 0,
+	};
+	if(data.pageNo !== undefined)
+		opt.page = data.pageNo;
+	if(data.pageSize !== undefined)
+		opt.pagesize = data.pageSize;
+	if(data.order !== undefined)
+		opt.order = data.order;
+	if(data.sort !== undefined)
+		opt.sort = data.sort;
+
+	if(data.season_version !== undefined)
+		opt.season_version = data.season_version;
+	if(data.area !== undefined)
+		opt.area = data.area;
+	if(data.is_finish !== undefined)
+		opt.is_finish = data.is_finish;
+	if(data.season_status !== undefined)
+		opt.season_status = data.season_status;
+	if(data.season_month !== undefined)
+		opt.season_month = data.season_month;
+	if(data.pub_date !== undefined)
+		opt.pub_date = data.pub_date;
+	if(data.style_id !== undefined)
+		opt.style_id = data.style_id;
+
+	Request(idAPI.BANGUMI, "GET", opt, s, f);
+}
+
+// BangumiDetailPage
+function GetBangumiDetail(data, success, fail)
+{
+	var f = function(message){
+		if(typeof(fail) === "function")
+			fail(message);
+	};
+	var s = function(json){
+		var res = idAPI.CheckResponse(json);
+		if(res !== 0)
+		{
+			f(res);
+			return;
+		}
+		if(data.season_model)
+		{
+			if(idAPI.MakeBangumiSeasons(json, data.season_model) !== 0)
+				f(json.message);
+		}
+
+		if(data.episode_model)
+		{
+			if(idAPI.MakeBangumiEpisode(json, data.episode_model) !== 0)
+				f(json.message);
+		}
+
+		var r = new Object();
+		if(idAPI.MakeBangumiInfo(json, r) === 0)
+		{
+			if(typeof(success) === "function") success(r);
+		}
+		else
+			f(json.message);
+	};
+	var opt = {
+		season_id: data.sid,
+	};
+	Request(idAPI.BANGUMI_DETAIL, "GET", opt, s, f);
+}
+
+function GetBangumiRecommend(data, success, fail)
+{
+	var f = function(message){
+		if(typeof(fail) === "function")
+			fail(message);
+	};
+	var s = function(json){
+		var res = idAPI.CheckResponse(json);
+		if(res !== 0)
+		{
+			f(res);
+			return;
+		}
+		if(idAPI.MakeBangumiRecommend(json, data.model, data.limit) === 0)
+		{
+			if(typeof(success) === "function") success();
+		}
+		else
+			f(json.message);
+	};
+	var opt = {
+		season_id: data.sid,
+	};
+	Request(idAPI.BANGUMI_RECOMMEND, "GET", opt, s, f);
+}
+
+// LivePage
+function GetLiveDetail(data, success, fail)
+{
+	var f = function(message){
+		if(typeof(fail) === "function")
+			fail(message);
+	};
+	var s = function(json){
+		var res = idAPI.CheckResponse(json);
+		if(res !== 0)
+		{
+			f(res);
+			return;
+		}
+		var r = new Object();
+		if(idAPI.MakeLiveRoomInfo(json, r) === 0)
+		{
+			if(typeof(success) === "function") success(r);
+		}
+		else
+			f(json.message);
+	};
+	var opt = {
+		room_id: data.room_id,
+	};
+	Request(idAPI.LIVE_ROOM_DETAIL, "GET", opt, s, f);
+}
+
+// ArticlePage
+function GetArticleDetail(data, success, fail)
+{
+	var s = function(r){
+		if(typeof(success) === "function") success(r);
+	};
+	s(idAPI.M_ARTICLE_URL.arg(data.aid));
+}
 
 // PlayerPage
 function GetVideoUrl(data, success, fail)
@@ -497,6 +719,26 @@ function GetVideoUrl(data, success, fail)
 		if(typeof(success) === "function") success();
 	};
 	Request(idAPI.PLAYURL.arg(data.aid).arg(data.cid).arg(data.quality), "GET", undefined, s, f);
+}
+
+function GetBangumiUrl(data, success, fail)
+{
+	var f = function(message){
+		if(typeof(fail) === "function")
+			fail(message);
+	};
+	var s = function(json){
+		var res = idAPI.CheckResponse(json);
+		if(res !== 0)
+		{
+			f(res);
+			return;
+		}
+		if(idAPI.MakeBangumiUrl(json, data.model, data.quality) !== 0)
+			fail(json.message);
+		if(typeof(success) === "function") success();
+	};
+	Request(idAPI.BANGUMI_PLAYURL.arg(data.aid).arg(data.cid).arg(data.quality).arg(data.epid), "GET", undefined, s, f);
 }
 
 function GetDanmaku(data, success, fail)
@@ -592,12 +834,12 @@ function __GetPageData(obj, props)
 	};
 	if(obj)
 	{
-		if(props[0]) r.pageNo = obj[props[0]];
-		if(props[1]) r.pageSize = obj[props[1]];
-		if(props[2]) r.totalCount = obj[props[2]];
+		if(props[0]) r.pageNo = obj[props[0]] || r.pageNo;
+		if(props[1]) r.pageSize = obj[props[1]] || r.pageSize;
+		if(props[2]) r.totalCount = obj[props[2]] || r.totalCount;
 
 		if(props[3])
-			r.pageCount = obj[props[3]];
+			r.pageCount = obj[props[3]] || r.pageCount;
 		else
 			r.pageCount = r.pageSize !== 0 ? Math.ceil(r.totalCount / r.pageSize) : 0;
 	}

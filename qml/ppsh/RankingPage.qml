@@ -30,6 +30,7 @@ BasePage {
 				width: parent.width - back.width;
 				height: parent.height;
 				visible: count > 0;
+				bInvertedMode: constants._bInverted;
 				iTopMargin: constants._iSpacingSmall;
 				onClicked: {
 					obj._GetCategory(name, value);

@@ -1,5 +1,6 @@
 import QtQuick 1.1
 import com.nokia.meego 1.1
+import "itemlist.js" as L
 
 Item{
 	id: root;
@@ -61,15 +62,14 @@ Item{
 	}
 
 	onAOptionsChanged: {
-		var items = col.children;
-		for(var k in items)
-			items[k].destroy();
+		L.Clear();
 		col.children = [];
 
 		for(var k in aOptions)
 		{
 			var s = aOptions[k];
 			var item = checkbox.createObject(col);
+			L.Push(item);
 			item.index = k;
 			item.text = s.name;
 			item.value = s.value;

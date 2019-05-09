@@ -9,9 +9,7 @@ Item{
 	property alias count: view.count;
 	property alias interactive: view.interactive;
 	property int iDelegateHeight: constants._iSizeXXXL;
-	property bool bHandleMouseEvent: true;
 	signal refresh;
-	signal longPressed(int index, variant data);
 	objectName: "idVideoListWidget";
 
 	Text{
@@ -25,12 +23,19 @@ Item{
 		color: constants._cLightColor;
 		text: qsTr("No content");
 		visible: view.count === 0;
+		MouseArea{
+			anchors.centerIn: parent;
+			width: parent.paintedWidth;
+			height: parent.paintedHeight;
+			onClicked: root.refresh();
+		}
 	}
 
 	ListView{
 		id: view;
 		anchors.fill: parent;
 		clip: true;
+		z: 1;
 		visible: count > 0;
 		model: ListModel{}
 		header: Component{
@@ -43,18 +48,11 @@ Item{
 				width: ListView.view.width;
 				height: root.iDelegateHeight;
 				onClicked: {
-					if(root.bHandleMouseEvent) controller._OpenDetailPage(aid);
+					controller._OpenDetailPage(aid);
 				}
 				onImageClicked: {
-					if(root.bHandleMouseEvent)
-					{
-						Script.AddViewHistory(aid, data.title, data.preview, data.up, constants._eVideoType);
-						controller._OpenPlayerPage(aid);
-					}
-				}
-				onLongPressed: {
-					if(root.bHandleMouseEvent) controller._CopyToClipboard(data.aid, "avId");
-					else root.longPressed(index, data);
+					Script.AddViewHistory(aid, data.title, data.preview, data.up, constants._eVideoType);
+					controller._OpenPlayerPage(aid);
 				}
 			}
 		}

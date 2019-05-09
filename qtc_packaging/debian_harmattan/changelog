@@ -1,3 +1,14 @@
+ppsh (41.0.3harmattan1-bilibili) unstable; urgency=low
+
+  * Add bangumi page.
+  * Add article page.
+  * Add more search.
+  * Add user article.
+  * Add some zh translates.
+  * Some fixed.
+
+ -- karin <beyondk2000@gmail.com>  Mon, 5 May 2019 20:19:14 +0800
+
 ppsh (0.0.2harmattan1-bilibili) unstable; urgency=low
 
   * Initial Release.

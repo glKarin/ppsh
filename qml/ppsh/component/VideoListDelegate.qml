@@ -6,16 +6,12 @@ Item{
 	id: root;
 	signal clicked(string aid, variant data);
 	signal imageClicked(string aid, variant data);
-	signal longPressed(int index, variant data);
 	objectName: "idVideoListDelegate";
 
 	MouseArea{
 		anchors.fill: parent;
 		onClicked: {
 			root.clicked(model.aid, model);
-		}
-		onPressAndHold: {
-			root.longPressed(index, model);
 		}
 	}
 
@@ -24,7 +20,7 @@ Item{
 		anchors.left: parent.left;
 		anchors.leftMargin: constants._iSpacingLarge;
 		anchors.verticalCenter: parent.verticalCenter;
-		height: constants._iSizeXXXL - constants._iSpacingLarge * 2;
+		height: parent.height - constants._iSpacingMedium * 2;
 		width: Util.GetSize(0, height, "4/3");
 		fillMode: Image.PreserveAspectCrop;
 		clip: true
@@ -46,7 +42,7 @@ Item{
 			width: constants._iSizeLarge;
 			height: constants._iSizeSmall;
 			radius: 2;
-			color: constants._cDarkestColor;
+			color: "#000000";
 			clip: true;
 			smooth: true;
 			opacity: 0.8;
@@ -58,7 +54,7 @@ Item{
 				horizontalAlignment: Text.AlignHCenter;
 				font.pixelSize: constants._iFontSmall;
 				elide: Text.ElideRight;
-				color: constants._cLightestColor;
+				color: "#ffffff";
 			}
 		}
 	}
@@ -71,7 +67,7 @@ Item{
 		height: preview.height;
 		Text{
 			width: parent.width;
-			height: parent.height / 5 * 2.5;
+			height: parent.height / 3 * 2;
 			text: model.title;
 			font.pixelSize: constants._iFontLarge;
 			elide: Text.ElideRight;
@@ -80,41 +76,40 @@ Item{
 			maximumLineCount: 2;
 			clip: true;
 		}
-		Item{
+		Column{
 			width: parent.width;
-			height: parent.height / 5 * 0.5;
-		}
-		Text{
-			width: parent.width;
-			height: parent.height / 5;
-			verticalAlignment: Text.AlignBottom;
-			text: model.up;
-			font.pixelSize: constants._iFontMedium;
-			elide: Text.ElideRight;
-			color: constants._cDarkColor;
-		}
-		Row{
-			width: parent.width;
-			height: parent.height / 5;
-			clip: true;
-			spacing: constants._iSpacingXXL;
+			height: parent.height / 3;
 			Text{
-				height: parent.height;
-				verticalAlignment: Text.AlignBottom;
-				visible: model.view_count !== undefined;
-				text: qsTr("Play") + " " + (model.view_count ? Util.FormatCount(model.view_count) : "-");
-				font.pixelSize: constants._iFontSmall;
+				width: parent.width;
+				height: parent.height / 2;
+				clip: true;
+				verticalAlignment: Text.AlignVCenter;
+				text: model.up;
+				font.pixelSize: constants._iFontMedium;
 				elide: Text.ElideRight;
-				color: constants._cDarkerColor;
+				color: constants._cDarkColor;
 			}
-			Text{
-				height: parent.height;
-				verticalAlignment: Text.AlignBottom;
-				visible: model.danmu_count !== undefined;
-				text: qsTr("Danmaku") + " " + (model.danmu_count ? Util.FormatCount(model.danmu_count) : "-");
-				font.pixelSize: constants._iFontSmall;
-				elide: Text.ElideRight;
-				color: constants._cDarkerColor;
+			Row{
+				width: parent.width;
+				height: parent.height / 2;
+				clip: true;
+				spacing: constants._iSpacingXXL;
+				Text{
+					height: parent.height;
+					verticalAlignment: Text.AlignVCenter;
+					visible: model.view_count !== undefined;
+					text: qsTr("Play") + " " + (model.view_count ? Util.FormatCount(model.view_count) : "-");
+					font.pixelSize: constants._iFontSmall;
+					color: constants._cDarkerColor;
+				}
+				Text{
+					height: parent.height;
+					verticalAlignment: Text.AlignVCenter;
+					visible: model.danmu_count !== undefined;
+					text: qsTr("Danmaku") + " " + (model.danmu_count ? Util.FormatCount(model.danmu_count) : "-");
+					font.pixelSize: constants._iFontSmall;
+					color: constants._cDarkerColor;
+				}
 			}
 		}
 	}

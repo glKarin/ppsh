@@ -58,7 +58,7 @@ BasePage {
 			var method = "GET";
 			var s = function(json, header){
 				root.bBusy = false;
-				resp.text = json;
+				resp.text = typeof(json) === "object" ? JSON.stringify(json) : json.toString();
 			};
 			var f = function(json){
 				root.bBusy = false;
@@ -116,14 +116,14 @@ BasePage {
 				}
 			}
 			MenuItem{
-				text: "Copy Response";
+				text: "Copy response";
 				enabled: resp.text !== "";
 				onClicked: {
 					controller._CopyToClipboard(resp.text);
 				}
 			}
 			MenuItem{
-				text: "Clear Response";
+				text: "Clear response";
 				enabled: resp.text !== "";
 				onClicked: {
 					resp.text = "";

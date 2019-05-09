@@ -6,6 +6,8 @@ QtObject {
 
 	objectName: "idControllerObject";
 	property variant __queryDialog: null;
+	property variant __selectionDialog: null;
+	property variant __infoDialog: null;
 
 	// page
 	function _OpenSettingPage(im)
@@ -83,6 +85,13 @@ QtObject {
 		p._Init(aid);
 	}
 
+	function _OpenArticlePage(aid, im)
+	{
+		var page = Qt.createComponent(Qt.resolvedUrl("ArticlePage.qml"));
+		var p = pageStack.push(page, undefined, im);
+		p._Init(aid);
+	}
+
 	function _OpenAboutPage(im)
 	{
 		if(_IsCurrentPage("About")) return;
@@ -90,24 +99,42 @@ QtObject {
 		pageStack.push(page, undefined, im);
 	}
 
-	function _OpenPlayer(aid, contents, index, player)
+	function _OpenBangumiPage(im)
+	{
+		if(_IsCurrentPage("Bangumi")) return;
+		var page = Qt.createComponent(Qt.resolvedUrl("BangumiPage.qml"));
+		var p = pageStack.push(page, undefined, im);
+		p._Init();
+	}
+
+	function _OpenBangumiDetailPage(mid, im)
+	{
+		//if(_IsCurrentPage("BangumiDetail")) return;
+		var page = Qt.createComponent(Qt.resolvedUrl("BangumiDetailPage.qml"));
+		var p = pageStack.push(page, undefined, im);
+		p._Init(mid);
+	}
+
+	function _OpenPlayer(aid, contents, index, player, type)
 	{
 		var cids = [];
 		Util.ModelForeach(contents, function(e, i){
 			cids.push({
+				aid: e.aid || aid,
 				cid: e.cid,
+				epid: e.epid || "",
 				name: e.name,
 			});
 		});
-		player._Init(aid, cids, index);
+		player._Init(aid, cids, index, type);
 	}
 
-	function _OpenPlayerPage(aid)
+	function _OpenPlayerPage(aid, type)
 	{
 		if(_IsCurrentPage("Player")) return;
 		var page = Qt.createComponent(Qt.resolvedUrl("PlayerPage.qml"));
 		var p = pageStack.push(page, undefined, true);
-		p._Init(aid);
+		p._Init(aid, type);
 	}
 
 	// hide
@@ -119,6 +146,7 @@ QtObject {
 			return;
 		}
 
+		_OpenBangumiPage(); return;
 		_OpenPlayerPage("14266370");
 	}
 
@@ -157,12 +185,44 @@ QtObject {
 			rejectButtonText: rejectText
 		};
 		var diag = __queryDialog.createObject(pageStack.currentPage, prop);
-		if (typeof(acceptCallback) === "function") diag.accepted.connect(acceptCallback);
-		if (typeof(rejectCallback) === "function") diag.rejected.connect(rejectCallback);
+		if(typeof(acceptCallback) === "function") diag.accepted.connect(acceptCallback);
+		if(typeof(rejectCallback) === "function") diag.rejected.connect(rejectCallback);
+	}
+
+	function _Info(title, subtitle, content, bottomtitle, handlelink)
+	{
+		if(!__infoDialog)
+		{
+			__infoDialog = Qt.createComponent("component/InfoDialog.qml");
+		}
+		var prop = {
+			titleText: title,
+			sTitle: subtitle,
+			aTexts: content,
+			sBottomTitle: bottomtitle || "",
+		};
+		var diag = __infoDialog.createObject(pageStack.currentPage, prop);
+		if(typeof(handlelink) === "function") diag.linkClicked.connect(handlelink);
+	}
+
+	function _Select(title, model, selection_func, field, cur_selected)
+	{
+		if(!__selectionDialog)
+		{
+			__selectionDialog = Qt.createComponent("component/DynamicSelectionDialog.qml");
+		}
+		var prop = {
+			titleText: title,
+			sField: field || "",
+			model: model, // QStringList | JS string array => modelData
+			selectedIndex: cur_selected,
+		};
+		var diag = __selectionDialog.createObject(pageStack.currentPage, prop);
+		if(typeof(selection_func) === "function") diag.select.connect(selection_func);
 	}
 
 	function _IsCurrentPage(name)
 	{
-		return(pageStack.currentPage.objectName === "id" + name + "Page");
+		return(pageStack && pageStack.currentPage.objectName === "id" + name + "Page");
 	}
 }

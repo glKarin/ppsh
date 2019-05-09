@@ -21,12 +21,19 @@ Item{
 		color: constants._cLighterColor;
 		text: qsTr("No content");
 		visible: view.count === 0;
+		MouseArea{
+			anchors.centerIn: parent;
+			width: parent.paintedWidth;
+			height: parent.paintedHeight;
+			onClicked: root.refresh();
+		}
 	}
 
 	ListView{
 		id: view;
 		anchors.fill: parent;
 		clip: true;
+		z: 1;
 		visible: count > 0;
 		model: [];
 		header: Component{

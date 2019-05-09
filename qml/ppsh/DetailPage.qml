@@ -46,6 +46,7 @@ BasePage {
 	QtObject{
 		id: obj;
 		property string aid;
+		property string order: typerow.vCurrentValue;
 		property int pageNo: 1;
 		property int pageSize: 20;
 		property int pageCount: 0;
@@ -91,6 +92,9 @@ BasePage {
 			Util.ModelClear(commentview.model);
 			tabgroup.currentTab = descview;
 
+			typerow.iCurrentIndex = 0;
+			order = typerow.aOptions[0].value;
+
 			_GetDetail();
 			//_GetComment();
 			//_GetRecommend();
@@ -132,8 +136,8 @@ BasePage {
 				parttab.num = data.videos;
 				commenttab.num = data.reply;
 				infolist.model = [
-					{ name: "", value: Util.FormatCount(data.view_count), },
-					{ name: "", value: Util.FormatCount(data.danmu_count), },
+					{ name: qsTr("Play"), value: Util.FormatCount(data.view_count), },
+					{ name: qsTr("Danmaku"), value: Util.FormatCount(data.danmu_count), },
 					{ name: "", value: Util.FormatTimestamp(data.create_time), },
 					{ name: "", value: "AV" + data.aid, },
 				];
@@ -171,6 +175,7 @@ BasePage {
 				aid: aid,
 				model: commentview.model,
 				pageNo: pn,
+				order: order,
 			};
 
 			if(pn === 1) Util.ModelClear(commentview.model);
@@ -294,7 +299,7 @@ BasePage {
 			property int num: 0;
 			height: parent.height;
 			text: qsTr("Comment") + "\n" + num;
-			tab: commentview;
+			tab: commentitem;
 			onClicked: {
 				if(commentview.count === 0) obj._GetComment();
 			}
@@ -379,7 +384,7 @@ BasePage {
 				clip: true;
 				Column{
 					id: desclayout;
-					anchors.verticalCenter: parent.verticalCenter;
+					anchors.horizontalCenter: parent.horizontalCenter;
 					width: parent.width;
 					spacing: constants._iSpacingSmall;
 					Text{
@@ -393,35 +398,37 @@ BasePage {
 						color: constants._cDarkestColor;
 						text: obj.title;
 					}
-					ListView{
-						id: infolist;
+					Row{
+						id: infolayout
 						anchors.horizontalCenter: parent.horizontalCenter;
 						width: parent.width - constants._iSpacingXXL * 2;
 						height: constants._iSizeLarge;
-						interactive: false;
 						spacing: constants._iSpacingLarge;
 						clip: true;
-						orientation: ListView.Horizontal;
-						delegate: Component{
-							Row{
-								height: ListView.view.height;
-								clip: true;
-								Text{
-									height: parent.height;
-									verticalAlignment: Text.AlignVCenter;
-									font.pixelSize: constants._iFontLarge;
-									elide: Text.ElideRight;
-									font.bold: true;
-									color: constants._cDarkerColor;
-									text: modelData.name;
-								}
-								Text{
-									height: parent.height;
-									verticalAlignment: Text.AlignVCenter;
-									font.pixelSize: constants._iFontMedium;
-									elide: Text.ElideRight;
-									color: constants._cDarkColor;
-									text: modelData.value;
+						Repeater{
+							id: infolist;
+							delegate: Component{
+								Row{
+									height: infolayout.height;
+									spacing: constants._iSpacingSmall;
+									clip: true;
+									Text{
+										height: parent.height;
+										verticalAlignment: Text.AlignVCenter;
+										font.pixelSize: constants._iFontLarge;
+										elide: Text.ElideRight;
+										font.bold: true;
+										color: constants._cDarkerColor;
+										text: modelData.name;
+									}
+									Text{
+										height: parent.height;
+										verticalAlignment: Text.AlignVCenter;
+										font.pixelSize: constants._iFontMedium;
+										elide: Text.ElideRight;
+										color: constants._cDarkColor;
+										text: modelData.value;
+									}
 								}
 							}
 						}
@@ -437,39 +444,40 @@ BasePage {
 						clip: true;
 						color: constants._cDarkColor;
 					}
-					ListView{
-						id: ranklist;
+					Row{
+						id: ranklayout;
 						anchors.horizontalCenter: parent.horizontalCenter;
 						width: parent.width - constants._iSpacingXXL * 2;
 						height: constants._iSizeXL;
-						interactive: false;
 						clip: true;
-						orientation: ListView.Horizontal;
-						delegate: Component{
-							Column{
-								width: ListView.view.width / 5;
-								height: ListView.view.height;
-								clip: true;
-								Text{
-									width: parent.width;
-									height: parent.height / 2;
-									verticalAlignment: Text.AlignVCenter;
-									horizontalAlignment: Text.AlignHCenter;
-									font.pixelSize: constants._iFontLarge;
-									elide: Text.ElideRight;
-									font.bold: true;
-									color: constants._cDarkerColor;
-									text: modelData.name;
-								}
-								Text{
-									width: parent.width;
-									height: parent.height / 2;
-									verticalAlignment: Text.AlignVCenter;
-									horizontalAlignment: Text.AlignHCenter;
-									font.pixelSize: constants._iFontMedium;
-									elide: Text.ElideRight;
-									color: constants._cDarkColor;
-									text: modelData.value;
+						Repeater{
+							id: ranklist;
+							delegate: Component{
+								Column{
+									width: ranklayout.width / ranklist.model.length;
+									height: ranklayout.height;
+									clip: true;
+									Text{
+										width: parent.width;
+										height: parent.height / 2;
+										verticalAlignment: Text.AlignVCenter;
+										horizontalAlignment: Text.AlignHCenter;
+										font.pixelSize: constants._iFontLarge;
+										elide: Text.ElideRight;
+										font.bold: true;
+										color: constants._cDarkerColor;
+										text: modelData.name;
+									}
+									Text{
+										width: parent.width;
+										height: parent.height / 2;
+										verticalAlignment: Text.AlignVCenter;
+										horizontalAlignment: Text.AlignHCenter;
+										font.pixelSize: constants._iFontMedium;
+										elide: Text.ElideRight;
+										color: constants._cDarkColor;
+										text: modelData.value;
+									}
 								}
 							}
 						}
@@ -491,6 +499,7 @@ BasePage {
 				obj._Play(index, cid);
 			}
 		}
+
 		VideoListWidget{
 			id: recommendview;
 			anchors.fill: parent;
@@ -498,15 +507,45 @@ BasePage {
 				obj._GetRecommend();
 			}
 		}
-		CommentListWidget{
-			id: commentview;
+
+		Item{
+			id: commentitem;
 			anchors.fill: parent;
-			bHasMore: obj.pageNo < obj.pageCount;
-			onRefresh: {
-				obj._GetComment();
+			TypeRowWidget{
+				id: typerow;
+				anchors.left: parent.left;
+				anchors.right: parent.right;
+				anchors.top: parent.top;
+				sText: "sort";
+				aOptions: [
+					{
+						name: qsTr("New"),
+						value: "0",
+					},
+					{
+						name: qsTr("Hot"),
+						value: "2",
+					},
+				]
+				vCurrentValue: "";
+				onSelected: {
+					obj.order = value;
+					obj._GetComment();
+				}
 			}
-			onMore: {
-				obj._GetComment(constants._sNextPage);
+			CommentListWidget{
+				id: commentview;
+				anchors.left: parent.left;
+				anchors.right: parent.right;
+				anchors.top: typerow.bottom;
+				anchors.bottom: parent.bottom;
+				bHasMore: obj.pageNo < obj.pageCount;
+				onRefresh: {
+					obj._GetComment();
+				}
+				onMore: {
+					obj._GetComment(constants._sNextPage);
+				}
 			}
 		}
 	}
@@ -529,6 +568,7 @@ BasePage {
 				PropertyChanges{
 					target: root;
 					bFull: false;
+					bLock: false;
 				}
 				PropertyChanges{
 					target: loader;
@@ -551,6 +591,7 @@ BasePage {
 				PropertyChanges{
 					target: root;
 					bFull: true;
+					bLock: true;
 				}
 				PropertyChanges{
 					target: loader;
