@@ -1027,6 +1027,10 @@ var idSearch = [
 		value: "live",
 		order: [
 			{
+				name: qsTr("Living"),
+				value: "online",
+			},
+			{
 				name: qsTr("Default"),
 				value: "",
 			},

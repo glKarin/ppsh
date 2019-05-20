@@ -4,19 +4,14 @@ import "../../js/util.js" as Util
 
 Item{
 	id: root;
-	property bool editMode: false;
-	signal clicked(string aid, variant data);
-	signal imageClicked(string aid, variant data);
-	signal longPressed(int index, variant data);
-	objectName: "idMixedListDelegate";
+	signal clicked(string rid, variant data);
+	signal imageClicked(string rid, variant data);
+	objectName: "idLiveListDelegate";
 
 	MouseArea{
 		anchors.fill: parent;
 		onClicked: {
-			root.clicked(model.aid, model);
-		}
-		onPressAndHold: {
-			root.longPressed(index, model);
+			root.clicked(model.rid, model);
 		}
 	}
 
@@ -26,7 +21,7 @@ Item{
 		anchors.leftMargin: constants._iSpacingLarge;
 		anchors.verticalCenter: parent.verticalCenter;
 		height: parent.height - constants._iSpacingMedium * 2;
-		width: model.type == constants._eBangumiType ? Util.GetSize(height, 0, "4/3") : (model.type == constants._eUserType ? height : Util.GetSize(0, height, "4/3"));
+		width: Util.GetSize(0, height, "4/3");
 		fillMode: Image.PreserveAspectCrop;
 		clip: true
 		source: model.preview;
@@ -35,12 +30,35 @@ Item{
 		MouseArea{
 			anchors.fill: parent;
 			onClicked: {
-				root.imageClicked(model.aid, model);
+				root.imageClicked(model.rid, model);
+			}
+		}
+
+		Rectangle{
+			anchors.right: parent.right;
+			anchors.bottom: parent.bottom;
+			anchors.rightMargin: constants._iSpacingMedium;
+			anchors.bottomMargin: constants._iSpacingSmall;
+			width: constants._iSizeLarge;
+			height: constants._iSizeSmall;
+			radius: 2;
+			color: "#000000";
+			clip: true;
+			smooth: true;
+			opacity: 0.8;
+			visible: model.duration ? true : false;
+			Text{
+				anchors.fill: parent;
+				text: model.duration || "";
+				verticalAlignment: Text.AlignVCenter;
+				horizontalAlignment: Text.AlignHCenter;
+				font.pixelSize: constants._iFontSmall;
+				elide: Text.ElideRight;
+				color: "#ffffff";
 			}
 		}
 	}
 	Column{
-		id: col;
 		anchors.left: preview.right;
 		anchors.leftMargin: constants._iSpacingMedium;
 		anchors.right: parent.right;
@@ -74,32 +92,12 @@ Item{
 			Text{
 				width: parent.width;
 				height: parent.height / 2;
-				clip: true;
 				verticalAlignment: Text.AlignVCenter;
-				//horizontalAlignment: Text.AlignRight;
-				text: Util.FormatTimestamp(model.ts / 1000);
-				font.pixelSize: constants._iFontSmall;
 				elide: Text.ElideRight;
+				text: qsTr("Online") + " " + (model.online ? Util.FormatCount(model.online) : "-");
+				font.pixelSize: constants._iFontSmall;
 				color: constants._cDarkerColor;
 			}
-		}
-	}
-
-	LabelWidget{
-		anchors.bottom: col.bottom;
-		anchors.right: col.right;
-		sText: constants._GetTypeName(model.type);
-	}
-
-	ToolIcon{
-		anchors.top: parent.top;
-		anchors.right: parent.right;
-		z: 1;
-		enabled: root.editMode;
-		visible: enabled;
-		iconId: "toolbar-close";
-		onClicked: {
-			root.longPressed(index, model);
 		}
 	}
 
@@ -113,5 +111,4 @@ Item{
 		color: constants._cLighterColor;
 		z: 1;
 	}
-
 }

@@ -88,6 +88,7 @@ Item{
 			controller._OpenArticlePage(mid);
 			Script.AddViewHistory(mid, data.title, data.preview, "", data.type);
 		}
+		else if(data.type == constants._eLiveType) controller._OpenLiveDetailPage(mid);
 	}
 
 	function _GetCellHeight(type)

@@ -219,7 +219,7 @@ BasePage {
 		anchors.bottom: parent.bottom;
 		z: 1;
 		opacity: 0.6;
-        iconId: flip.bOpen ? "toolbar-gallery" : "toolbar-new-chat";
+		iconId: flip.bOpen ? "toolbar-gallery" : "toolbar-new-chat";
 		enabled: obj.aid != "";
 		visible: enabled;
 		Text{

@@ -49,7 +49,7 @@ QtObject{
 		ST.__danmakuRequest = "";
 		if(error !== 0)
 		{
-			constroller._ShowMessage("[%1]: %2 -> %3(%4)".arg(qsTr("ERROR")).arg(name).arg(error).arg(value));
+			controller._ShowMessage("[%1]: %2 -> %3(%4)".arg(qsTr("ERROR")).arg(name).arg(error).arg(value));
 			danmakuLoaded(cid, false);
 			return;
 		}
@@ -121,7 +121,10 @@ QtObject{
 				{
 					console.log("Using cache");
 					__SetPlayQueue();
-					if(settings.bOpenDanmaku) ST.__danmakuRequest = _CONNECTOR.Request(Script.idAPI.DANMAKU_XML.arg(id), "GET_DANMAKU_XML");
+					if(type != constants._eLiveType)
+					{
+						if(settings.bOpenDanmaku) ST.__danmakuRequest = _CONNECTOR.Request(Script.idAPI.DANMAKU_XML.arg(id), "GET_DANMAKU_XML");
+					}
 					bLoading = false;
 					root.streamtypeLoaded(ida, id, idep, true);
 					return;
@@ -148,7 +151,10 @@ QtObject{
 				data.model[data.model.length - 1].name = t;
 				//ST.streamtypes = data.model; // now, streamtype in js file, so do not need to assign it
 				root.__SetPlayQueue();
-				if(settings.bOpenDanmaku) ST.__danmakuRequest = _CONNECTOR.Request(Script.idAPI.DANMAKU_XML.arg(id), "GET_DANMAKU_XML");
+				if(type != constants._eLiveType)
+				{
+					if(settings.bOpenDanmaku) ST.__danmakuRequest = _CONNECTOR.Request(Script.idAPI.DANMAKU_XML.arg(id), "GET_DANMAKU_XML");
+				}
 				root.bLoading = false;
 				root.streamtypeLoaded(ida, id, idep, true);
 			}
@@ -156,6 +162,7 @@ QtObject{
 		};
 
 		if(type === constants._eBangumiType) Script.GetBangumiUrl(data, s, f);
+		else if(type === constants._eLiveType) Script.GetLiveUrl(data, s, f);
 		else Script.GetVideoUrl(data, s, f);
 		return playType;
 	}

@@ -7,8 +7,8 @@ import "../js/util.js" as Util
 BasePage {
 	id: root;
 
-	sTitle: flip.bOpen ? obj.categoryName : qsTr("Category");
-	objectName: "idCategoryPage";
+	sTitle: flip.bOpen ? obj.categoryName : qsTr("Live");
+	objectName: "idLivePage";
 
 	Header{
 		id: header;
@@ -41,7 +41,9 @@ BasePage {
 	QtObject{
 		id: obj;
 		property string categoryName;
-		property string rid;
+		property string pid;
+		property string aid;
+		property string cid;
 		property int pageNo: 1;
 		property int pageSize: 20;
 		property int pageCount: 0;
@@ -55,12 +57,10 @@ BasePage {
 
 			var d = {
 				model: channelsview.model,
-				// local: 1,
 			};
 
 			var s = function(data){
-				if(Array.isArray(data)) channelsview.model = data;
-				else channelsview.model = data.children;
+				channelsview.model = data;
 				root.bBusy = false;
 			};
 			var f = function(err){
@@ -68,18 +68,24 @@ BasePage {
 				controller._ShowMessage(err);
 			};
 
-			Script.GetFullChannels(d, s, f);
+			Script.GetLiveChannels(d, s, f);
 		}
 
-		function _GetCategory(name, id, p)
+		function _GetCategory(name, id, p_id, p)
 		{
-			if(id !== undefined && rid !== id)
+			if(id !== undefined && aid !== id)
 			{
-				rid = id;
+				aid = id;
 				typerow.iCurrentIndex = 0;
 				order = typerow.aOptions[0].value;
 			}
-			if(rid == "") return;
+			if(p_id !== undefined && pid !== p_id)
+			{
+				pid = p_id;
+				typerow.iCurrentIndex = 0;
+				order = typerow.aOptions[0].value;
+			}
+			if(aid == "") return;
 			flipicon.visible = true;
 			if(name !== undefined) categoryName = name;
 
@@ -94,10 +100,12 @@ BasePage {
 			else if(p === constants._sThisPage) pn = pageNo;
 			else pn = 1;
 			var d = {
-				rid: rid,
-				model: videoview.model,
+				model: liveview.model,
 				pageNo: pn,
 				pageSize: 20,
+				aid: aid,
+				pid: pid,
+				order: order,
 			};
 
 			if(p === undefined)
@@ -107,7 +115,7 @@ BasePage {
 				pageCount = 0;
 				totalCount = 0;
 			}
-			Util.ModelClear(videoview.model);
+			Util.ModelClear(liveview.model);
 
 			var s = function(data){
 				if(data)
@@ -124,7 +132,8 @@ BasePage {
 				controller._ShowMessage(err);
 			};
 
-			(order === "RANKING" ? Script.GetCategory : Script.GetCategoryNewlist)(d, s, f);
+			console.log(name, id, p_id);
+			Script.GetLive(d, s, f);
 		}
 	}
 
@@ -134,14 +143,14 @@ BasePage {
 		anchors.left: parent.left;
 		anchors.right: parent.right;
 		anchors.bottom: parent.bottom;
-		front: ChannelsGridWidget{
+		front: ChannelsFlowWidget{
 			id: channelsview;
 			anchors.fill: parent;
 			onRefresh: {
 				obj._GetChannels();
 			}
 			onClicked: {
-				obj._GetCategory(name, value);
+				obj._GetCategory(name, value, pvalue);
 			}
 		}
 		back: Item{
@@ -154,29 +163,29 @@ BasePage {
 				sText: "order";
 				aOptions: [
 					{
-						name: qsTr("Ranking"),
-						value: "RANKING",
+						name: qsTr("Online"),
+						value: "online",
 					},
 					{
-						name: qsTr("New"),
-						value: "NEWLIST",
+						name: qsTr("Living"),
+						value: "live_time",
 					},
 				]
-				vCurrentValue: "RANKING";
+				vCurrentValue: "online";
 				onSelected: {
 					obj.order = value;
 					obj._GetCategory();
 				}
 			}
 
-			VideoListWidget{
-				id: videoview;
+			LiveGridWidget{
+				id: liveview;
 				anchors.top: typerow.bottom;
 				anchors.left: parent.left;
 				anchors.right: parent.right;
 				anchors.bottom: parent.bottom;
 				onRefresh: {
-					obj._GetCategory(undefined, undefined, constants._sThisPage);
+					obj._GetCategory(undefined, undefined, undefined, constants._sThisPage);
 				}
 			}
 
@@ -188,10 +197,10 @@ BasePage {
 				pageCount: obj.pageCount;
 				totalCount: obj.totalCount;
 				onPrev: {
-					obj._GetCategory(undefined, undefined, constants._sPrevPage);
+					obj._GetCategory(undefined, undefined, undefined, constants._sPrevPage);
 				}
 				onNext: {
-					obj._GetCategory(undefined, undefined, constants._sNextPage);
+					obj._GetCategory(undefined, undefined, undefined, constants._sNextPage);
 				}
 			}
 		}

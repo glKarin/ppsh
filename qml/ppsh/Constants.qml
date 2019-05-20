@@ -170,6 +170,23 @@ QtObject {
 		property int _eLiveType: 9;
 
 
+
+		function _GetTypeName(t)
+		{
+			var type = Number(t);
+			switch(type)
+			{
+				case _eVideoType: return qsTr("Video");
+				case _eArticleType: return qsTr("Article");
+				case _eBangumiType: return qsTr("Bangumi");
+				case _eUserType: return qsTr("User");
+				case _eAdType: return qsTr("Ad");
+				case _eKeywordType: return qsTr("Keyword");
+				case _eLiveType: return qsTr("Live");
+				default: return qsTr("Other");
+			}
+		}
+
 		function _GetLevelColor(lvl)
 		{
 			var i = typeof(lvl) !== "number" ? parseInt(lvl) : lvl;

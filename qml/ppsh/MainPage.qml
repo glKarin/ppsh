@@ -26,6 +26,7 @@ BasePage {
 			ToolIcon{
 				id: menuicon;
 				anchors.verticalCenter: parent.verticalCenter;
+				width: height;
 				iconId: "toolbar-view-menu";
 				onClicked: {
 					menu._Toggle(true);
@@ -53,6 +54,14 @@ BasePage {
 				id: btnrow;
 				height: parent.height;
 				clip: true;
+				ToolIcon{
+					anchors.verticalCenter: parent.verticalCenter;
+					width: height;
+					iconId: "toolbar-alarm";
+					onClicked: {
+						controller._OpenLivePage();
+					}
+				}
 				ToolIcon{
 					anchors.verticalCenter: parent.verticalCenter;
 					width: height;

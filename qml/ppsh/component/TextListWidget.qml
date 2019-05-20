@@ -9,7 +9,7 @@ Item{
 	property alias sTitle: title.sText;
 	property variant aTexts: [];
 	property int iPixelSize: constants._iFontLarge;
-	property color cColor: "#000000";
+	property color cColor: constants._cDarkestColor;
 	property int iMargins: 0;
 	property int iSpacing: col.spacing;
 	signal linkClicked(string link);
@@ -47,7 +47,7 @@ Item{
 		id: textitem;
 		Text{
 			font.pixelSize: root.iPixelSize;
-			width: parent.width;
+			width: col.width;
 			color: root.cColor;
 			wrapMode: Text.WordWrap;
 			horizontalAlignment: root.eHorizontalAlignment;

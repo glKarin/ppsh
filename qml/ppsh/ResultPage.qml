@@ -180,7 +180,7 @@ BasePage {
 	}
 
 	Component.onCompleted: {
-		var limit = 4;
+		var limit = 5;
 		typeview.bTabMode = (limit <= 4);
 		typeview._LoadModel(Script.idSearch, limit);
 		obj._SetType(Util.ModelGetValue(typeview.model, 0, "value"), 0);

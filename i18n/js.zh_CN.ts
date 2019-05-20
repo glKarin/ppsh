@@ -103,6 +103,10 @@
 		<source>Photo</source>
 		<translation type="unfinished">相册</translation>
 	</message>
+	<message>
+		<source>Living</source>
+		<translation type="unfinished">直播中</translation>
+	</message>
 </context>
 <context>
 	<name>main</name>

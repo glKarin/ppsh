@@ -9,7 +9,7 @@ Item{
 	signal clicked(string name, string value, string pvalue);
 	signal headerClicked(string name, string value, string pvalue);
 	signal refresh;
-	objectName: "idChannelsGridWidget";
+	objectName: "idChannelsFlowWidget";
 
 	Text{
 		anchors.fill: parent;
@@ -66,24 +66,21 @@ Item{
 							sText: modelData.name;
 							onClicked: root.headerClicked(modelData.name, modelData.rid, modelData.pid);
 						}
-						Column{
+						Flow{
 							id: sublayout;
 							anchors.top: cname.bottom;
 							anchors.left: parent.left;
 							anchors.right: parent.right;
+							spacing: constants._iSpacingLarge;
 							Repeater{
 								model: modelData.children;
 								delegate: Component{
 									Item{
-										width: sublayout.width;
-										height: constants._iSizeLarge;
+										width: childrenRect.width;
+										height: childrenRect.height;
 										clip: true;
 
 										Text{
-											anchors.fill: parent;
-											anchors.margins: constants._iSpacingLarge;
-											horizontalAlignment: Text.AlignHCenter;
-											verticalAlignment: Text.AlignVCenter;
 											text: modelData.name;
 											font.pixelSize: constants._iFontXL;
 											elide: Text.ElideRight;

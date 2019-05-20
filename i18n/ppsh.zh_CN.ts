@@ -285,9 +285,17 @@
     </message>
 </context>
 <context>
+    <name>ChannelsFlowWidget</name>
+    <message>
+        <location filename="../qml/ppsh/component/ChannelsFlowWidget.qml" line="23"/>
+        <source>No content</source>
+        <translation type="unfinished">无内容</translation>
+    </message>
+</context>
+<context>
     <name>ChannelsGridWidget</name>
     <message>
-        <location filename="../qml/ppsh/component/ChannelsGridWidget.qml" line="22"/>
+        <location filename="../qml/ppsh/component/ChannelsGridWidget.qml" line="23"/>
         <source>No content</source>
         <translation type="unfinished">无内容</translation>
     </message>
@@ -333,7 +341,47 @@
         <translation type="unfinished">基紫</translation>
     </message>
     <message>
+        <location filename="../qml/ppsh/Constants.qml" line="179"/>
+        <source>Video</source>
+        <translation type="unfinished">视频</translation>
+    </message>
+    <message>
+        <location filename="../qml/ppsh/Constants.qml" line="180"/>
+        <source>Article</source>
+        <translation type="unfinished">文章</translation>
+    </message>
+    <message>
+        <location filename="../qml/ppsh/Constants.qml" line="181"/>
+        <source>Bangumi</source>
+        <translation type="unfinished">番剧</translation>
+    </message>
+    <message>
+        <location filename="../qml/ppsh/Constants.qml" line="182"/>
+        <source>User</source>
+        <translation type="unfinished">用户</translation>
+    </message>
+    <message>
         <location filename="../qml/ppsh/Constants.qml" line="183"/>
+        <source>Ad</source>
+        <translation type="unfinished">广告</translation>
+    </message>
+    <message>
+        <location filename="../qml/ppsh/Constants.qml" line="184"/>
+        <source>Keyword</source>
+        <translation type="unfinished">关键词</translation>
+    </message>
+    <message>
+        <location filename="../qml/ppsh/Constants.qml" line="185"/>
+        <source>Live</source>
+        <translation type="unfinished">直播</translation>
+    </message>
+    <message>
+        <location filename="../qml/ppsh/Constants.qml" line="186"/>
+        <source>Other</source>
+        <translation type="unfinished">其他</translation>
+    </message>
+    <message>
+        <location filename="../qml/ppsh/Constants.qml" line="200"/>
         <source>Super VIP</source>
         <translation type="unfinished">年度大会员</translation>
     </message>
@@ -363,7 +411,7 @@
         <translation type="unfinished">原画(1080P)</translation>
     </message>
     <message>
-        <location filename="../qml/ppsh/Constants.qml" line="183"/>
+        <location filename="../qml/ppsh/Constants.qml" line="200"/>
         <source>VIP</source>
         <translation type="unfinished">大会员</translation>
     </message>
@@ -371,12 +419,12 @@
 <context>
     <name>Controller</name>
     <message>
-        <location filename="../qml/ppsh/Controller.qml" line="170"/>
+        <location filename="../qml/ppsh/Controller.qml" line="192"/>
         <source>Copy %1 to clipboard successful</source>
         <translation type="unfinished">已复制%1到粘贴板</translation>
     </message>
     <message>
-        <location filename="../qml/ppsh/Controller.qml" line="170"/>
+        <location filename="../qml/ppsh/Controller.qml" line="192"/>
         <source>data</source>
         <translation type="unfinished">数据</translation>
     </message>
@@ -506,9 +554,167 @@
     </message>
 </context>
 <context>
+    <name>LiveDetailPage</name>
+    <message>
+        <location filename="../qml/ppsh/LiveDetailPage.qml" line="10"/>
+        <source>Live detail</source>
+        <translation type="unfinished">直播详情</translation>
+    </message>
+    <message>
+        <location filename="../qml/ppsh/LiveDetailPage.qml" line="71"/>
+        <source>Loading video player...</source>
+        <translation type="unfinished">正在加载播放器......</translation>
+    </message>
+    <message>
+        <location filename="../qml/ppsh/LiveDetailPage.qml" line="73"/>
+        <source>Load video player fail</source>
+        <translation type="unfinished">加载播放器失败</translation>
+    </message>
+    <message>
+        <location filename="../qml/ppsh/LiveDetailPage.qml" line="76"/>
+        <source>Hold player to switch fullscreen or normal</source>
+        <translation type="unfinished">长按播放器切换全屏</translation>
+    </message>
+    <message>
+        <location filename="../qml/ppsh/LiveDetailPage.qml" line="131"/>
+        <source>Online</source>
+        <translation type="unfinished">在线</translation>
+    </message>
+    <message>
+        <location filename="../qml/ppsh/LiveDetailPage.qml" line="132"/>
+        <source>Follower</source>
+        <translation type="unfinished">粉丝</translation>
+    </message>
+    <message>
+        <location filename="../qml/ppsh/LiveDetailPage.qml" line="133"/>
+        <source>Room ID</source>
+        <translation type="unfinished">房间ID</translation>
+    </message>
+    <message>
+        <location filename="../qml/ppsh/LiveDetailPage.qml" line="169"/>
+        <source>Female</source>
+        <translation type="unfinished">女</translation>
+    </message>
+    <message>
+        <location filename="../qml/ppsh/LiveDetailPage.qml" line="169"/>
+        <source>Male</source>
+        <translation type="unfinished">男</translation>
+    </message>
+    <message>
+        <location filename="../qml/ppsh/LiveDetailPage.qml" line="187"/>
+        <source>Coming soon...</source>
+        <translation type="unfinished">暂未实现...</translation>
+    </message>
+    <message>
+        <location filename="../qml/ppsh/LiveDetailPage.qml" line="287"/>
+        <source>Living</source>
+        <translation type="unfinished">直播中</translation>
+    </message>
+    <message>
+        <location filename="../qml/ppsh/LiveDetailPage.qml" line="287"/>
+        <source>Not living</source>
+        <translation type="unfinished">未直播</translation>
+    </message>
+    <message>
+        <location filename="../qml/ppsh/LiveDetailPage.qml" line="296"/>
+        <source>Room is not living</source>
+        <translation type="unfinished">房间休息中</translation>
+    </message>
+    <message>
+        <location filename="../qml/ppsh/LiveDetailPage.qml" line="300"/>
+        <source>room Id is empty</source>
+        <translation type="unfinished">房间号为空</translation>
+    </message>
+    <message>
+        <location filename="../qml/ppsh/LiveDetailPage.qml" line="314"/>
+        <source>Danmaku</source>
+        <translation type="unfinished">弹幕</translation>
+    </message>
+    <message>
+        <location filename="../qml/ppsh/LiveDetailPage.qml" line="323"/>
+        <source>Streams</source>
+        <translation type="unfinished">视频流</translation>
+    </message>
+    <message>
+        <location filename="../qml/ppsh/LiveDetailPage.qml" line="331"/>
+        <source>Description</source>
+        <translation type="unfinished">简介</translation>
+    </message>
+    <message>
+        <location filename="../qml/ppsh/LiveDetailPage.qml" line="337"/>
+        <source>Recommend</source>
+        <translation type="unfinished">相关</translation>
+    </message>
+    <message>
+        <location filename="../qml/ppsh/LiveDetailPage.qml" line="365"/>
+        <source>Not support</source>
+        <translation type="unfinished">不支持</translation>
+    </message>
+    <message>
+        <location filename="../qml/ppsh/LiveDetailPage.qml" line="494"/>
+        <source>Bilibili verify</source>
+        <translation type="unfinished">Bilibili个人认证</translation>
+    </message>
+</context>
+<context>
+    <name>LiveGridDelegate</name>
+    <message>
+        <location filename="../qml/ppsh/component/LiveGridDelegate.qml" line="17"/>
+        <source>room Id</source>
+        <translation type="unfinished">房间ID</translation>
+    </message>
+    <message>
+        <location filename="../qml/ppsh/component/LiveGridDelegate.qml" line="60"/>
+        <source>Online</source>
+        <translation type="unfinished">在线</translation>
+    </message>
+</context>
+<context>
+    <name>LiveGridWidget</name>
+    <message>
+        <location filename="../qml/ppsh/component/LiveGridWidget.qml" line="21"/>
+        <source>No content</source>
+        <translation type="unfinished">无内容</translation>
+    </message>
+</context>
+<context>
+    <name>LiveListDelegate</name>
+    <message>
+        <location filename="../qml/ppsh/component/LiveListDelegate.qml" line="97"/>
+        <source>Online</source>
+        <translation type="unfinished">在线</translation>
+    </message>
+</context>
+<context>
+    <name>LiveListWidget</name>
+    <message>
+        <location filename="../qml/ppsh/component/LiveListWidget.qml" line="24"/>
+        <source>No content</source>
+        <translation type="unfinished">无内容</translation>
+    </message>
+</context>
+<context>
+    <name>LivePage</name>
+    <message>
+        <location filename="../qml/ppsh/LivePage.qml" line="10"/>
+        <source>Live</source>
+        <translation type="unfinished">直播</translation>
+    </message>
+    <message>
+        <location filename="../qml/ppsh/LivePage.qml" line="166"/>
+        <source>Online</source>
+        <translation type="unfinished">在线人数</translation>
+    </message>
+    <message>
+        <location filename="../qml/ppsh/LivePage.qml" line="170"/>
+        <source>Living</source>
+        <translation type="unfinished">直播时间</translation>
+    </message>
+</context>
+<context>
     <name>MainPage</name>
     <message>
-        <location filename="../qml/ppsh/MainPage.qml" line="43"/>
+        <location filename="../qml/ppsh/MainPage.qml" line="44"/>
         <source>Search</source>
         <translation type="unfinished">搜索</translation>
     </message>
@@ -550,13 +756,14 @@
 <context>
     <name>PlayerPage</name>
     <message>
-        <location filename="../qml/ppsh/PlayerPage.qml" line="14"/>
+        <location filename="../qml/ppsh/PlayerPage.qml" line="13"/>
         <source>Player</source>
         <translation type="unfinished">播放器</translation>
     </message>
     <message>
         <location filename="../qml/ppsh/PlayerPage.qml" line="84"/>
         <location filename="../qml/ppsh/PlayerPage.qml" line="110"/>
+        <location filename="../qml/ppsh/PlayerPage.qml" line="136"/>
         <source>Load video player fail</source>
         <translation type="unfinished">加载播放器失败</translation>
     </message>
@@ -598,43 +805,31 @@
     </message>
     <message>
         <location filename="../src/utility.cpp" line="326"/>
-        <source>Add bangumi page.</source>
-        <translation type="unfinished">新增番剧页面</translation>
+        <source>Add live.</source>
+        <translation type="unfinished">新增直播</translation>
     </message>
     <message>
         <location filename="../src/utility.cpp" line="327"/>
-        <source>Add article page.</source>
-        <translation type="unfinished">新增文章页面</translation>
-    </message>
-    <message>
-        <location filename="../src/utility.cpp" line="328"/>
-        <source>Add more search.</source>
-        <translation type="unfinished">新增更多搜索</translation>
-    </message>
-    <message>
-        <location filename="../src/utility.cpp" line="329"/>
-        <source>Add user article.</source>
-        <translation type="unfinished">新增用户文章</translation>
-    </message>
-    <message>
-        <location filename="../src/utility.cpp" line="330"/>
-        <source>Add some zh translates.</source>
-        <translation type="unfinished">增加一些中文翻译</translation>
-    </message>
-    <message>
-        <location filename="../src/utility.cpp" line="331"/>
         <source>Some fixed.</source>
         <translation type="unfinished">一些修复</translation>
     </message>
     <message>
-        <location filename="../src/utility.cpp" line="332"/>
+        <location filename="../src/utility.cpp" line="328"/>
         <source>Videos of dash format will decode by MPlayer, others using internal player.</source>
         <translation type="unfinished">Dash格式视频会自动调用MPlayer播放, 其他视频使用自带播放器</translation>
     </message>
     <message>
-        <location filename="../src/utility.cpp" line="333"/>
+        <location filename="../src/utility.cpp" line="329"/>
         <source>If playing with KMPlayer and not work, set player to MPlayer.</source>
         <translation type="unfinished">如果KMPlayer无法播放, 请设置KMPlayer播放器为MPlayer</translation>
+    </message>
+</context>
+<context>
+    <name>QualityStreamWidget</name>
+    <message>
+        <location filename="../qml/ppsh/component/QualityStreamWidget.qml" line="74"/>
+        <source>No content</source>
+        <translation type="unfinished">无内容</translation>
     </message>
 </context>
 <context>
@@ -990,7 +1185,7 @@
         <translation type="unfinished">没有弹幕数据</translation>
     </message>
     <message>
-        <location filename="../qml/ppsh/component/Streamtype.qml" line="155"/>
+        <location filename="../qml/ppsh/component/Streamtype.qml" line="161"/>
         <source>No video url data</source>
         <translation type="unfinished">缺失视频播放链接</translation>
     </message>
@@ -1245,22 +1440,22 @@
         <translation type="unfinished">BiliBili</translation>
     </message>
     <message>
-        <location filename="../qml/ppsh/main.qml" line="188"/>
+        <location filename="../qml/ppsh/main.qml" line="194"/>
         <source>Browser</source>
         <translation type="unfinished">浏览器</translation>
     </message>
     <message>
-        <location filename="../qml/ppsh/main.qml" line="194"/>
+        <location filename="../qml/ppsh/main.qml" line="200"/>
         <source>View history</source>
         <translation type="unfinished">观看记录</translation>
     </message>
     <message>
-        <location filename="../qml/ppsh/main.qml" line="200"/>
+        <location filename="../qml/ppsh/main.qml" line="206"/>
         <source>Setting</source>
         <translation type="unfinished">设置</translation>
     </message>
     <message>
-        <location filename="../qml/ppsh/main.qml" line="206"/>
+        <location filename="../qml/ppsh/main.qml" line="212"/>
         <source>About</source>
         <translation type="unfinished">关于</translation>
     </message>
@@ -1369,6 +1564,10 @@
 	<message>
 		<source>Photo</source>
 		<translation type="unfinished">相册</translation>
+	</message>
+	<message>
+		<source>Living</source>
+		<translation type="unfinished">直播中</translation>
 	</message>
 </context>
 <context>

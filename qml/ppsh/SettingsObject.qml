@@ -4,23 +4,23 @@ QtObject {
 	id: root;
 
 	objectName: "idSettingsObject";
-	property int iOrientation: _UT.GetSetting("general/orientation");
-	onIOrientationChanged: _UT.SetSetting("general/orientation", iOrientation);
+	property int iOrientation: _UT.GetSetting("generals/orientation");
+	onIOrientationChanged: _UT.SetSetting("generals/orientation", iOrientation);
 
-	property int iThemeColor: _UT.GetSetting("general/theme_color");
-	onIThemeColorChanged: _UT.SetSetting("general/theme_color", iThemeColor);
+	property int iThemeColor: _UT.GetSetting("generals/theme_color");
+	onIThemeColorChanged: _UT.SetSetting("generals/theme_color", iThemeColor);
 
-	property bool bNightMode: _UT.GetSetting("general/night_mode");
-	onBNightModeChanged: _UT.SetSetting("general/night_mode", bNightMode);
+	property bool bNightMode: _UT.GetSetting("generals/night_mode");
+	onBNightModeChanged: _UT.SetSetting("generals/night_mode", bNightMode);
 
-	property int iDefaultBrowser: _UT.GetSetting("general/default_browser");
-	onIDefaultBrowserChanged: _UT.SetSetting("general/default_browser", iDefaultBrowser);
+	property int iDefaultBrowser: _UT.GetSetting("generals/default_browser");
+	onIDefaultBrowserChanged: _UT.SetSetting("generals/default_browser", iDefaultBrowser);
 
-	property bool bTouchIconDrag: _UT.GetSetting("general/touch_icon_drag");
-	onBTouchIconDragChanged: _UT.SetSetting("general/touch_icon_drag", bTouchIconDrag);
+	property bool bTouchIconDrag: _UT.GetSetting("generals/touch_icon_drag");
+	onBTouchIconDragChanged: _UT.SetSetting("generals/touch_icon_drag", bTouchIconDrag);
 
-	property bool bFullscreen: _UT.GetSetting("general/fullscreen");
-	onBFullscreenChanged: _UT.SetSetting("general/fullscreen", bFullscreen);
+	property bool bFullscreen: _UT.GetSetting("generals/fullscreen");
+	onBFullscreenChanged: _UT.SetSetting("generals/fullscreen", bFullscreen);
 
 
 
@@ -62,12 +62,12 @@ QtObject {
 	{
 		_UT.ResetSetting(name);
 
-		iOrientation = _UT.GetSetting("general/orientation");
-		iThemeColor = _UT.GetSetting("general/theme_color");
-		bNightMode = _UT.GetSetting("general/night_mode");
-		iDefaultBrowser = _UT.GetSetting("general/default_browser");
-		bTouchIconDrag = _UT.GetSetting("general/touch_icon_drag");
-		bFullscreen = _UT.GetSetting("general/fullscreen");
+		iOrientation = _UT.GetSetting("generals/orientation");
+		iThemeColor = _UT.GetSetting("generals/theme_color");
+		bNightMode = _UT.GetSetting("generals/night_mode");
+		iDefaultBrowser = _UT.GetSetting("generals/default_browser");
+		bTouchIconDrag = _UT.GetSetting("generals/touch_icon_drag");
+		bFullscreen = _UT.GetSetting("generals/fullscreen");
 
 		iVideoQuality = _UT.GetSetting("player/video_quality");
 		bOpenDanmaku = _UT.GetSetting("player/open_danmaku");

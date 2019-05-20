@@ -115,6 +115,22 @@ QtObject {
 		p._Init(mid);
 	}
 
+	function _OpenLivePage(im)
+	{
+		//if(_IsCurrentPage("Live")) return;
+		var page = Qt.createComponent(Qt.resolvedUrl("LivePage.qml"));
+		var p = pageStack.push(page, undefined, im);
+		p._Init();
+	}
+
+	function _OpenLiveDetailPage(rid, im)
+	{
+		//if(_IsCurrentPage("LiveDetail")) return;
+		var page = Qt.createComponent(Qt.resolvedUrl("LiveDetailPage.qml"));
+		var p = pageStack.push(page, undefined, im);
+		p._Init(rid);
+	}
+
 	function _OpenPlayer(aid, contents, index, player, type)
 	{
 		var cids = [];
@@ -146,7 +162,6 @@ QtObject {
 			return;
 		}
 
-		_OpenBangumiPage(); return;
 		_OpenPlayerPage("14266370");
 	}
 
@@ -154,6 +169,13 @@ QtObject {
 	{
 		if(_IsCurrentPage("TestRequest")) return;
 		var page = Qt.createComponent(Qt.resolvedUrl("test/TestRequestPage.qml"));
+		pageStack.push(page, undefined, im);
+	}
+
+	function _OpenTestVideoPage(im)
+	{
+		if(_IsCurrentPage("TestVideo")) return;
+		var page = Qt.createComponent(Qt.resolvedUrl("test/TestVideoPage.qml"));
 		pageStack.push(page, undefined, im);
 	}
 

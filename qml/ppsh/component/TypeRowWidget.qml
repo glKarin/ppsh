@@ -89,7 +89,10 @@ Item{
 		for(var i = 0; i < items.length; i++)
 		{
 			if(items[i].value == v)
-			items[i].checked = true;
+			{
+				items[i].checked = true;
+				break;
+			}
 		}
 	}
 

@@ -12,7 +12,9 @@
 #include "networkconnector.h"
 #include "networkmanager.h"
 #include "qtm/qdeclarativewebview.h"
+#ifdef _KARIN_MM_EXTENSIONS
 #include "qtm/qdeclarativevideo_p.h"
+#endif
 
 Q_DECL_EXPORT int main(int argc, char *argv[])
 {
@@ -66,7 +68,9 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 
 	qmlRegisterType<QDeclarativeWebView>(ID_QML_URI, ID_QML_MAJOR_VER, ID_QML_MINOR_VER, ID_APP "WebView");
 	qmlRegisterType<QDeclarativeWebSettings>();
+#ifdef _KARIN_MM_EXTENSIONS
 	qmlRegisterType<QDeclarativeVideo>(ID_QML_URI, ID_QML_MAJOR_VER, ID_QML_MINOR_VER, ID_APP "Video");
+#endif
 	qmlRegisterUncreatableType<idNetworkConnector>(ID_QML_URI, ID_QML_MAJOR_VER, ID_QML_MINOR_VER, ID_APP "NetworkConnector", RegisterUncreatableTypeMsg.arg("idNetworkConnector"));
 	qmlRegisterUncreatableType<idPlayer>(ID_QML_URI, ID_QML_MAJOR_VER, ID_QML_MINOR_VER, ID_APP "Player", RegisterUncreatableTypeMsg.arg("idPlayer"));
 

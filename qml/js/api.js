@@ -47,7 +47,11 @@ var idWebAPI = {
 	USER_VIDEOS: "http://space.bilibili.com/ajax/member/getSubmitVideos", //?mid=3487048&pagesize=30&tid=0&page=2&keyword=&order=update|click|stow
 	USER_ARTICLES: "http://api.bilibili.com/x/space/article", //?mid=12345667&pn=1&ps=12&sort=publish_time|view|fav&jsonp=jsonp
 	LIVE_ROOM_DETAIL: "http://api.live.bilibili.com/room/v1/Room/get_info", //?room_id=%1",
-	LIVE_URL: "http://api.live.bilibili.com/room/v1/Room/playUrl?cid=%1&quality=0&platform=web",
+	LIVE_URL: "http://api.live.bilibili.com/room/v1/Room/playUrl", //?cid=%1&quality=0&platform=web",
+	LIVE_CHANNELS: "http://api.live.bilibili.com/room/v1/Area/getList",
+	LIVE_ROOMS: "http://api.live.bilibili.com/room/v3/area/getRoomList", //?platform=web&parent_area_id=pid&cate_id=0&area_id=aid&sort_type=online|live_time&page=3&page_size=30&tag_version=1
+	LIVE_USER: "https://api.live.bilibili.com/live_user/v1/UserInfo/get_anchor_in_room", //?roomid=946585
+	LIVE_RECOMMEND: "http://api.live.bilibili.com/room/v1/room/get_recommend_by_room", //?room_id=946585&count=8
 	CHANNELS: "http://app.bilibili.com/x/region/list/old?build=2310&platform=ios&device=phone",
 	BANGUMI_DETAIL: "http://bangumi.bilibili.com/view/web_api/season", //?season_id=425",
 	BANGUMI_RECOMMEND: "http://api.bilibili.com/pgc/web/recommend/related/recommend", //?season_id=425
@@ -94,10 +98,13 @@ var idWebAPI = {
 	MakeSearchResult: function(json, container, type, limit){
 		if(!json.data)
 			return -1;
-		if(!Array.isArray(json.data.result))
+		var result = json.data.result;
+		if(type === "live")
+			result = result.live_room;
+		if(!Array.isArray(result))
 			return -1;
 		var push = Array.isArray(container) ? "push" : "append";
-		var list = json.data.result;
+		var list = result;
 		for(var i in list)
 		{
 			if(limit && i >= limit)
@@ -160,32 +167,52 @@ var idWebAPI = {
 							name: qsTr("Like"),
 							value: e.like,
 						},
-						{
-							name: qsTr("Reply"),
-							value: e.reply,
-						},
+							{
+								name: qsTr("Reply"),
+								value: e.reply,
+							},
 						],
 					}
-					:
-					{
-						mid: e.id.toString(),
+			:
+				(type === "live" ? 
+				 {
+						mid: e.roomid.toString(),
 						title: e.title,
-						subtitle: e.author,
-						sign: e.duration,
-						preview: this.__MakePreviewPath(e.pic),
-						type: 1,
+						subtitle: e.uname,
+						sign: e.live_status == 1 ? qsTr("Living") : qsTr("Unlive"),
+						preview: this.__MakePreviewPath(e.cover),
+						type: 9,
 						extras: [
 						{
-							name: qsTr("Play"),
-							value: e.play,
+							name: qsTr("Online"),
+							value: e.online,
 						},
 						{
-							name: qsTr("Danmaku"),
-							value: e.video_review,
+							name: qsTr("Category"),
+							value: e.cate_name,
 						},
 						],
-					}
-			));
+				 }
+				 :
+				 {
+					 mid: e.id.toString(),
+					 title: e.title,
+					 subtitle: e.author,
+					 sign: e.duration,
+					 preview: this.__MakePreviewPath(e.pic),
+					 type: 1,
+					 extras: [
+					 {
+						 name: qsTr("Play"),
+						 value: e.play,
+					 },
+					 {
+						 name: qsTr("Danmaku"),
+						 value: e.video_review,
+					 },
+					 ],
+				 }
+			)));
 			container[push](item);
 		}
 		return 0;
@@ -902,6 +929,88 @@ var idWebAPI = {
 		return 0;
 	},
 
+	MakeLive: function(json, container, limit){
+		if(!json.data)
+			return -1;
+		if(!Array.isArray(json.data.list))
+			return -1;
+		var push = Array.isArray(container) ? "push" : "append";
+		var list = json.data.list;
+		for(var i in list)
+		{
+			if(limit && i >= limit)
+				break;
+
+			var e = list[i];
+			var item = {
+				rid: e.roomid.toString(),
+				title: e.title,
+				uname: e.uname,
+				online: e.online,
+				preview: e.system_cover,
+				area: e.parent_name + "/" + e.area_name,
+			};
+			container[push](item);
+		}
+		return 0;
+	},
+
+	MakeLiveChannels: function(json, container){
+		if(!Array.isArray(json.data))
+			return -1;
+		var push = Array.isArray(container) ? "push" : "append";
+		var list = json.data;
+		for(var i in list)
+		{
+			var e = list[i];
+			var item = {
+				name: e.name,
+				rid: e.id.toString(),
+				children: [],
+				pid: "0",
+			};
+			for(var si in e.list)
+			{
+				var se = e.list[si];
+				var subitem = {
+					name: se.name,
+					rid: se.id.toString(),
+					pid: se.parent_id.toString(),
+					//old_area_id: se.old_area_id.toString(),
+					//pname: se.parent_name,
+				};
+				item.children.push(subitem);
+			}
+			container[push](item);
+		}
+		return 0;
+	},
+
+	MakeLiveRecommend: function(json, container, limit){
+		if(!json.data)
+			return -1;
+		if(!Array.isArray(json.data.recommend))
+			return -1;
+		var push = Array.isArray(container) ? "push" : "append";
+		var list = json.data.recommend;
+		for(var i in list)
+		{
+			if(limit && i >= limit)
+				break;
+
+			var e = list[i];
+			var item = {
+				rid: e.room_id.toString(),
+				title: e.title,
+				up: e.uname,
+				online: e.online,
+				preview: e.pic,
+			};
+			container[push](item);
+		}
+		return 0;
+	},
+
 	MakeLiveRoomInfo: function(json, ret){
 		if(!json.data)
 			return -1;
@@ -910,7 +1019,6 @@ var idWebAPI = {
 		var d = json.data;
 
 		r.room_id = d.room_id.toString();
-		r.view_count = d.online;
 		r.is_portrait = d.is_portrait;
 		r.live_status = d.live_status;
 		r.bg = d.background;
@@ -918,6 +1026,9 @@ var idWebAPI = {
 		r.title = d.title;
 		r.desc = d.description;
 		r.live_time = d.live_time;
+		r.online = d.online;
+		r.follower = d.attention;
+		r.area = d.parent_area_name + "/" + d.area_name;
 
 		r.uid = d.uid.toString();
 		r.avatar = d.user_cover;
@@ -927,25 +1038,157 @@ var idWebAPI = {
 		return ret ? 0 : r;
 	},
 
-	MakeLiveUrl: function(json, container, quality){
+	MakeLiveUserInfo: function(json, ret){
+		if(!json.data)
+			return -1;
+		if(!json.data.info)
+			return -1;
+
+		var r = ret ? ret : {};
+		var d = json.data.info;
+
+		r.uid = d.uid.toString();
+		r.avatar = d.face;
+		r.up = d.uname;
+		r.sex = d.gender;
+		r.official = d.official_verify ? d.official_verify.desc : "";
+		r.vip = d.vip_type;
+		r.level = 0;
+		if(json.data.level)
+		{
+			var d2 = json.data.level;
+			r.level = d2.master_level ? d2.master_level.level : 0;
+		}
+
+		return ret ? 0 : r;
+	},
+
+	MakeLiveQualitys: function(json, container, roomid, nosort){
 		if(!json.data)
 			return -1;
 
 		var push = Array.isArray(container) ? "push" : "append";
-		var data = json.data;
-		var list = json.data.durl;
+		if(!Array.isArray(json.data.accept_quality))
+			return -1;
+		var qs= json.data.accept_quality;
+		var desc = json.data.quality_description;
+
+		var list = [];
+		for(var i in qs)
+			list.push(qs[i]);
+		if(!nosort)
+			list.sort(function(a, b){
+				return Number(a) - Number(b);
+			});
 
 		for(var i in list)
 		{
 			var e = list[i];
 			var item = {
-				url: e.url,
+				name: qsTr("Unknow quality"),
+				value: e.toString(),
+				cid: e.toString(),
 			};
+			if(roomid !== undefined)
+				item.aid = roomid.toString();
+			for(var di in desc)
+			{
+				if(desc[di].qn == e)
+				{
+					item["name"] = desc[di].desc;
+					break;
+				}
+			}
 			container[push](item);
 		}
 		return 0;
 	},
 
+	MakeLiveStreams: function(json, container){
+		if(!json.data)
+			return -1;
+		if(!Array.isArray(json.data.durl))
+			return -1;
+
+		var push = Array.isArray(container) ? "push" : "append";
+		var list = json.data.durl;
+		var desc = json.data.quality_description;
+		var title = "quality";
+		var q = json.data.current_qn;
+		if(Array.isArray(desc))
+		{
+			for(var i in desc)
+			{
+				if(desc[i].qn == q)
+				{
+					title = desc[i].desc;
+					break;
+				}
+			}
+		}
+		for(var i in list)
+		{
+			var e = list[i];
+			var item = {
+				name: title + (e.url ? "" : "*"), 
+				page: Number(i) + 1,
+				url: e.url,
+				quality: q,
+			};
+			container[push](item);
+		}
+
+		return 0;
+	},
+
+	MakeLiveUrl: function(json, container, quality){
+		if(!json.data)
+			return -1;
+
+		var push = Array.isArray(container) ? "push" : "append";
+		var desc = json.data.quality_description;
+		var title = "quality";
+		var q = json.data.current_qn;
+		if(Array.isArray(desc))
+		{
+			for(var i in desc)
+			{
+				if(desc[i].qn == q)
+				{
+					title = desc[i].desc;
+					break;
+				}
+			}
+		}
+		var arr = [];
+		if (Array.isArray(json.data.durl))
+		{
+			var durl = json.data.durl;
+			for(var i in durl)
+			{
+				var e = durl[i];
+				arr.push({
+					title: title + "[" + i + "]", 
+					name: e.url ? i : "" + i + "*",
+					url: e.url,
+					value: i,
+					duration: e.length,
+					size: 0, // 
+				});
+			}
+			var item = {
+				name: title,
+				index: 0,
+				size: 0, //
+				duration: 0,
+				part: arr,
+				type: "durl",
+			};
+			container[push](item);
+		}
+
+		return 0;
+	},
 };
 
 var idAPI = idWebAPI;

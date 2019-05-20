@@ -76,10 +76,10 @@ BasePage {
 
 	Flickable{
 		id: flick;
+		anchors.left: parent.left;
 		anchors.right: parent.right;
 		anchors.top: header.bottom;
 		anchors.bottom: parent.bottom;
-		width: parent.width;
 		contentWidth: width;
 		contentHeight: resp.height;
 		clip: true;

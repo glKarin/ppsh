@@ -23,7 +23,7 @@ QNetworkReply *	idNetworkAccessManager::createRequest ( Operation op, const QNet
 {
     QNetworkRequest r(req);
 
-#ifndef _NL_HARMATTAN
+#ifndef _HARMATTAN
     if(r.url().scheme() == "https")
     {
         QSslConfiguration config;

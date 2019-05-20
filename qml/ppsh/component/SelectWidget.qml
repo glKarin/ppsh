@@ -48,7 +48,7 @@ Item{
 			property variant value;
 			property bool enabled: true;
 
-			width: parent.width;
+			width: col.width;
 			onClicked: {
 				iCurrentIndex = index;
 				vCurrentValue = value;
@@ -104,7 +104,10 @@ Item{
 		for(var i = 0; i < items.length; i++)
 		{
 			if(items[i].value == v)
+			{
 				items[i].checked = true;
+				break;
+			}
 		}
 	}
 

@@ -63,7 +63,20 @@ function SearchKeyword(data, success, fail)
 		}
 		if(idAPI.MakeSearchResult(json, data.model, data.type) === 0)
 		{
-			var page_data = __GetPageData(json.data, ["page", "pagesize", "numResults", "numPages"]);
+			var page_json = null;
+			if(data.type === "live")
+			{
+				var room = json.data.pageinfo.live_room;
+				page_json = {
+					"page": json.data.page,
+					"pageSize": json.data.pagesize,
+					"numResults":room.numResults,
+						"numPages": room.numPages,
+				};
+			}
+			else
+				page_json = json.data;
+			var page_data = __GetPageData(page_json, ["page", "pagesize", "numResults", "numPages"]);
 			if(typeof(success) === "function") success(page_data);
 		}
 		else
@@ -448,6 +461,8 @@ function GetUserVideos(data, success, fail)
 		if(typeof(fail) === "function")
 			fail(message);
 	};
+	var pn = data.pageNo ? data.pageNo : 1;
+	var ps = data.pageSize ? data.pageSize : 20;
 	var s = function(json){
 		var res = json.status ? 0 : -1;
 		if(res !== 0)
@@ -475,8 +490,8 @@ function GetUserVideos(data, success, fail)
 				}
 			}
 			var fake_json_data = {
-				"pageNo": data.pageNo,
-				"pageSize": data.pageSize,
+				"pageNo": pn,
+				"pageSize": ps,
 				"totalCount": count,
 			};
 			var page_data = __GetPageData(fake_json_data, ["pageNo", "pageSize", "totalCount", null]);
@@ -486,15 +501,13 @@ function GetUserVideos(data, success, fail)
 			f(json.message);
 	};
 	var opt = {
+		page: pn,
+		pagesize: ps,
 		mid: data.uid,
 		tid: data.tid,
 		order: data.order,
 		keyword: "",
 	};
-	if(data.pageNo !== undefined)
-		opt.page = data.pageNo;
-	if(data.pageSize !== undefined)
-		opt.pagesize = data.pageSize;
 	if(data.keyword !== undefined)
 		opt.keyword = data.keyword;
 	Request(idAPI.USER_VIDEOS, "GET", opt, s, f);
@@ -664,6 +677,108 @@ function GetBangumiRecommend(data, success, fail)
 }
 
 // LivePage
+function GetLiveChannels(data, success, fail)
+{
+	var f = function(message){
+		if(typeof(fail) === "function")
+			fail(message);
+	};
+	var s = function(json){
+		var res = idAPI.CheckResponse(json);
+		if(res !== 0)
+		{
+			f(res);
+			return;
+		}
+		if(idAPI.MakeLiveChannels(json, data.model) === 0)
+		{
+			if(typeof(success) === "function") success(data.model);
+		}
+		else
+			f(json.message);
+	};
+	Request(idAPI.LIVE_CHANNELS, "GET", undefined, s, f);
+}
+
+function GetLive(data, success, fail)
+{
+	var f = function(message){
+		if(typeof(fail) === "function")
+			fail(message);
+	};
+	var pn = data.pageNo ? data.pageNo : 1;
+	var ps = data.pageSize ? data.pageSize : 20;
+	var s = function(json){
+		var res = idAPI.CheckResponse(json);
+		if(res !== 0)
+		{
+			f(res);
+			return;
+		}
+		if(idAPI.MakeLive(json, data.model, data.limit) === 0)
+		{
+			var fake_json_data = {
+				"pageNo": pn,
+				"pageSize": ps,
+				"totalCount": json.data.count,
+			};
+			var page_data = __GetPageData(fake_json_data, ["pageNo", "pageSize", "totalCount", null]);
+			if(typeof(success) === "function") success(page_data);
+		}
+		else
+			f(json.message);
+	};
+	var opt = {
+		page: pn,
+		page_size: ps,
+		parent_area_id: 0,
+		cate_id: 0,
+		area_id: 0,
+		sort_type: "online",
+		platform: "web",
+		//tag_version: 1,
+	};
+	if(data.pid !== undefined)
+		opt.parent_area_id = data.pid;
+	if(data.cid !== undefined)
+		opt.cate_id = data.cid;
+	if(data.aid !== undefined)
+		opt.area_id = data.aid;
+	if(data.order !== undefined)
+		opt.sort_type = data.order;
+	Request(idAPI.LIVE_ROOMS, "GET", opt, s, f);
+}
+
+// LiveDetailPage
+function GetLiveRecommend(data, success, fail)
+{
+	var f = function(message){
+		if(typeof(fail) === "function")
+			fail(message);
+	};
+	var s = function(json){
+		var res = idAPI.CheckResponse(json);
+		if(res !== 0)
+		{
+			f(res);
+			return;
+		}
+		if(idAPI.MakeLiveRecommend(json, data.model, data.limit) === 0)
+		{
+			if(typeof(success) === "function") success();
+		}
+		else
+			f(json.message);
+	};
+	var opt = {
+		room_id: data.rid,
+		count: 8,
+	};
+	if(data.count !== undefined)
+		opt.count = data.count;
+	Request(idAPI.LIVE_RECOMMEND, "GET", opt, s, f);
+}
+
 function GetLiveDetail(data, success, fail)
 {
 	var f = function(message){
@@ -686,9 +801,79 @@ function GetLiveDetail(data, success, fail)
 			f(json.message);
 	};
 	var opt = {
-		room_id: data.room_id,
+		room_id: data.rid,
 	};
 	Request(idAPI.LIVE_ROOM_DETAIL, "GET", opt, s, f);
+}
+
+function GetLiveUserDetail(data, success, fail)
+{
+	var f = function(message){
+		if(typeof(fail) === "function")
+			fail(message);
+	};
+	var s = function(json){
+		var res = idAPI.CheckResponse(json);
+		if(res !== 0)
+		{
+			f(res);
+			return;
+		}
+		var r = new Object();
+		if(idAPI.MakeLiveUserInfo(json, r) === 0)
+		{
+			if(typeof(success) === "function") success(r);
+		}
+		else
+			f(json.message);
+	};
+	var opt = {
+		roomid: data.rid,
+	};
+	Request(idAPI.LIVE_USER, "GET", opt, s, f);
+}
+
+function GetLiveQualityStreams(data, success, fail)
+{
+	var f = function(message){
+		if(typeof(fail) === "function")
+			fail(message);
+	};
+	var s = function(json){
+		var res = idAPI.CheckResponse(json);
+		if(res !== 0)
+		{
+			f(res);
+			return;
+		}
+		if(data.quality_model)
+		{
+			if(idAPI.MakeLiveQualitys(json, data.quality_model, data.rid, data.nosort) === 0)
+			{
+				if(typeof(success) === "function") success();
+			}
+			else
+				f(json.message);
+		}
+
+		if(data.stream_model)
+		{
+			if(idAPI.MakeLiveStreams(json, data.stream_model) === 0)
+			{
+				if(typeof(success) === "function") success();
+			}
+			else
+				f(json.message);
+		}
+	};
+	var opt = {
+		cid: data.rid,
+		quality: 0,
+		platform: "web",
+	};
+	if(data.quality !== undefined)
+		opt.quality = data.quality;
+	Request(idAPI.LIVE_URL, "GET", opt, s, f);
 }
 
 // ArticlePage
@@ -739,6 +924,31 @@ function GetBangumiUrl(data, success, fail)
 		if(typeof(success) === "function") success();
 	};
 	Request(idAPI.BANGUMI_PLAYURL.arg(data.aid).arg(data.cid).arg(data.quality).arg(data.epid), "GET", undefined, s, f);
+}
+
+function GetLiveUrl(data, success, fail)
+{
+	var f = function(message){
+		if(typeof(fail) === "function")
+			fail(message);
+	};
+	var s = function(json){
+		var res = idAPI.CheckResponse(json);
+		if(res !== 0)
+		{
+			f(res);
+			return;
+		}
+		if(idAPI.MakeLiveUrl(json, data.model, data.cid) !== 0)
+			fail(json.message);
+		if(typeof(success) === "function") success();
+	};
+	var opt = {
+		cid: data.aid,
+		quality: data.cid,
+		platform: "web",
+	};
+	Request(idAPI.LIVE_URL, "GET", opt, s, f);
 }
 
 function GetDanmaku(data, success, fail)
@@ -846,3 +1056,26 @@ function __GetPageData(obj, props)
 	return r;
 }
 
+// test
+function TEST(data, success, fail)
+{
+	var f = function(message){
+		console.log(message);
+		if(typeof(fail) === "function")
+			fail(message);
+	};
+	var s = function(json){
+		console.log(JSON.stringify(json));
+		if(typeof(success) === "function") success(json);
+	};
+	var room_id = data.id;
+	var api_url = "http://www.douyutv.com/api/v1/";
+	var	args = "room/%1?aid=wp&client_sys=wp&time=%2".arg(room_id).arg((Date.now() / 1000).toString());
+	var	auth_md5 = (args + "zNzMV1y4EMxOHS6I5WKm"); //.encode("utf-8")
+	var auth_str = Qt.md5(auth_md5);
+	var json_request_url = "%1%2&auth=%3".arg(api_url).arg(args).arg(auth_str);
+
+	var url = json_request_url;
+	console.log(url);
+	Request(url, "GET", undefined, s, f);
+}

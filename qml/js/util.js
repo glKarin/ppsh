@@ -64,9 +64,9 @@ function ModelForeach(model, func)
 function ModelRemove(model, i)
 {
 	if(Array.isArray(model))
-		return model.splice(i, 1);
+		model.splice(i, 1);
 	else
-		return model.remove(i);
+		model.remove(i);
 }
 
 function ModelCopy(dst, src)

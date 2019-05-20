@@ -79,6 +79,7 @@ Item{
 			Script.AddViewHistory(aid, data.title, data.preview, data.up, data.type);
 			controller._OpenArticlePage(aid);
 		}
+		else if(data.type == constants._eLiveType) controller._OpenLiveDetailPage(aid);
 	}
 
 	function __Open(aid, data)

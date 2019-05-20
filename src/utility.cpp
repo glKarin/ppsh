@@ -28,12 +28,12 @@ namespace id
 
 		_tDefaultSettings.insert("setting_version", ID_SETTING_VERSION);
 
-		_tDefaultSettings.insert("general/orientation", 0);
-		_tDefaultSettings.insert("general/theme_color", 0);
-		_tDefaultSettings.insert("general/night_mode", false);
-		_tDefaultSettings.insert("general/default_browser", 1);
-		_tDefaultSettings.insert("general/touch_icon_drag", false);
-		_tDefaultSettings.insert("general/fullscreen", true);
+		_tDefaultSettings.insert("generals/orientation", 0);
+		_tDefaultSettings.insert("generals/theme_color", 0);
+		_tDefaultSettings.insert("generals/night_mode", false);
+		_tDefaultSettings.insert("generals/default_browser", 1);
+		_tDefaultSettings.insert("generals/touch_icon_drag", false);
+		_tDefaultSettings.insert("generals/fullscreen", true);
 
 		_tDefaultSettings.insert("player/open_danmaku", true);
 		_tDefaultSettings.insert("player/danmaku_opacity", 1.0);
@@ -323,11 +323,7 @@ QVariant idUtility::Changelog(const QString &version) const
 	if(version.isEmpty())
 	{
 		list 
-			<< QObject::tr("Add bangumi page.")
-			<< QObject::tr("Add article page.")
-			<< QObject::tr("Add more search.")
-			<< QObject::tr("Add user article.")
-			<< QObject::tr("Add some zh translates.")
+			<< QObject::tr("Add live.")
 			<< QObject::tr("Some fixed.")
 			<< QObject::tr("Videos of dash format will decode by MPlayer, others using internal player.")
 			<< QObject::tr("If playing with KMPlayer and not work, set player to MPlayer.");
