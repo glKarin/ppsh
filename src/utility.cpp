@@ -16,7 +16,7 @@
 #include "networkmanager.h"
 #include "id_std.h"
 
-#define ID_SETTING_VERSION 2
+#define ID_SETTING_VERSION 3
 
 namespace id
 {

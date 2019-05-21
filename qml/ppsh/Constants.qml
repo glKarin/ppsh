@@ -10,8 +10,8 @@ QtObject {
     property color _cHeaderTitleColor: "#ffffff";
 
     property int _iMaxZ: 999;
-		property int _iMaxWidth: 480;
-		property int _iMaxHeight: 800;
+        property int _iMaxWidth: screen.displayHeight;
+        property int _iMaxHeight: screen.displayWidth;
 
     property int _iFontMicro: 10;
     property int _iFontTiny: 12;

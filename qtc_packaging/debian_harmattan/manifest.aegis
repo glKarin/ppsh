@@ -31,10 +31,8 @@ AutoGenerateAegisFile
 <aegis>
 	<request policy="add">
 
-		<!-- Make a GSM call, send text messages (SMS). -->
-	<!--
-		<credential name="Cellular" />
-	-->
+                <!-- Make a GSM call, send text messages (SMS). -->
+                <credential name="Cellular" />
 
 		<!-- Access Facebook social data. -->
 	<!--
@@ -56,18 +54,16 @@ AutoGenerateAegisFile
 		<credential name="Location" />
 	-->
 
-		<!-- Access to Audio, Multimedia and Camera. -->
-	<!--
+                <!-- Access to Audio, Multimedia and Camera. -->
 		<credential name="GRP::pulse-access" />
 		<credential name="GRP::video" />
-		<credential name="GRP::audio" />
-	-->
+                <credential name="GRP::audio" />
 
-	</request>
+        </request>
 
-	<for path="/opt/ppsh/bin/ppsh" />
+        <for path="/opt/ppsh/bin/ppsh" />
         <for path="/opt/ppsh/kmplayer++/bin/kgstplayer" />
         <for path="/opt/ppsh/kmplayer++/bin/kmplayer++" />
         <for path="/opt/ppsh/kmplayer++/bin/mplayer" />
-	<for path="applauncherd-launcher::/usr/bin/applauncherd.bin" id="" />
+        <for path="applauncherd-launcher::/usr/bin/applauncherd.bin" id="" />
 </aegis>

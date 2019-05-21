@@ -1,9 +1,10 @@
-ppsh (41.0.5harmattan1-bilibili) unstable; urgency=low
+ppsh (41.0.5harmattan2-bilibili0) unstable; urgency=low
 
   * Add live.
+  * Fixed aegis.
   * Some fixed.
 
- -- karin <beyondk2000@gmail.com>  Sun, 19 May 2019 20:45:23 +0800
+ -- karin <beyondk2000@gmail.com>  Mon, 20 May 2019 04:29:13 +0800
 
 ppsh (41.0.3harmattan1-bilibili) unstable; urgency=low
 

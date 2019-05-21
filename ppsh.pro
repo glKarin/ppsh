@@ -35,7 +35,7 @@ DEPLOYMENTFOLDERS += js
 
 QT += declarative network sql webkit xml
 CONFIG += mobility
-MOBILITY += multimedia
+MOBILITY += multimedia systeminfo
 INCLUDEPATH += . src src/qtm
 DEFINES += _KARIN_MM_EXTENSIONS
 MOC_DIR = .moc
@@ -46,6 +46,11 @@ DEFINES += _HARMATTAN
 DEFINES += _MAEMO_MEEGOTOUCH_INTERFACES_DEV
 CONFIG += videosuiteinterface-maemo-meegotouch
 PKGCONFIG += zlib
+
+# Uncomment these line for use without Qt Creator
+QMAKE_CXXFLAGS += -fPIC
+INCLUDEPATH += /usr/include/applauncherd
+# end
 
 contains(DEFINES, _KARIN_MM_EXTENSIONS) {
 HEADERS += \
