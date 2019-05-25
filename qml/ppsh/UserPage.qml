@@ -570,7 +570,7 @@ BasePage {
 	}
 
 	ToolIcon{
-		anchors.left: parent.leftt;
+		anchors.left: parent.left;
 		anchors.top: parent.top;
 		opacity: 0.6;
 		iconId: "toolbar-back";

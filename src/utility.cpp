@@ -16,7 +16,7 @@
 #include "networkmanager.h"
 #include "id_std.h"
 
-#define ID_SETTING_VERSION 3
+#define ID_SETTING_VERSION 5
 
 namespace id
 {
@@ -323,7 +323,7 @@ QVariant idUtility::Changelog(const QString &version) const
 	if(version.isEmpty())
 	{
 		list 
-			<< QObject::tr("Add live.")
+			<< QObject::tr("Add view full comment and reply.")
 			<< QObject::tr("Some fixed.")
 			<< QObject::tr("Videos of dash format will decode by MPlayer, others using internal player.")
 			<< QObject::tr("If playing with KMPlayer and not work, set player to MPlayer.");

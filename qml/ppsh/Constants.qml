@@ -1,4 +1,5 @@
 import QtQuick 1.1
+import com.nokia.meego 1.1
 
 QtObject {
     id: root;
@@ -10,8 +11,9 @@ QtObject {
     property color _cHeaderTitleColor: "#ffffff";
 
     property int _iMaxZ: 999;
-        property int _iMaxWidth: screen.displayHeight;
-        property int _iMaxHeight: screen.displayWidth;
+		// Maemo/Harmattan is landscape
+		property int _iMaxWidth: screen.displayHeight;
+		property int _iMaxHeight: screen.displayWidth;
 
     property int _iFontMicro: 10;
     property int _iFontTiny: 12;
@@ -149,6 +151,7 @@ QtObject {
 		property string _sNextPage: "_Next";
 		property string _sThisPage: "_This";
 		property string _sFirstPage: "_First";
+		property string _sLastPage: "_Last";
 
 		property string _sShowState: "_Show";
 		property string _sHideState: "_Hide";

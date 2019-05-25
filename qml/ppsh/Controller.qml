@@ -209,9 +209,11 @@ QtObject {
 		var diag = __queryDialog.createObject(pageStack.currentPage, prop);
 		if(typeof(acceptCallback) === "function") diag.accepted.connect(acceptCallback);
 		if(typeof(rejectCallback) === "function") diag.rejected.connect(rejectCallback);
+
+		return diag;
 	}
 
-	function _Info(title, subtitle, content, bottomtitle, handlelink)
+	function _Info(title, subtitle, content, bottomtitle, handlelink, refresh, footer)
 	{
 		if(!__infoDialog)
 		{
@@ -225,6 +227,10 @@ QtObject {
 		};
 		var diag = __infoDialog.createObject(pageStack.currentPage, prop);
 		if(typeof(handlelink) === "function") diag.linkClicked.connect(handlelink);
+		if(typeof(refresh) === "function") diag.clicked.connect(refresh);
+		if(typeof(footer) === "function") diag.footerClicked.connect(footer);
+
+		return diag;
 	}
 
 	function _Select(title, model, selection_func, field, cur_selected)
@@ -241,6 +247,8 @@ QtObject {
 		};
 		var diag = __selectionDialog.createObject(pageStack.currentPage, prop);
 		if(typeof(selection_func) === "function") diag.select.connect(selection_func);
+
+		return diag;
 	}
 
 	function _IsCurrentPage(name)

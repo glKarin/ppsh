@@ -31,7 +31,8 @@ var idWebAPI = {
 	HOT_KEYWORD: "http://s.search.bilibili.com/main/hotword",
 	SEARCH: "http://api.bilibili.com/x/web-interface/search/type", //?jsonp=jsonp&search_type=video|bili_user&highlight=1&keyword=n950&from_source=banner_search&page=1 &order=click|pubdate|dm|stow
 	RECOMMEND: "http://comment.bilibili.com/recommendnew,%1",
-	COMMENT: "http://api.bilibili.com/x/v2/reply", //?type=1&sort=2&oid=49156714&pn=1&nohot=1
+	COMMENT: "http://api.bilibili.com/x/v2/reply", //?type=1&sort=2&oid=49156714&pn=1&nohot=1&ps
+	COMMENT_REPLY: "http://api.bilibili.com/x/v2/reply/reply", //?type=1&ps=10&oid=49156714&pn=1&josnp=jsonp&root=rpid
 	VIDEO_DETAIL: "http://api.bilibili.com/x/web-interface/view", //?aid=37606630
 	RANKING: "http://api.bilibili.com/x/web-interface/ranking", //?rid=0&day=3&jsonp=jsonp
 	PLAYURL: "http://api.bilibili.com/x/player/playurl?avid=%1&cid=%2&qn=%3&type=&otype=json&fnver=0&fnval=16&ep_id=%4",
@@ -247,14 +248,7 @@ var idWebAPI = {
 			return -1;
 		if(!Array.isArray(json.data.replies))
 			return -1;
-		var push = Array.isArray(container) ? "push" : "append";
-		var list = json.data.replies;
-		for(var i in list)
-		{
-			if(limit && i >= limit)
-				break;
-
-			var e = list[i];
+		var f = function(e){
 			var item = {
 				name: e.member ? e.member.uname : "",
 				uid: e.member ? e.member.mid.toString() : "",
@@ -268,7 +262,28 @@ var idWebAPI = {
 				like: e.like,
 				reply_count: e.rcount,
 				floor: e.floor,
+
+				reply: e.replies ? [] : null,
 			};
+			if(Array.isArray(e.replies))
+			{
+				for(var si in e.replies)
+				{
+					var se = e.replies[si];
+					item.reply.push(f(se));
+				}
+			}
+			return item;
+		};
+		var push = Array.isArray(container) ? "push" : "append";
+		var list = json.data.replies;
+		for(var i in list)
+		{
+			if(limit && i >= limit)
+				break;
+
+			var e = list[i];
+			var item = f(e);
 			container[push](item);
 		}
 		return 0;

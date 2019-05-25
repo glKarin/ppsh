@@ -187,6 +187,41 @@ function GetComment(data, success, fail)
 	Request(idAPI.COMMENT, "GET", opt, s, f);
 }
 
+function GetReply(data, success, fail)
+{
+	var f = function(message){
+		if(typeof(fail) === "function")
+			fail(message);
+	};
+	var s = function(json){
+		var res = idAPI.CheckResponse(json);
+		if(res !== 0)
+		{
+			f(res);
+			return;
+		}
+		if(idAPI.MakeComment(json, data.model) === 0)
+		{
+			var page_data = __GetPageData(json.data.page, ["num", "size", "count", null]);
+			if(typeof(success) === "function") success(page_data);
+		}
+		else
+			f(json.message);
+	};
+	var opt = {
+		type: 1,
+		oid: data.aid,
+		root: data.rid,
+	};
+	if(data.pageNo !== undefined)
+		opt.pn = data.pageNo;
+	if(data.pageSize !== undefined)
+		opt.ps = data.pageSize;
+	if(data.type !== undefined)
+		opt.type = data.type;
+	Request(idAPI.COMMENT_REPLY, "GET", opt, s, f);
+}
+
 // MainPage
 function GetRanking(data, success, fail)
 {

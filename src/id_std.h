@@ -6,7 +6,7 @@
 #define ID_APP "PPSH"
 #define ID_NAME QObject::tr("PPSH")
 #define ID_PKG "ppsh"
-#define ID_VER "41.0.5harmattan2"
+#define ID_VER "41.0.6harmattan1"
 #define ID_CODE "natasha"
 #define ID_DEV "karin"
 #define ID_RELEASE "20140405"

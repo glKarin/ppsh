@@ -1,6 +1,7 @@
 import QtQuick 1.1
 import com.nokia.meego 1.1
 import karin.ppsh 1.0
+import QtMultimediaKit 1.1
 import "../component"
 import "../../js/main.js" as Script
 
